@@ -1,0 +1,42 @@
+name: Autonomous SEO Agent
+
+on:
+  schedule:
+    - cron: '0 */6 * * *'  # Runs 4 times a day (every 6 hours)
+  workflow_dispatch:      # Allows manual trigger
+
+jobs:
+  draft-content:
+    runs-on: ubuntu-latest
+    
+    permissions:
+      contents: write
+      
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install google-generativeai
+
+      - name: Run SEO Agent
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: python seo_agent.py
+
+      - name: Commit and Push Changes
+        run: |
+          git config --global user.name "Nexus SEO Bot"
+          git config --global user.email "seo-bot@nexus-intel.com"
+          git add .
+          git commit -m "🤖 [Bot] Autonomous SEO Update: New Vibe Coding post drafted" || echo "No changes to commit"
+          git push
