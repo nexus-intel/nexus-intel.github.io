@@ -35,14 +35,15 @@ nav {
     top: 0;
     left: 0;
     width: 100%;
-    padding: 1.5rem 5%;
+    padding: 1rem 5%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     z-index: 1000;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(15px);
     border-bottom: 1px solid var(--border);
     background: var(--glass);
+    transition: all 0.3s ease;
 }
 
 .logo {
@@ -58,7 +59,9 @@ nav {
 .nav-links {
     display: flex;
     list-style: none;
-    gap: 2rem;
+    gap: 1.5rem;
+    margin: 0 1rem;
+    padding: 0;
 }
 
 .nav-links a {
@@ -75,13 +78,15 @@ nav {
 .cta-button {
     background: var(--accent);
     color: white;
-    padding: 0.8rem 1.5rem;
+    padding: 0.6rem 1.2rem;
     border: none;
     border-radius: 8px;
     font-weight: 600;
     cursor: pointer;
     box-shadow: 0 0 20px var(--accent-glow);
-    transition: transform 0.3s, box-shadow 0.3s;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    white-space: nowrap;
+    font-size: 0.9rem;
 }
 
 .cta-button:hover {
@@ -379,6 +384,7 @@ nav {
 }
 
 /* Case Studies */
+
 .cases-section {
     padding: 8rem 10%;
     background: #0d0d0f;
@@ -386,18 +392,19 @@ nav {
 
 .cases-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 3rem;
+    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+    gap: 2.5rem;
+    padding: 2rem 0;
 }
 
 .case-card {
-    background: rgba(255, 255, 255, 0.02);
-    padding: 3rem;
-    border-radius: 20px;
+    background: var(--bg-card);
     border: 1px solid var(--border);
-    transition: 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
-    position: relative;
+    border-radius: 20px;
     overflow: hidden;
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    display: flex;
+    flex-direction: column;
 }
 
 .case-card::before {
@@ -700,7 +707,13 @@ footer {
 
 /* Responsive */
 @media (max-width: 768px) {
-    .nav-links { display: none; }
+    .nav-links {
+    display: flex;
+    list-style: none;
+    gap: 1.5rem;
+    margin: 0 1rem;
+    padding: 0;
+}
     .hero-section h1 { font-size: 3rem; }
     .hero-visual { display: none; }
     .contact-container { grid-template-columns: 1fr; gap: 3rem; }
@@ -1358,4 +1371,35 @@ input[type="range"] {
     .blog-index-grid { grid-template-columns: 1fr; }
     .about-stats { flex-direction: column; gap: 3rem; text-align: center; }
     .inline-form { flex-direction: column; align-items: center; }
+}
+
+.case-img {
+    height: 240px;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    border-bottom: 1px solid var(--border);
+}
+
+.case-img::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, transparent, rgba(10, 10, 12, 0.6));
+}
+
+.case-content {
+    padding: 2.5rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.case-card h3 {
+    font-size: 1.6rem;
+    margin-bottom: 1.2rem;
+    background: linear-gradient(90deg, #fff, #cbd5e1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }

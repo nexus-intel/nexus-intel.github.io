@@ -48,13 +48,11 @@ def inject_components(html, header, footer, blogs=None, cases=None):
     html = re.sub(r'<header>.*?</header>', f'<header>{header}</header>', html, flags=re.DOTALL)
     html = re.sub(r'<footer>.*?</footer>', f'<footer>{footer}</footer>', html, flags=re.DOTALL)
     
-    # 2. Blog Cards (Top 3 for index, all for blog.html)
+    # 2. Blog Cards
     if blogs:
         blog_html = ""
         for i, b in enumerate(blogs):
             img_url = b.get('image') or ""
-            # Handle pathing if inside a sub-dir or root
-            # For index.html, it's just 'blog/slug/'
             card = f"""
             <div class="blog-card animate-in" style="animation-delay: {i * 0.1}s">
                 <div class="blog-img" style="background: {f"url('{img_url}') center/cover" if img_url else f"linear-gradient(135deg, hsl({260 + i * 20}, 70%, 50%), hsl({220 + i * 20}, 70%, 40%))"};">
@@ -68,15 +66,9 @@ def inject_components(html, header, footer, blogs=None, cases=None):
                 </div>
             </div>"""
             blog_html += card
-        # Match both index.html (blog-grid) and blog.html (blog-list)
-        if '<div class="blog-grid">' in html:
-            html = re.sub(r'<div class="blog-grid">.*?</div>', f'<div class="blog-grid">{blog_html}</div>', html, flags=re.DOTALL)
-        elif 'id="blog-list"' in html:
-            # blog.html uses a slightly different card style (detailed)
-            # We can either use the same style or just inject the raw HTML if we want to be fancy.
-            # For now, let's just use the same card injection or leave it to the script if we must.
-            # Actually, let's inject it into blog-list too.
-            html = re.sub(r'id="blog-list">.*?</div>', f'id="blog-list">{blog_html}</div>', html, flags=re.DOTALL)
+        
+        # Robust Marker Injection
+        html = re.sub(r'<!-- BLOG_START -->.*?<!-- BLOG_END -->', f'<!-- BLOG_START -->{blog_html}<!-- BLOG_END -->', html, flags=re.DOTALL)
 
     # 3. Case Cards
     if cases:
@@ -91,12 +83,10 @@ def inject_components(html, header, footer, blogs=None, cases=None):
                 <p>{study['subtitle']}</p>
                 <a href="case/{study['id']}/" class="read-more">View Full Breakdown <i class="fas fa-arrow-right"></i></a>
             </div>"""
-        html = re.sub(r'<div class="cases-grid">.*?</div>', f'<div class="cases-grid">{case_html}</div>', html, flags=re.DOTALL)
+        
+        # Robust Marker Injection
+        html = re.sub(r'<!-- CASES_START -->.*?<!-- CASES_END -->', f'<!-- CASES_START -->{case_html}<!-- CASES_END -->', html, flags=re.DOTALL)
 
-    if '<header>' not in html:
-        html = html.replace('<body class="main-page">', '<body class="main-page">\n    <header>' + header + '</header>')
-        html = html.replace('<body class="sub-page">', '<body class="sub-page">\n    <header>' + header + '</header>')
-    
     return html
 
 def update_root_files(data=None):
