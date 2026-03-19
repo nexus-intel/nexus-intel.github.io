@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Case Study | Nexus Intelligence</title>
+    <title>Healthcare Hub: Automated Claims & Super Bills Processing | Case Study | Nexus Intelligence</title>
     <meta name="description" content="Explore how Nexus Intelligence delivers measurable business impact through AI automation, agentic workflows, and intelligent document processing.">
     <link rel="stylesheet" href="style.css?v=2.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,18 +14,7 @@
     <script src="loader.js" defer></script>
 
     <!-- JSON-LD Schema (dynamically populated) -->
-    <script type="application/ld+json" id="study-schema">
-    {
-        "@context": "https://schema.org",
-        "@type": "Article",
-        "headline": "",
-        "author": { "@type": "Organization", "name": "Nexus Intelligence" },
-        "publisher": { "@type": "Organization", "name": "Nexus Intelligence" },
-        "datePublished": "",
-        "description": ""
-    }
-    </script>
-    <link rel="canonical" href="https://nexus-intel.github.io/case/healthcare-claims/">
+    <script type="application/ld+json" id="study-schema">{"@context": "https://schema.org", "@type": "Article", "headline": "Healthcare Hub: Automated Claims & Super Bills Processing", "description": "A European clinical laboratory network was struggling with a 15% rejection rate on insurance claims due to manual data entry errors from \"Super Bills\" and Insur", "author": {"@type": "Organization", "name": "Nexus Intelligence"}, "publisher": {"@type": "Organization", "name": "Nexus Intelligence"}, "datePublished": "2026-03-20"}</script>
 </head>
 <body class="sub-page">
     <header><nav class="glass">
@@ -47,28 +36,52 @@
             <div class="hero-bg"></div>
             <div class="hero-content">
                 <a href="index.html#cases" class="back-link"><i class="fas fa-chevron-left"></i> All Case Studies</a>
-                <h1 id="post-title">Loading...</h1>
+                <h1 id="post-title">Healthcare Hub: Automated Claims & Super Bills Processing</h1>
                 <div class="post-meta">
                     <span id="post-date">March 19, 2026</span>
                     <span class="meta-separator">•</span>
                     <span class="post-tag">Case Study</span>
                     <span class="meta-separator">•</span>
-                    <span id="read-time">3 min read</span>
+                    <span id="read-time">1 min read</span>
                 </div>
             </div>
         </section>
 
         <section class="post-container">
             <div id="md-content" class="post-content glass-card">
-                <div class="loader-pulse"></div>
+                <blockquote>
+<p>Streamlining insurance lifecycles with intelligent extraction of member IDS, CPT codes, and ICD-10 medical billing data.</p>
+</blockquote>
+<h2>The Challenge</h2>
+<p>A European clinical laboratory network was struggling with a 15% rejection rate on insurance claims due to manual data entry errors from &quot;Super Bills&quot; and Insurance Cards. The billing cycle was averaging 45 days.</p>
+<h2>The Solution: Healthcare Workflow Automation</h2>
+<p>We implemented a HIPAA-compliant (and GDPR-ready) automation suite that handles:</p>
+<ol>
+<li><strong>Insurance Card OCR</strong>: Instant extraction of member IDs, group numbers, and plan types from various European providers.</li>
+<li><strong>Super Bill Digitization</strong>: Mapping CPT codes and ICD-10 codes from handwriting or semi-structured print to the central billing system.</li>
+<li><strong>Real-time Eligibility</strong>: Instant verification of insurance status before the patient leaves the clinic.</li>
+</ol>
+<h2>The Result</h2>
+<ul>
+<li><strong>Rejection Rate</strong>: Slashed from 15% to &lt; 2.1%.</li>
+<li><strong>Billing Cycle</strong>: Reduced from 45 days to 7 days.</li>
+<li><strong>Efficiency</strong>: Staff saved 40 hours per week on data entry per clinic.</li>
+</ul>
+<h2>Technical Stack</h2>
+<ul>
+<li><strong>Extraction</strong>: Document AI (Vertex AI)</li>
+<li><strong>Verification</strong>: Custom Pydantic AI Validation layers</li>
+<li><strong>Compliance</strong>: End-to-end encrypted processing pipelines</li>
+</ul>
+
             </div>
 
             <!-- Social Share + CTA -->
             <div class="post-footer">
                 <div class="share-row">
                     <span>Share this case study:</span>
-                    <a id="share-twitter" href="#" target="_blank" class="share-btn">𝕏 Twitter</a>
-                    <a id="share-linkedin" href="#" target="_blank" class="share-btn">in LinkedIn</a>
+                    <a id="share-twitter" href="https://twitter.com/intent/tweet?text=Healthcare%20Hub%3A%20Automated%20Claims%20%26%20Super%20Bills%20Processing&url=https%3A//nexus-intel.github.io/case/healthcare-claims/" target="_blank" class="share-btn">𝕏 Twitter</a>
+                    <a id="share-linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A//nexus-intel.github.io/case/healthcare-claims/" target="_blank" class="share-btn">in LinkedIn</a>
                     <button id="share-copy" class="share-btn">📋 Copy Link</button>
                 </div>
                 <div class="post-cta">
@@ -80,87 +93,7 @@
         </section>
     </main>
 
-    <script>
-        async function renderStudy() {
-            const params = new URLSearchParams(window.location.search);
-            let studyId = params.get('id');
-            
-            if (!studyId) {
-                // Detect studyId from URL path for Clean URLs (e.g., /case/id/)
-                const pathParts = window.location.pathname.split('/').filter(p => p);
-                if (pathParts.length >= 2 && pathParts[pathParts.length - 2] === 'case') {
-                    studyId = pathParts[pathParts.length - 1];
-                }
-            }
-
-            if (!studyId) {
-                window.location.href = '../../index.html#work';
-                return;
-            }
-
-            try {
-                const response = await fetch(`cases/${studyId}.md`);
-                if (!response.ok) throw new Error('Study not found');
-                const mdText = await response.text();
-
-                // Extract Title
-                const h1Match = mdText.match(/^# (.+)$/m);
-                const title = h1Match ? h1Match[1] : studyId.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
-
-                // Dynamic SEO
-                document.getElementById('post-title').innerText = title;
-                document.title = `${title} | Case Study | Nexus Intelligence`;
-
-                // Set canonical if not present
-                if (!document.querySelector('link[rel="canonical"]')) {
-                    const canonical = document.createElement('link');
-                    canonical.rel = 'canonical';
-                    canonical.href = window.location.href.split('?')[0];
-                    document.head.appendChild(canonical);
-                }
-
-                // Set meta description from first paragraph
-                const firstPara = mdText.match(/^(?!#|>|\-|\*|```|\|)(.{50,})/m);
-                if (firstPara) {
-                    // Update existing meta description
-                    const metaDesc = document.querySelector('meta[name="description"]');
-                    if (metaDesc) {
-                        metaDesc.content = firstPara[1].substring(0, 160);
-                    }
-                }
-
-                // Reading time
-                const wordCount = mdText.split(/\s+/).length;
-                const readTime = Math.max(1, Math.ceil(wordCount / 200));
-                document.getElementById('read-time').innerText = `${readTime} min read`;
-
-                // Populate JSON-LD Schema
-                const schema = JSON.parse(document.getElementById('study-schema').textContent);
-                schema.headline = title;
-                schema.datePublished = new Date().toISOString().split('T')[0];
-                schema.description = firstPara ? firstPara[1].substring(0, 160) : title;
-                document.getElementById('study-schema').textContent = JSON.stringify(schema);
-
-                // Social share links
-                const pageUrl = encodeURIComponent(window.location.href);
-                const pageTitle = encodeURIComponent(title);
-                document.getElementById('share-twitter').href = `https://twitter.com/intent/tweet?text=${pageTitle}&url=${pageUrl}`;
-                document.getElementById('share-linkedin').href = `https://www.linkedin.com/sharing/share-offsite/?url=${pageUrl}`;
-                document.getElementById('share-copy').addEventListener('click', () => {
-                    navigator.clipboard.writeText(window.location.href);
-                    document.getElementById('share-copy').textContent = '✅ Copied!';
-                    setTimeout(() => document.getElementById('share-copy').textContent = '📋 Copy Link', 2000);
-                });
-
-                // Render Markdown (excluding first H1)
-                const finalMd = h1Match ? mdText.replace(/^# .+\n/, '') : mdText;
-                document.getElementById('md-content').innerHTML = marked.parse(finalMd);
-            } catch (err) {
-                document.getElementById('md-content').innerHTML = `<h1>404</h1><p>Case study not found: ${studyId}</p><a href="index.html">Back to Home</a>`;
-            }
-        }
-        document.addEventListener('DOMContentLoaded', renderMarkdown);
-    </script>
+    <!-- Content is baked statically via refresh_content.py -->
     <footer>    <div class="footer-content">
         <div class="footer-brand">
             <div class="logo">NEXUS<span>INTELLIGENCE</span></div>

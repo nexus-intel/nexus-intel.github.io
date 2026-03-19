@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog | Nexus Intelligence</title>
+    <title>AI Fraud Detection for Fintech: How ML Catches What Rules Miss | Nexus Intelligence</title>
     <meta name="description" content="Expert insights on AI automation, agentic workflows, OCR, and enterprise intelligence from Nexus Intelligence.">
     <link rel="stylesheet" href="style.css?v=2.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,7 +12,6 @@
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script src="loader.js" defer></script>
-    <link rel="canonical" href="https://nexus-intel.github.io/blog/ai-fraud-detection-for-fintech-how-ml-catches-what-rules-miss/">
 </head>
 <body class="sub-page">
     <header><nav class="glass">
@@ -34,28 +33,91 @@
             <div class="hero-bg"></div>
             <div class="hero-content">
                 <a href="blog.html" class="back-link"><i class="fas fa-chevron-left"></i> All Insights</a>
-                <h1 id="post-title">Loading...</h1>
+                <h1 id="post-title">AI Fraud Detection for Fintech: How ML Catches What Rules Miss</h1>
                 <div class="post-meta">
                     <span id="post-date">March 19, 2026</span>
                     <span class="meta-separator">•</span>
                     <span class="post-tag">AI Strategy</span>
                     <span class="meta-separator">•</span>
-                    <span id="read-time">5 min read</span>
+                    <span id="read-time">3 min read</span>
                 </div>
             </div>
         </section>
 
         <section class="post-container">
             <div id="md-content" class="post-content glass-card">
-                <div class="loader-pulse"></div>
+                <blockquote>
+<p>The shift from &quot;Reactive Rules&quot; to &quot;Predictive Intelligence.&quot; Learn how high-growth fintechs are reducing fraud losses by 90% in 2026.</p>
+</blockquote>
+<hr />
+<p>Date: 2026-03-17</p>
+<h2>The Crisis of Traditional Fraud Detection</h2>
+<p>For years, banks and fintechs relied on &quot;If-Then&quot; rules: <em>If a transaction is over $10,000 and comes from an unknown IP, then block it.</em> This worked in 2018, but in 2026, fraudsters are using AI to bypass these static gates. They know the rules, and they simulate &quot;normal&quot; behavior almost perfectly.</p>
+<p>Today, the most dangerous threat is <strong>Authorised Push Payment (APP) Fraud</strong>—where a user is socially engineered into <em>willingly</em> sending money to a criminal. Rules cannot catch this, because the transaction is &quot;Authorized.&quot; Only <strong>Predictive ML</strong> can.</p>
+<hr />
+<h2>1. The 3 Layers of Modern Fraud ML</h2>
+<p>To catch sophisticated scammers in 2026, you need a multi-layered defense that analyzes speed, behavior, and relationships simultaneously.</p>
+<h3>Layer 1: Behavioral Biometrics</h3>
+<p>How does the user hold their phone? How fast do they type? Scammers and bots have distinctive input patterns. We use high-frequency telemetry to detect if the person currently using the app is actually the account owner or a bot impersonating them.</p>
+<h3>Layer 2: Graph-Based Network Analysis</h3>
+<p>Fraudsters rarely work alone. They use &quot;mule networks&quot; to wash money across thousands of accounts. By using a <strong>Graph Neural Network (GNN)</strong>, we can identify &quot;Fraud Rings&quot; before they even make a transaction—simply by seeing how a new account is connected to previously flagged entities.</p>
+<h3>Layer 3: Natural Language Reasoning (The LLM Layer)</h3>
+<p>In 2026, we’ve added an LLM layer that &quot;reads&quot; the context of a transaction. If a customer is sending a &quot;Tax Payment&quot; on a Sunday evening to a personal account in another country, the LLM flags the <em>narrative inconsistency</em> that numerical models miss.</p>
+<hr />
+<h2>2. Real-Time Decisioning: The 50ms Wall</h2>
+<p>In fintech, you cannot wait 10 seconds for a fraud score. The user is waiting at a terminal or in an app. Our Nexus Fraud Engine is designed for <strong>Sub-50ms Inference</strong>.</p>
+<h3>The Hybrid Pipeline:</h3>
+<ol>
+<li><strong>Fast-Filter (XGBoost)</strong>: Categorizes 95% of transactions as &quot;Safe&quot; in under 10ms.</li>
+<li><strong>Deep-Scan (GNN + LLM)</strong>: The 5% of suspicious transactions are sent for a deep scan while the UI displays a &quot;Processing&quot; spinner.</li>
+<li><strong>Escalation</strong>: If the risk is high, we trigger a &quot;Selfie-ID&quot; check or a phone call.</li>
+</ol>
+<hr />
+<h2>3. Technical Implementation: Anomaly Detection</h2>
+<p>Here is how we use <strong>PyTorch</strong> and <strong>Isolation Forests</strong> for real-time anomaly flagging:</p>
+<pre><code class="language-python">from sklearn.ensemble import IsolationForest
+
+# Mock transaction features: [Amount, Velocity, TimeDifference, GeoDistance]
+X = [[100, 1, 60, 0], [15000, 10, 5, 2000], ...]
+
+# Training the model on 'Normal' behavior
+clf = IsolationForest(contamination=0.01) # Assume 1% fraud
+clf.fit(X_train)
+
+# Predict in production
+def is_fraud(transaction_vector):
+    score = clf.predict([transaction_vector])
+    return True if score == -1 else False
+</code></pre>
+<hr />
+<h2>4. The Impact: Measuring Success</h2>
+<p>| Metric | Rule-Based System | Nexus AI System | Change |
+|:---|:---|:---|:---|
+| <strong>Fraud Detection Rate</strong> | 62% | <strong>94%</strong> | +32% |
+| <strong>False Positive Rate</strong> | 8.5% | <strong>0.4%</strong> | -95% |
+| <strong>Annual Fraud Loss</strong> | $4.2M | <strong>$0.4M</strong> | -90% |
+| <strong>Support Overhead</strong> | 2k tickets/mo | <strong>150 tickets/mo</strong> | -92% |</p>
+<hr />
+<h2>Conclusion: Trust is Your Only Product</h2>
+<p>In fintech, if you lose your customers' money, you lose their trust. In 2026, AI is no longer a &quot;nice-to-have&quot; feature—it is the <strong>Immune System</strong> of your financial platform.</p>
+<h3>Protect Your Platform</h3>
+<p>Is your fraud team overwhelmed by false positives? <strong><a href="https://nexus-intel.github.io/index.html#contact">Contact Nexus Intelligence</a></strong> for a Fraud Strategy Audit. We’ll show you how to deploy a high-performance ML defense that catches fraud at the speed of light without slowing down your customers.</p>
+<hr />
+<h3>Related Insights</h3>
+<ul>
+<li><a href="../../case/fintech-fraud-detection/">Real-Time Fraud Detection — Case Study</a> — The full story of how we reduced losses by 92%.</li>
+<li><a href="../../blog/open-source-vs-proprietary-llms-cost-security-and-performance/">Open-Source vs Proprietary LLMs for Security</a> — Why local inference is critical for financial data.</li>
+<li><a href="../../blog/how-to-build-an-ai-agent-with-langgraph-step-by-step-python-tutorial/">How to Build an AI Agent with LangGraph</a> — Building autonomous reconciliation agents.</li>
+</ul>
+
             </div>
 
             <!-- Social Share + CTA -->
             <div class="post-footer">
                 <div class="share-row">
                     <span>Share this insight:</span>
-                    <a id="share-twitter" href="#" target="_blank" class="share-btn">𝕏 Twitter</a>
-                    <a id="share-linkedin" href="#" target="_blank" class="share-btn">in LinkedIn</a>
+                    <a id="share-twitter" href="https://twitter.com/intent/tweet?text=AI%20Fraud%20Detection%20for%20Fintech%3A%20How%20ML%20Catches%20What%20Rules%20Miss&url=https%3A//nexus-intel.github.io/blog/ai-fraud-detection-for-fintech-how-ml-catches-what-rules-miss/" target="_blank" class="share-btn">𝕏 Twitter</a>
+                    <a id="share-linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A//nexus-intel.github.io/blog/ai-fraud-detection-for-fintech-how-ml-catches-what-rules-miss/" target="_blank" class="share-btn">in LinkedIn</a>
                     <button id="share-copy" class="share-btn">📋 Copy Link</button>
                 </div>
                 <div class="post-cta">
@@ -68,98 +130,9 @@
     </main>
 
     <!-- JSON-LD Schema (dynamically populated) -->
-    <script type="application/ld+json" id="article-schema">
-    {
-        "@context": "https://schema.org",
-        "@type": "Article",
-        "headline": "",
-        "author": { "@type": "Organization", "name": "Nexus Intelligence" },
-        "publisher": { "@type": "Organization", "name": "Nexus Intelligence" },
-        "datePublished": "",
-        "description": ""
-    }
-    </script>
+    <script type="application/ld+json" id="article-schema">{"@context": "https://schema.org", "@type": "Article", "headline": "AI Fraud Detection for Fintech: How ML Catches What Rules Miss", "description": "For years, banks and fintechs relied on \"If-Then\" rules: *If a transaction is over $10,000 and comes from an unknown IP, then block it.* This worked in 2018, bu", "author": {"@type": "Organization", "name": "Nexus Intelligence"}, "publisher": {"@type": "Organization", "name": "Nexus Intelligence"}, "datePublished": "2026-03-20"}</script>
+    <!-- Content is baked statically via refresh_content.py -->
 
-    <script>
-        async function renderMarkdown() {
-            const params = new URLSearchParams(window.location.search);
-            let blogId = params.get('blog');
-            
-            if (!blogId) {
-                // Detect blogId from URL path for Clean URLs (e.g., /blog/slug/)
-                const pathParts = window.location.pathname.split('/').filter(p => p);
-                if (pathParts.length >= 2 && pathParts[pathParts.length - 2] === 'blog') {
-                    blogId = pathParts[pathParts.length - 1];
-                }
-            }
-
-            if (!blogId) {
-                window.location.href = '../../blog.html';
-                return;
-            }
-
-            try {
-                const response = await fetch(`blogs/${blogId}.md`);
-                if (!response.ok) throw new Error('Post not found');
-                const mdText = await response.text();
-                
-                // Extract Title
-                const h1Match = mdText.match(/^# (.+)$/m);
-                const title = h1Match ? h1Match[1] : blogId.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
-                
-                // Dynamic SEO
-                document.getElementById('post-title').innerText = title;
-                document.title = `${title} | Nexus Intelligence`;
-                
-                // Set canonical URL if not already present
-                if (!document.querySelector('link[rel="canonical"]')) {
-                    const canonical = document.createElement('link');
-                    canonical.rel = 'canonical';
-                    canonical.href = window.location.href.split('?')[0];
-                    document.head.appendChild(canonical);
-                }
-                
-                // Set meta description from first paragraph
-                const firstPara = mdText.match(/^(?!#|>|\-|\*|```|\|)(.{50,})/m);
-                if (firstPara) {
-                    const metaDesc = document.createElement('meta');
-                    metaDesc.name = 'description';
-                    metaDesc.content = firstPara[1].substring(0, 160);
-                    document.head.appendChild(metaDesc);
-                }
-                
-                // Reading time
-                const wordCount = mdText.split(/\s+/).length;
-                const readTime = Math.max(1, Math.ceil(wordCount / 200));
-                document.getElementById('read-time').innerText = `${readTime} min read`;
-                
-                // Populate JSON-LD Schema
-                const schema = JSON.parse(document.getElementById('article-schema').textContent);
-                schema.headline = title;
-                schema.datePublished = new Date().toISOString().split('T')[0];
-                schema.description = firstPara ? firstPara[1].substring(0, 160) : title;
-                document.getElementById('article-schema').textContent = JSON.stringify(schema);
-                
-                // Social share links
-                const pageUrl = encodeURIComponent(window.location.href);
-                const pageTitle = encodeURIComponent(title);
-                document.getElementById('share-twitter').href = `https://twitter.com/intent/tweet?text=${pageTitle}&url=${pageUrl}`;
-                document.getElementById('share-linkedin').href = `https://www.linkedin.com/sharing/share-offsite/?url=${pageUrl}`;
-                document.getElementById('share-copy').addEventListener('click', () => {
-                    navigator.clipboard.writeText(window.location.href);
-                    document.getElementById('share-copy').textContent = '✅ Copied!';
-                    setTimeout(() => document.getElementById('share-copy').textContent = '📋 Copy Link', 2000);
-                });
-
-                // Render Markdown (excluding first H1)
-                const finalMd = h1Match ? mdText.replace(/^# .+\n/, '') : mdText;
-                document.getElementById('md-content').innerHTML = marked.parse(finalMd);
-            } catch (err) {
-                document.getElementById('md-content').innerHTML = `<h1>404</h1><p>Post not found: ${blogId}</p><a href="blog.html">Back to Blog</a>`;
-            }
-        }
-        document.addEventListener('DOMContentLoaded', renderMarkdown);
-    </script>
     <footer>    <div class="footer-content">
         <div class="footer-brand">
             <div class="logo">NEXUS<span>INTELLIGENCE</span></div>

@@ -1,8 +1,9 @@
 import os
 import re
 import json
-import shutil
 from datetime import datetime
+from markdown_it import MarkdownIt
+import urllib.parse
 
 # Configuration
 BLOGS_MD_DIR = 'blogs'
@@ -13,7 +14,9 @@ POST_TEMPLATE = 'post.html'
 STUDY_TEMPLATE = 'study.html'
 CONTENT_JSON = 'content.json'
 SITEMAP_XML = 'sitemap.xml'
-BASE_URL = "https://nexus-intel.github.io" # No trailing slash for defensive joining
+BASE_URL = "https://nexus-intel.github.io"
+
+md = MarkdownIt()
 
 def get_shared_components(root_path=""):
     try:
@@ -28,13 +31,10 @@ def get_shared_components(root_path=""):
     except: return "", ""
 
 def inject_content(html, header, footer, content_dict=None, filename=""):
-    # 1. Header/Footer
     html = re.sub(r'<header id="header-container">.*?</header>', f'<header id="header-container">{header}</header>', html, flags=re.DOTALL)
     html = re.sub(r'<footer id="footer-container">.*?</footer>', f'<footer id="footer-container">{footer}</footer>', html, flags=re.DOTALL)
-
     if not content_dict: return html
 
-    # 2. Blogs
     if 'blogs' in content_dict:
         blog_html = ""
         limit = 3 if filename == 'index.html' else 999
@@ -57,7 +57,6 @@ def inject_content(html, header, footer, content_dict=None, filename=""):
             blog_html += card
         html = re.sub(r'<!-- BLOG_START -->.*?<!-- BLOG_END -->', f'<!-- BLOG_START -->{blog_html}<!-- BLOG_END -->', html, flags=re.DOTALL)
 
-    # 3. Cases
     if 'cases' in content_dict and filename == 'index.html':
         case_html = ""
         for i, c in enumerate(content_dict['cases']):
@@ -85,26 +84,70 @@ def extract_metadata(filepath):
         "title": title.group(1) if title else post_id.replace('-', ' ').title(),
         "subtitle": subtitle.group(1) if subtitle else "Premium AI Insight",
         "description": paras[0][:160] if paras else "Read more at Nexus Intelligence.",
-        "image": img if os.path.exists(img) else None
+        "image": img if os.path.exists(img) else None,
+        "raw_content": content
     }
 
-def generate_static_page(item, template_path, output_dir):
+def generate_static_page(item, template_path, output_dir, content_type="blog"):
     if not os.path.exists(template_path): return
     with open(template_path, 'r') as f: html = f.read()
     
-    # DEFENSIVE URL JOIN: strip trailing/leading slashes and join with single /
     clean_base = BASE_URL.rstrip('/')
     clean_path = f"{output_dir}/{item['id']}"
     canonical_url = f"{clean_base}/{clean_path}/"
     
-    html = re.sub(r'<link rel="canonical" href="[^"]*">', f'<link rel="canonical" href="{canonical_url}">', html)
-    if '<link rel="canonical"' not in html:
-        html = html.replace('</head>', f'    <link rel="canonical" href="{canonical_url}">\n</head>')
+    # 1. Metadata Injection
+    html = html.replace('<title>Blog | Nexus Intelligence</title>', f'<title>{item["title"]} | Nexus Intelligence</title>')
+    html = html.replace('<title>Case Study | Nexus Intelligence</title>', f'<title>{item["title"]} | Case Study | Nexus Intelligence</title>')
+    html = html.replace('<meta name="description" content="[^"]*">', f'<meta name="description" content="{item["description"]}">')
     
+    # 2. Content Baking (ZERO-FETCH)
+    raw_md = item['raw_content']
+    h1_match = re.search(r'^# .+\n', raw_md)
+    baked_md = raw_md.replace(h1_match.group(0), '') if h1_match else raw_md
+    content_html = md.render(baked_md)
+    
+    html = html.replace('<h1 id="post-title">Loading...</h1>', f'<h1 id="post-title">{item["title"]}</h1>')
+    html = html.replace('<div class="loader-pulse"></div>', content_html)
+    
+    # 3. Read Time
+    word_count = len(raw_md.split())
+    read_time = max(1, word_count // 200)
+    html = html.replace('<span id="read-time">5 min read</span>', f'<span id="read-time">{read_time} min read</span>')
+    html = html.replace('<span id="read-time">3 min read</span>', f'<span id="read-time">{read_time} min read</span>')
+
+    # 4. Social Links
+    encoded_url = urllib.parse.quote(canonical_url)
+    encoded_title = urllib.parse.quote(item['title'])
+    html = html.replace('id="share-twitter" href="#"', f'id="share-twitter" href="https://twitter.com/intent/tweet?text={encoded_title}&url={encoded_url}"')
+    html = html.replace('id="share-linkedin" href="#"', f'id="share-linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url={encoded_url}"')
+
+    # 5. Shared Components
     target_dir = os.path.join(output_dir, item['id'])
     os.makedirs(target_dir, exist_ok=True)
     header, footer = get_shared_components(root_path="../../")
     html = inject_content(html, header, footer)
+    
+    # 6. Schema Baking (Safe String Replacement)
+    schema_id = "article-schema" if content_type == "blog" else "study-schema"
+    schema_data = {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": item["title"],
+        "description": item["description"],
+        "author": { "@type": "Organization", "name": "Nexus Intelligence" },
+        "publisher": { "@type": "Organization", "name": "Nexus Intelligence" },
+        "datePublished": datetime.now().strftime('%Y-%m-%d')
+    }
+    # Use split/join to replace precisely without regex
+    schema_pattern = f'<script type="application/ld+json" id="{schema_id}">'
+    if schema_pattern in html:
+        parts = html.split(schema_pattern)
+        # Assuming only one match, replace the script content until </script>
+        after_pattern = parts[1].split('</script>', 1)
+        new_script = f'{schema_pattern}{json.dumps(schema_data)}</script>'
+        html = parts[0] + new_script + after_pattern[1]
+
     with open(os.path.join(target_dir, 'index.html'), 'w') as f: f.write(html)
 
 def generate_sitemap(data):
@@ -133,9 +176,10 @@ if __name__ == "__main__":
             new_html = inject_content(content, header, footer, data, filename)
             with open(filename, 'w') as f: f.write(new_html)
     
-    for b in data['blogs']: generate_static_page(b, POST_TEMPLATE, BLOGS_HTML_DIR)
-    for c in data['cases']: generate_static_page(c, STUDY_TEMPLATE, CASES_HTML_DIR)
+    for b in data['blogs']: generate_static_page(b, POST_TEMPLATE, BLOGS_HTML_DIR, "blog")
+    for c in data['cases']: generate_static_page(c, STUDY_TEMPLATE, CASES_HTML_DIR, "case")
     
-    with open(CONTENT_JSON, 'w') as f: json.dump(data, f, indent=4)
+    meta_data = {k: [{i: v for i, v in item.items() if i != 'raw_content'} for item in data[k]] for k in data}
+    with open(CONTENT_JSON, 'w') as f: json.dump(meta_data, f, indent=4)
     generate_sitemap(data)
-    print("✨ Full Technical Refresh Complete (Defensive URL Join enabled)")
+    print("✨ SSG Build Complete. Professional Zero-Fetch architecture deployed.")

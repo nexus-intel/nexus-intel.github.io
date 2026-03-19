@@ -78,87 +78,8 @@
         "description": ""
     }
     </script>
+    <!-- Content is baked statically via refresh_content.py -->
 
-    <script>
-        async function renderMarkdown() {
-            const params = new URLSearchParams(window.location.search);
-            let blogId = params.get('blog');
-            
-            if (!blogId) {
-                // Detect blogId from URL path for Clean URLs (e.g., /blog/slug/)
-                const pathParts = window.location.pathname.split('/').filter(p => p);
-                if (pathParts.length >= 2 && pathParts[pathParts.length - 2] === 'blog') {
-                    blogId = pathParts[pathParts.length - 1];
-                }
-            }
-
-            if (!blogId) {
-                window.location.href = '../../blog.html';
-                return;
-            }
-
-            try {
-                const response = await fetch(`blogs/${blogId}.md`);
-                if (!response.ok) throw new Error('Post not found');
-                const mdText = await response.text();
-                
-                // Extract Title
-                const h1Match = mdText.match(/^# (.+)$/m);
-                const title = h1Match ? h1Match[1] : blogId.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
-                
-                // Dynamic SEO
-                document.getElementById('post-title').innerText = title;
-                document.title = `${title} | Nexus Intelligence`;
-                
-                // Set canonical URL if not already present
-                if (!document.querySelector('link[rel="canonical"]')) {
-                    const canonical = document.createElement('link');
-                    canonical.rel = 'canonical';
-                    canonical.href = window.location.href.split('?')[0];
-                    document.head.appendChild(canonical);
-                }
-                
-                // Set meta description from first paragraph
-                const firstPara = mdText.match(/^(?!#|>|\-|\*|```|\|)(.{50,})/m);
-                if (firstPara) {
-                    const metaDesc = document.createElement('meta');
-                    metaDesc.name = 'description';
-                    metaDesc.content = firstPara[1].substring(0, 160);
-                    document.head.appendChild(metaDesc);
-                }
-                
-                // Reading time
-                const wordCount = mdText.split(/\s+/).length;
-                const readTime = Math.max(1, Math.ceil(wordCount / 200));
-                document.getElementById('read-time').innerText = `${readTime} min read`;
-                
-                // Populate JSON-LD Schema
-                const schema = JSON.parse(document.getElementById('article-schema').textContent);
-                schema.headline = title;
-                schema.datePublished = new Date().toISOString().split('T')[0];
-                schema.description = firstPara ? firstPara[1].substring(0, 160) : title;
-                document.getElementById('article-schema').textContent = JSON.stringify(schema);
-                
-                // Social share links
-                const pageUrl = encodeURIComponent(window.location.href);
-                const pageTitle = encodeURIComponent(title);
-                document.getElementById('share-twitter').href = `https://twitter.com/intent/tweet?text=${pageTitle}&url=${pageUrl}`;
-                document.getElementById('share-linkedin').href = `https://www.linkedin.com/sharing/share-offsite/?url=${pageUrl}`;
-                document.getElementById('share-copy').addEventListener('click', () => {
-                    navigator.clipboard.writeText(window.location.href);
-                    document.getElementById('share-copy').textContent = '✅ Copied!';
-                    setTimeout(() => document.getElementById('share-copy').textContent = '📋 Copy Link', 2000);
-                });
-
-                // Render Markdown (excluding first H1)
-                const finalMd = h1Match ? mdText.replace(/^# .+\n/, '') : mdText;
-                document.getElementById('md-content').innerHTML = marked.parse(finalMd);
-            } catch (err) {
-                document.getElementById('md-content').innerHTML = `<h1>404</h1><p>Post not found: ${blogId}</p><a href="blog.html">Back to Blog</a>`;
-            }
-        }
-        document.addEventListener('DOMContentLoaded', renderMarkdown);
-    </script>
     <footer>    <div class="footer-content">
         <div class="footer-brand">
             <div class="logo">NEXUS<span>INTELLIGENCE</span></div>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Case Study | Nexus Intelligence</title>
+    <title>Autonomous Supply Chain Engine | Case Study | Nexus Intelligence</title>
     <meta name="description" content="Explore how Nexus Intelligence delivers measurable business impact through AI automation, agentic workflows, and intelligent document processing.">
     <link rel="stylesheet" href="style.css?v=2.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,18 +14,7 @@
     <script src="loader.js" defer></script>
 
     <!-- JSON-LD Schema (dynamically populated) -->
-    <script type="application/ld+json" id="study-schema">
-    {
-        "@context": "https://schema.org",
-        "@type": "Article",
-        "headline": "",
-        "author": { "@type": "Organization", "name": "Nexus Intelligence" },
-        "publisher": { "@type": "Organization", "name": "Nexus Intelligence" },
-        "datePublished": "",
-        "description": ""
-    }
-    </script>
-    <link rel="canonical" href="https://nexus-intel.github.io/case/autonomous-logistics/">
+    <script type="application/ld+json" id="study-schema">{"@context": "https://schema.org", "@type": "Article", "headline": "Autonomous Supply Chain Engine", "description": "A global logistics firm with operations across 14 countries was struggling with a critical bottleneck: **manual dispatch decisions**. Their legacy system relied", "author": {"@type": "Organization", "name": "Nexus Intelligence"}, "publisher": {"@type": "Organization", "name": "Nexus Intelligence"}, "datePublished": "2026-03-20"}</script>
 </head>
 <body class="sub-page">
     <header><nav class="glass">
@@ -47,7 +36,7 @@
             <div class="hero-bg"></div>
             <div class="hero-content">
                 <a href="index.html#cases" class="back-link"><i class="fas fa-chevron-left"></i> All Case Studies</a>
-                <h1 id="post-title">Loading...</h1>
+                <h1 id="post-title">Autonomous Supply Chain Engine</h1>
                 <div class="post-meta">
                     <span id="post-date">March 19, 2026</span>
                     <span class="meta-separator">•</span>
@@ -60,15 +49,108 @@
 
         <section class="post-container">
             <div id="md-content" class="post-content glass-card">
-                <div class="loader-pulse"></div>
+                <blockquote>
+<p>How we deployed a LangGraph-powered agentic system that reduced transportation costs by 28%.</p>
+</blockquote>
+<hr />
+<h2>The Challenge</h2>
+<p>A global logistics firm with operations across 14 countries was struggling with a critical bottleneck: <strong>manual dispatch decisions</strong>. Their legacy system relied on spreadsheet-based routing where dispatchers would manually assess routes each morning. The process couldn't account for real-time traffic, fuel price fluctuations, driver fatigue regulations, and vehicle maintenance schedules simultaneously.</p>
+<p>The result was predictable:</p>
+<ul>
+<li><strong>Overloaded routes</strong> that burned excess fuel</li>
+<li><strong>Idle drivers</strong> waiting for reassignment during peak hours</li>
+<li><strong>SLA breaches</strong> from delayed deliveries, costing €200K+/month in penalties</li>
+<li><strong>Zero visibility</strong> into why specific routes were chosen</li>
+</ul>
+<p>The operations team was spending 6+ hours daily just re-optimizing routes that should have been automated.</p>
+<hr />
+<h2>The Solution</h2>
+<p>Nexus Intelligence designed and deployed an <strong>Autonomous Multi-Agent System (AMAS)</strong> built on Python and LangGraph. Rather than replacing the dispatch team, the system acts as an intelligent co-pilot that pre-calculates optimal routes and flags anomalies before they become costly errors.</p>
+<h3>System Architecture</h3>
+<p>The system leverages a <strong>Supervisor-Worker</strong> pattern with three specialized agents:</p>
+<h4>1. The Router Agent</h4>
+<p>Calculates optimal multi-stop paths using real-time API data from Google Maps, HERE Technologies, and OpenStreetMap. Unlike static route planners, it factors in:</p>
+<ul>
+<li>Live traffic congestion data (updated every 60 seconds)</li>
+<li>Time-of-day delivery preferences from customers</li>
+<li>Vehicle load capacity and weight distribution</li>
+<li>Cross-border customs clearance windows</li>
+</ul>
+<h4>2. The Market Agent</h4>
+<p>A continuously running monitor that tracks:</p>
+<ul>
+<li><strong>Fuel prices</strong> across 2,400+ gas stations in the operating region</li>
+<li><strong>Toll rates</strong> and dynamic pricing changes</li>
+<li><strong>Currency fluctuations</strong> for cross-border operations</li>
+<li><strong>Weather alerts</strong> that may affect road conditions or delivery SLAs</li>
+</ul>
+<p>The Market Agent feeds pricing data to the Router Agent, allowing for cost-optimized routing that isn't just about distance — it's about total cost per delivery.</p>
+<h4>3. The Coordinator Agent</h4>
+<p>Handles the human side of logistics:</p>
+<ul>
+<li>Assigns tasks based on driver work-logs and hours-of-service regulations</li>
+<li>Monitors vehicle health through OBD-II telemetry integration</li>
+<li>Manages break schedules and shift handoffs</li>
+<li>Escalates exceptions to human dispatchers with full context</li>
+</ul>
+<h3>Technical Implementation</h3>
+<pre><code class="language-python">from langgraph.graph import StateGraph, END
+
+class DispatchState(TypedDict):
+    pending_orders: List[Order]
+    route_plan: Optional[RoutePlan]
+    cost_analysis: Optional[CostBreakdown]
+    driver_assignments: Optional[dict]
+
+workflow = StateGraph(DispatchState)
+workflow.add_node(&quot;router&quot;, router_agent)
+workflow.add_node(&quot;market&quot;, market_agent)
+workflow.add_node(&quot;coordinator&quot;, coordinator_agent)
+
+workflow.set_entry_point(&quot;router&quot;)
+workflow.add_edge(&quot;router&quot;, &quot;market&quot;)
+workflow.add_edge(&quot;market&quot;, &quot;coordinator&quot;)
+workflow.add_conditional_edges(
+    &quot;coordinator&quot;,
+    lambda s: &quot;router&quot; if s.get(&quot;needs_reroute&quot;) else END
+)
+</code></pre>
+<p>The cyclic graph architecture means the Coordinator can send routes <strong>back</strong> to the Router for re-optimization — for example, when a driver calls in sick or a vehicle breaks down mid-route.</p>
+<hr />
+<h2>Impact Results</h2>
+<p>After 90 days of production deployment:</p>
+<p>| Metric | Before | After | Change |
+|:---|:---|:---|:---|
+| Average transport cost per delivery | €47.20 | €33.98 | <strong>-28%</strong> |
+| On-time delivery rate | 78% | 93% | <strong>+15%</strong> |
+| Manual scheduling overhead | 6.2 hrs/day | 0.9 hrs/day | <strong>-85%</strong> |
+| Fuel cost per km | €0.38 | €0.29 | <strong>-24%</strong> |
+| SLA penalty costs | €200K/month | €28K/month | <strong>-86%</strong> |</p>
+<blockquote>
+<p>&quot;The system paid for itself in 6 weeks. What used to take our dispatch team half a day now happens in under a minute.&quot; — VP of Operations, [Client]</p>
+</blockquote>
+<hr />
+<h2>Key Takeaways</h2>
+<ol>
+<li><strong>Agentic &gt; Monolithic</strong>: Breaking the problem into specialized agents (routing, pricing, coordination) produced better results than a single &quot;do everything&quot; AI.</li>
+<li><strong>Cyclic graphs are essential</strong>: Real-world logistics require re-planning. Linear AI pipelines can't handle the constant flux.</li>
+<li><strong>Human-in-the-loop matters</strong>: The system doesn't replace dispatchers — it turns them from data-entry operators into exception-handling strategists.</li>
+</ol>
+<hr />
+<h3>Related Insights</h3>
+<ul>
+<li><a href="../post.html?blog=the-future-of-ai-agents">The Future of AI Agents: From Chatbots to Autonomous Coworkers</a> — The architectural patterns powering next-gen autonomous systems.</li>
+<li><a href="../study.html?id=fintech-fraud-detection">Real-Time Fraud Detection — Case Study</a> — Another production deployment of multi-agent ML systems.</li>
+</ul>
+
             </div>
 
             <!-- Social Share + CTA -->
             <div class="post-footer">
                 <div class="share-row">
                     <span>Share this case study:</span>
-                    <a id="share-twitter" href="#" target="_blank" class="share-btn">𝕏 Twitter</a>
-                    <a id="share-linkedin" href="#" target="_blank" class="share-btn">in LinkedIn</a>
+                    <a id="share-twitter" href="https://twitter.com/intent/tweet?text=Autonomous%20Supply%20Chain%20Engine&url=https%3A//nexus-intel.github.io/case/autonomous-logistics/" target="_blank" class="share-btn">𝕏 Twitter</a>
+                    <a id="share-linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A//nexus-intel.github.io/case/autonomous-logistics/" target="_blank" class="share-btn">in LinkedIn</a>
                     <button id="share-copy" class="share-btn">📋 Copy Link</button>
                 </div>
                 <div class="post-cta">
@@ -80,87 +162,7 @@
         </section>
     </main>
 
-    <script>
-        async function renderStudy() {
-            const params = new URLSearchParams(window.location.search);
-            let studyId = params.get('id');
-            
-            if (!studyId) {
-                // Detect studyId from URL path for Clean URLs (e.g., /case/id/)
-                const pathParts = window.location.pathname.split('/').filter(p => p);
-                if (pathParts.length >= 2 && pathParts[pathParts.length - 2] === 'case') {
-                    studyId = pathParts[pathParts.length - 1];
-                }
-            }
-
-            if (!studyId) {
-                window.location.href = '../../index.html#work';
-                return;
-            }
-
-            try {
-                const response = await fetch(`cases/${studyId}.md`);
-                if (!response.ok) throw new Error('Study not found');
-                const mdText = await response.text();
-
-                // Extract Title
-                const h1Match = mdText.match(/^# (.+)$/m);
-                const title = h1Match ? h1Match[1] : studyId.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
-
-                // Dynamic SEO
-                document.getElementById('post-title').innerText = title;
-                document.title = `${title} | Case Study | Nexus Intelligence`;
-
-                // Set canonical if not present
-                if (!document.querySelector('link[rel="canonical"]')) {
-                    const canonical = document.createElement('link');
-                    canonical.rel = 'canonical';
-                    canonical.href = window.location.href.split('?')[0];
-                    document.head.appendChild(canonical);
-                }
-
-                // Set meta description from first paragraph
-                const firstPara = mdText.match(/^(?!#|>|\-|\*|```|\|)(.{50,})/m);
-                if (firstPara) {
-                    // Update existing meta description
-                    const metaDesc = document.querySelector('meta[name="description"]');
-                    if (metaDesc) {
-                        metaDesc.content = firstPara[1].substring(0, 160);
-                    }
-                }
-
-                // Reading time
-                const wordCount = mdText.split(/\s+/).length;
-                const readTime = Math.max(1, Math.ceil(wordCount / 200));
-                document.getElementById('read-time').innerText = `${readTime} min read`;
-
-                // Populate JSON-LD Schema
-                const schema = JSON.parse(document.getElementById('study-schema').textContent);
-                schema.headline = title;
-                schema.datePublished = new Date().toISOString().split('T')[0];
-                schema.description = firstPara ? firstPara[1].substring(0, 160) : title;
-                document.getElementById('study-schema').textContent = JSON.stringify(schema);
-
-                // Social share links
-                const pageUrl = encodeURIComponent(window.location.href);
-                const pageTitle = encodeURIComponent(title);
-                document.getElementById('share-twitter').href = `https://twitter.com/intent/tweet?text=${pageTitle}&url=${pageUrl}`;
-                document.getElementById('share-linkedin').href = `https://www.linkedin.com/sharing/share-offsite/?url=${pageUrl}`;
-                document.getElementById('share-copy').addEventListener('click', () => {
-                    navigator.clipboard.writeText(window.location.href);
-                    document.getElementById('share-copy').textContent = '✅ Copied!';
-                    setTimeout(() => document.getElementById('share-copy').textContent = '📋 Copy Link', 2000);
-                });
-
-                // Render Markdown (excluding first H1)
-                const finalMd = h1Match ? mdText.replace(/^# .+\n/, '') : mdText;
-                document.getElementById('md-content').innerHTML = marked.parse(finalMd);
-            } catch (err) {
-                document.getElementById('md-content').innerHTML = `<h1>404</h1><p>Case study not found: ${studyId}</p><a href="index.html">Back to Home</a>`;
-            }
-        }
-        document.addEventListener('DOMContentLoaded', renderMarkdown);
-    </script>
+    <!-- Content is baked statically via refresh_content.py -->
     <footer>    <div class="footer-content">
         <div class="footer-brand">
             <div class="logo">NEXUS<span>INTELLIGENCE</span></div>
