@@ -47,8 +47,9 @@
 
     <script>
         async function loadBlogs() {
+            const ROOT_PATH = window.ROOT_PATH || '';
             try {
-                const res = await fetch('content.json');
+                const res = await fetch(`${ROOT_PATH}content.json`);
                 const data = await res.json();
                 const container = document.getElementById('blog-list');
                 
@@ -65,9 +66,11 @@
                     const end = page * POSTS_PER_PAGE;
                     const visibleBlogs = data.blogs.slice(start, end);
 
-                    container.innerHTML = visibleBlogs.map((blog, i) => `
-                        <a href="blog/${blog.id}/" class="blog-index-card" style="animation-delay: ${i * 0.05}s">
-                            <div class="card-gradient" style="background: ${blog.image ? `url('${blog.image}') center/cover` : `linear-gradient(135deg, hsl(${260 + i * 25}, 70%, 50%), hsl(${220 + i * 25}, 70%, 40%))`};"></div>
+                    container.innerHTML = visibleBlogs.map((blog, i) => {
+                        const imgUrl = blog.image ? (blog.image.startsWith('http') ? blog.image : ROOT_PATH + blog.image) : '';
+                        return `
+                        <a href="${ROOT_PATH}blog/${blog.id}/" class="blog-index-card" style="animation-delay: ${i * 0.05}s">
+                            <div class="card-gradient" style="background: ${imgUrl ? `url('${imgUrl}') center/cover` : `linear-gradient(135deg, hsl(${260 + i * 25}, 70%, 50%), hsl(${220 + i * 25}, 70%, 40%))`};"></div>
                             <div class="card-body">
                                 <span class="card-date">${blog.date}</span>
                                 <h3>${blog.title}</h3>
@@ -75,7 +78,7 @@
                                 <span class="card-read-more">Read Insight →</span>
                             </div>
                         </a>
-                    `).join('');
+                    `}).join('');
 
                     if (end < data.blogs.length) {
                         let pgCont = document.querySelector('.pagination-container');

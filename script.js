@@ -1,8 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Dynamic Card Rendering
     async function renderDynamicContent() {
+        const ROOT_PATH = window.ROOT_PATH || '';
         try {
-            const response = await fetch('content.json');
+            const response = await fetch(`${ROOT_PATH}content.json`);
             const data = await response.json();
 
             // Render Blogs with Pagination
@@ -16,19 +17,21 @@ document.addEventListener('DOMContentLoaded', () => {
                     const end = page * POSTS_PER_PAGE;
                     const visibleBlogs = data.blogs.slice(start, end);
 
-                    blogGrid.innerHTML = visibleBlogs.map((blog, i) => `
+                    blogGrid.innerHTML = visibleBlogs.map((blog, i) => {
+                        const imgUrl = blog.image ? (blog.image.startsWith('http') ? blog.image : ROOT_PATH + blog.image) : '';
+                        return `
                         <div class="blog-card animate-in" style="animation-delay: ${i * 0.1}s">
-                            <div class="blog-img" style="background: ${blog.image ? `url('${blog.image}') center/cover` : `linear-gradient(135deg, hsl(${260 + i * 20}, 70%, 50%), hsl(${220 + i * 20}, 70%, 40%))`};">
-                                ${!blog.image ? `<div class="img-overlay"></div>` : ''}
+                            <div class="blog-img" style="background: ${imgUrl ? `url('${imgUrl}') center/cover` : `linear-gradient(135deg, hsl(${260 + i * 20}, 70%, 50%), hsl(${220 + i * 20}, 70%, 40%))`};">
+                                ${!imgUrl ? `<div class="img-overlay"></div>` : ''}
                             </div>
                             <div class="blog-content">
                                 <span class="blog-tag">Insight</span>
                                 <h3>${blog.title}</h3>
                                 <p>${blog.subtitle ? blog.subtitle.substring(0, 100) + '...' : ''}</p>
-                                <a href="blog/${blog.id}/" class="read-more">Read Insight <i class="fas fa-arrow-right"></i></a>
+                                <a href="${ROOT_PATH}blog/${blog.id}/" class="read-more">Read Insight <i class="fas fa-arrow-right"></i></a>
                             </div>
                         </div>
-                    `).join('');
+                    `}).join('');
 
                     // Add Load More button if needed
                     if (end < data.blogs.length) {
@@ -62,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             <h3>${study.title}</h3>
                         </div>
                         <p>${study.subtitle}</p>
-                        <a href="case/${study.id}/" class="read-more">View Full Breakdown <i class="fas fa-arrow-right"></i></a>
+                        <a href="${ROOT_PATH}case/${study.id}/" class="read-more">View Full Breakdown <i class="fas fa-arrow-right"></i></a>
                     </div>
                 `).join('');
             }
