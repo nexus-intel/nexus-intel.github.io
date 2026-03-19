@@ -5,19 +5,51 @@ document.addEventListener('DOMContentLoaded', () => {
             const response = await fetch('content.json');
             const data = await response.json();
 
-            // Render Blogs
+            // Render Blogs with Pagination
             const blogGrid = document.querySelector('.blog-grid');
             if (blogGrid) {
-                blogGrid.innerHTML = data.blogs.map(blog => `
-                    <div class="blog-card">
-                        <div class="blog-img" style="background: linear-gradient(135deg, #8b5cf6, #3b82f6);"></div>
-                        <div class="blog-content">
-                            <h3>${blog.title}</h3>
-                            <p>${blog.subtitle}</p>
-                            <a href="blog/${blog.id}/" class="read-more">Read Insight <i class="fas fa-arrow-right"></i></a>
+                const POSTS_PER_PAGE = 3;
+                let currentPage = 1;
+
+                const renderBlogs = (page) => {
+                    const start = 0;
+                    const end = page * POSTS_PER_PAGE;
+                    const visibleBlogs = data.blogs.slice(start, end);
+
+                    blogGrid.innerHTML = visibleBlogs.map((blog, i) => `
+                        <div class="blog-card animate-in" style="animation-delay: ${i * 0.1}s">
+                            <div class="blog-img" style="background: ${blog.image ? `url('${blog.image}') center/cover` : `linear-gradient(135deg, hsl(${260 + i * 20}, 70%, 50%), hsl(${220 + i * 20}, 70%, 40%))`};">
+                                ${!blog.image ? `<div class="img-overlay"></div>` : ''}
+                            </div>
+                            <div class="blog-content">
+                                <span class="blog-tag">Insight</span>
+                                <h3>${blog.title}</h3>
+                                <p>${blog.subtitle ? blog.subtitle.substring(0, 100) + '...' : ''}</p>
+                                <a href="blog/${blog.id}/" class="read-more">Read Insight <i class="fas fa-arrow-right"></i></a>
+                            </div>
                         </div>
-                    </div>
-                `).join('');
+                    `).join('');
+
+                    // Add Load More button if needed
+                    if (end < data.blogs.length) {
+                        let loadMoreCont = document.querySelector('.pagination-container');
+                        if (!loadMoreCont) {
+                            loadMoreCont = document.createElement('div');
+                            loadMoreCont.className = 'pagination-container';
+                            blogGrid.after(loadMoreCont);
+                        }
+                        loadMoreCont.innerHTML = `<button class="load-more-btn" id="load-more-blog">Load More Insights</button>`;
+                        document.getElementById('load-more-blog').onclick = () => {
+                            currentPage++;
+                            renderBlogs(currentPage);
+                        };
+                    } else {
+                        const loadMoreCont = document.querySelector('.pagination-container');
+                        if (loadMoreCont) loadMoreCont.remove();
+                    }
+                };
+
+                renderBlogs(currentPage);
             }
 
             // Render Case Studies

@@ -29,16 +29,38 @@ def extract_metadata(filepath):
     title = title_match.group(1) if title_match else os.path.basename(filepath).replace('.md','').replace('-',' ').title()
     subtitle = subtitle_match.group(1) if subtitle_match else "Click to read more..."
     
-    # Get file modification time
-    mtime = os.path.getmtime(filepath)
-    date_str = datetime.fromtimestamp(mtime).strftime('%Y-%m-%d')
+    # Extract Date from content or use file mtime
+    date_match = re.search(r'Date:\s*([\d-]+)', content)
+    if date_match:
+        date_str = date_match.group(1)
+    else:
+        mtime = os.path.getmtime(filepath)
+        date_str = datetime.fromtimestamp(mtime).strftime('%Y-%m-%d')
     
+    post_id = os.path.basename(filepath).replace('.md', '')
+    
+    # Determine image if exists
+    image_path = f"assets/blog/{post_id}.png"
+    if not os.path.exists(image_path):
+        image_path = f"assets/blog/{post_id}.jpg"
+    
+    # Custom mapping for already named assets
+    manual_mapping = {
+        "gpt-5-vs-gemini-2-5-pro-vs-claude-4": "assets/blog/llm-comparison.png",
+        "top-10-ai-automation-tools-for-business-in-2026": "assets/blog/ai-tools.png",
+        "how-to-build-an-ai-agent-with-langgraph-step-by-step-python-tutorial": "assets/blog/langgraph-agents.png"
+    }
+    if post_id in manual_mapping:
+        if os.path.exists(manual_mapping[post_id]):
+            image_path = manual_mapping[post_id]
+
     return {
-        "id": os.path.basename(filepath).replace('.md', ''),
+        "id": post_id,
         "title": title,
         "subtitle": subtitle,
-        "description": description,
+        "description": description[:180],
         "date": date_str,
+        "image": image_path if os.path.exists(image_path) else None,
         "raw_md": content
     }
 

@@ -3,6 +3,7 @@
 > Why legacy RAG is failing, and how "Agentic RAG" with Knowledge Graphs is taking over.
 
 ---
+Date: 2026-02-26
 
 ## The Evolution of RAG
 

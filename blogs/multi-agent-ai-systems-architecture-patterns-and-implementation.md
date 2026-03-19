@@ -3,6 +3,7 @@
 > Moving from "Lone Wolf" bots to "Collaborative Teams." Learn the 3 proven patterns for agent orchestration in 2026.
 
 ---
+Date: 2026-03-02
 
 ## The Multi-Agent Mandate
 

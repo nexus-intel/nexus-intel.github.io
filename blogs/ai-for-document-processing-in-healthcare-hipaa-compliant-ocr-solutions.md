@@ -3,6 +3,7 @@
 > Moving beyond paper charts. Learn how Agentic IDP is revolutionizing patient data and clinical trials in 2026.
 
 ---
+Date: 2026-03-19
 
 ## The Paper Burden in 2026
 

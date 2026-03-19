@@ -3,6 +3,7 @@
 > Move beyond simple prompts. Learn how to build a stateful, cyclic AI agent that can reason, verify, and correct its own work.
 
 ---
+Date: 2026-03-08
 
 ## Why LangGraph in 2026?
 

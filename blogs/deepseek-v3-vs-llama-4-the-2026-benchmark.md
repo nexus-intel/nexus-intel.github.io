@@ -7,6 +7,7 @@ As we move through 2026, the AI landscape has shifted from "Generative Chat" to 
 The release of **Llama 4** by Meta and **DeepSeek-V3** represents the pinnacle of this shift. While Llama 4 aims to be the "Universal Operating System" of the AI world, DeepSeek-V3 has emerged as the high-efficiency challenger, optimized for the lean, agent-first enterprise.
 
 ---
+Date: 2026-03-13
 
 ### Technical Deep Dive: The Rise of Agentic Architecture
 

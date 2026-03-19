@@ -3,6 +3,7 @@
 > Don’t guess. Measure. Learn the exact framework we use to justify AI spend for Fortune 500 clients.
 
 ---
+Date: 2026-03-07
 
 ## The Post-Hype Era: Proving Value
 

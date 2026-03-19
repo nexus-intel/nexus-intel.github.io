@@ -93,6 +93,7 @@ Your organization must move beyond the "Prompt Box." It is time to build autonom
 [Contact our Engineering Team to Audit your AI Strategy.](https://nexus-intel.github.io/index.html#contact)
 
 ---
+Date: 2026-02-24
 
 ### Related Insights
 - [DeepSeek-V3 vs. Llama 4: The 2026 Benchmark](post.html?blog=deepseek-v3-vs-llama-4-the-2026-benchmark) — A head-to-head comparison of the two models powering the next wave of agentic AI.

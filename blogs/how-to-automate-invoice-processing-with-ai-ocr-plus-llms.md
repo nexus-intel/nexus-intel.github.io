@@ -3,6 +3,7 @@
 > Stop paying for manual data entry. Learn how to architect a modern Intelligent Document Processing (IDP) pipeline that reaches 99%+ accuracy.
 
 ---
+Date: 2026-03-10
 
 ## The Death of Manual Data Entry
 

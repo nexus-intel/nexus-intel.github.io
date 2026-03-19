@@ -3,6 +3,7 @@
 > Is it time to ditch the API and host your own intelligence?
 
 ---
+Date: 2026-02-27
 
 ## The Great Intelligence Pivot of 2026
 

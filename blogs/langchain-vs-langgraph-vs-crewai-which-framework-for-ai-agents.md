@@ -3,6 +3,7 @@
 > Navigating the complex world of multi-agent orchestration in 2026.
 
 ---
+Date: 2026-03-04
 
 ## From Chains to Agents
 

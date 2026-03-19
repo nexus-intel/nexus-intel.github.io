@@ -3,6 +3,7 @@
 > The shift from "Reactive Rules" to "Predictive Intelligence." Learn how high-growth fintechs are reducing fraud losses by 90% in 2026.
 
 ---
+Date: 2026-03-17
 
 ## The Crisis of Traditional Fraud Detection
 

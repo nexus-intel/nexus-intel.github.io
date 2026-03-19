@@ -3,6 +3,7 @@
 > Why "Standard OCR" is dying, and what "Intelligent Document Processing" looks like today.
 
 ---
+Date: 2026-03-14
 
 ## The End of "Copy-Paste"
 

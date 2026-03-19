@@ -3,6 +3,7 @@
 > Why "Smart Routing" is no longer enough. Learn how autonomous agents are managing end-to-end global supply chains in 2026.
 
 ---
+Date: 2026-03-16
 
 ## The Logistics Crisis of 2025
 

@@ -3,6 +3,7 @@
 > A curated list of the most impactful tools that are moving the needle for enterprises today.
 
 ---
+Date: 2026-02-23
 
 ## Beyond the Hype: The Reality of 2026
 
