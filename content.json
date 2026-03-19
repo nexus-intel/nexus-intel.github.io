@@ -147,10 +147,42 @@
             "image": null
         },
         {
+            "id": "booking-agents",
+            "title": "Service Agents: Autonomous Booking & Ordering",
+            "subtitle": "Click to read more...",
+            "description": "Hospitality and Healthcare providers in Germany were facing a skilled labor shortage, leading to missed calls and lost revenue in appointment booking and room s",
+            "date": "2026-03-19",
+            "image": null
+        },
+        {
+            "id": "dubai-mall-loyalty",
+            "title": "Retail Revolution: Dubai Mall Loyalty Automation",
+            "subtitle": "\"Nexus Intelligence transformed our loyalty program from a bottleneck into our competitive advantage.\" \u2014 *Dubai Retail Group Exec*",
+            "description": "One of the world's largest retail destinations required a way to verify physical receipts from thousands of different merchants to instantly credit loyalty poin",
+            "date": "2026-03-19",
+            "image": null
+        },
+        {
             "id": "fintech-fraud-detection",
             "title": "Real-Time Fraud Detection Solution",
             "subtitle": "Reducing Authorised Push Payment (APP) fraud by 92% using high-performance predictive ML.",
             "description": "A London-based fintech processing \u00a3500M+ in monthly transactions was facing a surge in **Authorised Push Payment (APP) fraud** \u2014 the fastest-growing type of fin",
+            "date": "2026-03-19",
+            "image": null
+        },
+        {
+            "id": "healthcare-claims",
+            "title": "Healthcare Hub: Automated Claims & Super Bills Processing",
+            "subtitle": "Click to read more...",
+            "description": "A European clinical laboratory network was struggling with a 15% rejection rate on insurance claims due to manual data entry errors from \"Super Bills\" and Insur",
+            "date": "2026-03-19",
+            "image": null
+        },
+        {
+            "id": "identity-verification",
+            "title": "Identity Suite: Secure Passport & ID Verification",
+            "subtitle": "Click to read more...",
+            "description": "An EU-based fintech startup needed a frictionless way to onboard users while complying with strict KYC (Know Your Customer) and AML (Anti-Money Laundering) regu",
             "date": "2026-03-19",
             "image": null
         }

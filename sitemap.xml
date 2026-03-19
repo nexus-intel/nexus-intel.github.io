@@ -133,7 +133,31 @@
         <priority>0.8</priority>
     </url>
     <url>
+        <loc>https://nexus-intel.github.io/case/booking-agents/</loc>
+        <lastmod>2026-03-19</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://nexus-intel.github.io/case/dubai-mall-loyalty/</loc>
+        <lastmod>2026-03-19</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
         <loc>https://nexus-intel.github.io/case/fintech-fraud-detection/</loc>
+        <lastmod>2026-03-19</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://nexus-intel.github.io/case/healthcare-claims/</loc>
+        <lastmod>2026-03-19</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://nexus-intel.github.io/case/identity-verification/</loc>
         <lastmod>2026-03-19</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
