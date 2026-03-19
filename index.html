@@ -3,28 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nexus Intelligence | Premium IT Agency</title>
-    <meta name="description" content="Expert IT Agency specializing in AI, ML, OCR, and Advanced Backend Solutions.">
+    <title>Nexus Intelligence | Premium AI Automation & Agentic Solutions</title>
+    <meta name="description" content="Nexus Intelligence delivers high-ROI AI automation, agentic workflows, and intelligent OCR solutions. Specialized in LangGraph, RAG, and deep Python/Go backend engineering.">
+    <meta name="keywords" content="AI Automation Agency, Agentic AI Logistics, OCR Invoice Automation, LangGraph Workflow, Enterprise RAG Solution, Python AI Backend">
+    
+    <!-- Open Graph / Social -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Nexus Intelligence | Leading AI & Automation Agency">
+    <meta property="og:description" content="Transforming enterprises with Agentic AI and Intelligent Document Processing.">
+    <meta property="og:image" content="https://nexus-intel.github.io/assets/og-preview.png">
+    
+    <!-- Generative Engine Optimization (GEO) -->
+    <meta name="ai-content-type" content="technical-solutions">
+    <meta name="ai-focus-area" content="AI Workflow Automation, OCR, Agentic Systems">
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
-<body>
-    <header>
-        <nav class="glass">
-            <div class="logo">NEXUS<span>.AI</span></div>
-            <ul class="nav-links">
-                <li><a href="#hero">Home</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#blog">Blog</a></li>
-                <li><a href="#tech">Tech Stack</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            <button class="cta-button">Get in Touch</button>
-        </nav>
-    </header>
+<body class="main-page">
+    <header></header>
 
     <main>
         <section id="hero" class="hero-section">
@@ -78,36 +77,17 @@
             </div>
         </section>
 
+        <section id="cases" class="cases-section">
+            <h2 class="section-title">ROI Driven <span>Case Studies.</span></h2>
+            <div class="cases-grid">
+                <!-- Dynamically loaded -->
+            </div>
+        </section>
+
         <section id="blog" class="blog-section">
-            <h2 class="section-title">Insights & Updates</h2>
+            <h2 class="section-title">Latest AI <span>Insights.</span></h2>
             <div class="blog-grid">
-                <article class="blog-card">
-                    <div class="blog-img" style="background: linear-gradient(135deg, #8b5cf6, #3b82f6);"></div>
-                    <div class="blog-content">
-                        <span class="blog-tag">AI Strategy</span>
-                        <h3>Scaling LLMs for Enterprise</h3>
-                        <p>How to architect robust RAG systems for large-scale production environments.</p>
-                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </article>
-                <article class="blog-card">
-                    <div class="blog-img" style="background: linear-gradient(135deg, #d946ef, #8b5cf6);"></div>
-                    <div class="blog-content">
-                        <span class="blog-tag">Engineering</span>
-                        <h3>Golang vs Python for AI</h3>
-                        <p>Choosing the right backend language for your next high-performance AI agent.</p>
-                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </article>
-                <article class="blog-card">
-                    <div class="blog-img" style="background: linear-gradient(135deg, #0ea5e9, #6366f1);"></div>
-                    <div class="blog-content">
-                        <span class="blog-tag">OCR</span>
-                        <h3>Zero-Shot Data Extraction</h3>
-                        <p>Leveraging multi-modal vision models for complex document understanding.</p>
-                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </article>
+                <!-- Dynamically loaded -->
             </div>
         </section>
 
@@ -136,6 +116,38 @@
                         <span class="tech-tag">Vector DBs</span>
                         <span class="tech-tag">LLMs (Gemini, GPT)</span>
                         <span class="tech-tag">Docker</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="roi" class="roi-section">
+            <div class="roi-container">
+                <div class="roi-header">
+                    <h2 class="section-title">Calculate Your <span>AI ROI.</span></h2>
+                    <p>Estimate how much you could save by automating your document and workflow processes.</p>
+                </div>
+                <div class="roi-calculator">
+                    <div class="calc-inputs">
+                        <div class="input-group">
+                            <label>Monthly Document Volume: <span id="vol-val">5,000</span></label>
+                            <input type="range" id="doc-volume" min="1000" max="50000" step="1000" value="5000">
+                        </div>
+                        <div class="input-group">
+                            <label>Current Manual Cost per Doc ($): <span id="cost-val">2.50</span></label>
+                            <input type="range" id="unit-cost" min="0.5" max="10" step="0.5" value="2.5">
+                        </div>
+                    </div>
+                    <div class="calc-results">
+                        <div class="result-item">
+                            <h4>Estimated Annual Savings</h4>
+                            <div class="result-value" id="savings-total">$0</div>
+                        </div>
+                        <div class="result-item">
+                            <h4>Accuracy Improvement</h4>
+                            <div class="result-value">99.9%</div>
+                        </div>
+                        <button class="cta-button" onclick="document.getElementById('contact').scrollIntoView()">Start Your Transformation</button>
                     </div>
                 </div>
             </div>
@@ -172,24 +184,7 @@
         </section>
     </main>
 
-    <footer>
-        <div class="footer-content">
-            <div class="footer-top">
-                <div class="footer-logo">NEXUS<span>.AI</span></div>
-                <div class="newsletter-box">
-                    <h4>Stay Informed</h4>
-                    <p>Get the latest AI insights delivered to your inbox.</p>
-                    <form id="newsletter-form" class="newsletter-form">
-                        <input type="email" placeholder="email@nexus.ai" required>
-                        <button type="submit">Subscribe</button>
-                    </form>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 Nexus Intelligence. Empowered by Innovation.</p>
-            </div>
-        </div>
-    </footer>
+    <footer></footer>
 
     <!-- Chatbot Widget -->
     <div id="chatbot-widget" class="chatbot-closed">
@@ -210,6 +205,7 @@
     </div>
     <button id="chatbot-trigger"><i class="fas fa-comment-dots"></i></button>
 
+    <script src="loader.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

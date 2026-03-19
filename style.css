@@ -371,6 +371,76 @@ nav {
     background: rgba(255, 255, 255, 0.08);
 }
 
+/* Case Studies */
+.cases-section {
+    padding: 8rem 10%;
+    background: #0d0d0f;
+}
+
+.cases-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 3rem;
+}
+
+.case-card {
+    background: rgba(255, 255, 255, 0.02);
+    padding: 3rem;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    transition: 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.case-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, transparent, rgba(0, 243, 255, 0.05));
+    opacity: 0;
+    transition: 0.4s;
+}
+
+.case-card:hover {
+    transform: translateY(-10px);
+    background: rgba(255, 255, 255, 0.04);
+    border-color: var(--accent);
+}
+
+.case-card:hover::before {
+    opacity: 1;
+}
+
+.case-badge {
+    color: var(--accent);
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.case-card h3 {
+    margin-bottom: 1.5rem;
+    font-size: 1.6rem;
+    line-height: 1.3;
+}
+
+.case-card p {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.case-card strong {
+    color: white;
+}
+
 /* Tech Section */
 .tech-section {
     padding: 8rem 10%;
@@ -600,13 +670,13 @@ footer {
 }
 
 /* Animations */
-.service-card, .tech-group, .blog-card, .contact-container {
+.service-card, .tech-group, .blog-card, .case-card, .contact-container {
     opacity: 0;
     transform: translateY(30px);
     transition: 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-.service-card.animate-in, .tech-group.animate-in, .blog-card.animate-in, .contact-container.animate-in {
+.service-card.animate-in, .tech-group.animate-in, .blog-card.animate-in, .case-card.animate-in, .contact-container.animate-in {
     opacity: 1;
     transform: translateY(0);
 }
@@ -628,4 +698,176 @@ footer {
     .hero-visual { display: none; }
     .contact-container { grid-template-columns: 1fr; gap: 3rem; }
     .footer-top { flex-direction: column; }
+}
+/* Sub Page Content */
+.sub-page {
+    background: #050505;
+}
+
+.content-container {
+    padding: 12rem 20% 8rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.post-hero {
+    margin-bottom: 4rem;
+    text-align: center;
+}
+
+.post-hero h1 {
+    font-size: 4rem;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    line-height: 1.1;
+    background: linear-gradient(to right, #fff, #a2a2a2);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.post-intro {
+    font-size: 1.5rem;
+    color: var(--text-secondary);
+    line-height: 1.4;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.post-content {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: var(--text-secondary);
+}
+
+.post-content h2 {
+    color: white;
+    margin-top: 4rem;
+    margin-bottom: 1.5rem;
+    font-size: 2.2rem;
+}
+
+.post-content p {
+    margin-bottom: 2rem;
+}
+
+.post-content ul {
+    margin-bottom: 3rem;
+    list-style: none;
+}
+
+.post-content li {
+    margin-bottom: 1rem;
+    padding-left: 2rem;
+    position: relative;
+}
+
+.post-content li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+}
+
+.results-box {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 3rem;
+    border-radius: 20px;
+    border: 1px solid var(--accent);
+    margin-top: 4rem;
+}
+
+.results-box h3 {
+    color: var(--accent);
+    margin-bottom: 2rem;
+}
+
+@media (max-width: 1024px) {
+    .content-container {
+        padding: 10rem 10% 6rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .post-hero h1 {
+        font-size: 2.5rem;
+    }
+    .post-intro {
+        font-size: 1.1rem;
+    }
+}
+
+/* ROI Calculator */
+.roi-section {
+    padding: 8rem 10%;
+    background: linear-gradient(to bottom, #0a0a0c, #050505);
+}
+
+.roi-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.roi-calculator {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    margin-top: 4rem;
+    background: rgba(255, 255, 255, 0.02);
+    padding: 4rem;
+    border-radius: 30px;
+    border: 1px solid var(--border);
+    backdrop-filter: blur(10px);
+}
+
+.calc-inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+}
+
+.input-group label span {
+    color: var(--accent);
+    font-weight: 700;
+    margin-left: 0.5rem;
+}
+
+input[type="range"] {
+    width: 100%;
+    accent-color: var(--accent);
+    cursor: pointer;
+}
+
+.calc-results {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 3rem;
+    text-align: center;
+}
+
+.result-item h4 {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.result-value {
+    font-size: 4rem;
+    font-weight: 800;
+    color: white;
+    margin-top: 1rem;
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+@media (max-width: 968px) {
+    .roi-calculator { grid-template-columns: 1fr; gap: 3rem; padding: 2.5rem; }
 }

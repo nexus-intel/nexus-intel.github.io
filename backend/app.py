@@ -3,6 +3,19 @@ from pydantic import BaseModel
 from pydantic_ai import Agent
 from fastapi.middleware.cors import CORSMiddleware
 import os
+import sqlite3
+from loguru import logger
+
+# Initialize Database
+def init_db():
+    conn = sqlite3.connect('nexus.db')
+    c = conn.cursor()
+    c.execute('''CREATE TABLE IF NOT EXISTS submissions 
+                 (id INTEGER PRIMARY KEY AUTOINCREMENT, type TEXT, name TEXT, email TEXT, message TEXT, timestamp DATETIME DEFAULT CURRENT_TIMESTAMP)''')
+    conn.commit()
+    conn.close()
+
+init_db()
 
 app = FastAPI()
 
@@ -57,11 +70,28 @@ async def chat(request: ChatRequest):
 @app.post("/newsletter")
 async def subscribe_newsletter(request: NewsletterRequest):
     logger.info(f"New newsletter subscription: {request.email}")
+    try:
+        conn = sqlite3.connect('nexus.db')
+        c = conn.cursor()
+        c.execute("INSERT INTO submissions (type, email) VALUES (?, ?)", ('newsletter', request.email))
+        conn.commit()
+        conn.close()
+    except Exception as e:
+        logger.error(f"DB Error: {e}")
     return {"status": "success", "message": "Subscribed successfully"}
 
 @app.post("/contact")
 async def contact_form(request: ContactRequest):
     logger.info(f"New contact form submission from {request.name} ({request.email}): {request.message}")
+    try:
+        conn = sqlite3.connect('nexus.db')
+        c = conn.cursor()
+        c.execute("INSERT INTO submissions (type, name, email, message) VALUES (?, ?, ?, ?)", 
+                  ('contact', request.name, request.email, request.message))
+        conn.commit()
+        conn.close()
+    except Exception as e:
+        logger.error(f"DB Error: {e}")
     return {"status": "success", "message": "Message received"}
 
 if __name__ == "__main__":

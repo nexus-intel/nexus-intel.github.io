@@ -1,4 +1,46 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Dynamic Card Rendering
+    async function renderDynamicContent() {
+        try {
+            const response = await fetch('content.json');
+            const data = await response.json();
+
+            // Render Blogs
+            const blogGrid = document.querySelector('.blog-grid');
+            if (blogGrid) {
+                blogGrid.innerHTML = data.blogs.map(blog => `
+                    <div class="blog-card">
+                        <div class="blog-img" style="background: linear-gradient(135deg, #8b5cf6, #3b82f6);"></div>
+                        <div class="blog-content">
+                            <h3>${blog.title}</h3>
+                            <p>${blog.subtitle}</p>
+                            <a href="post.html?blog=${blog.id}" class="read-more">Read Insight <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            // Render Case Studies
+            const caseGrid = document.querySelector('.cases-grid');
+            if (caseGrid) {
+                caseGrid.innerHTML = data.cases.map(study => `
+                    <div class="case-card">
+                        <div class="case-header">
+                            <span class="case-badge">Impact Analysis</span>
+                            <h3>${study.title}</h3>
+                        </div>
+                        <p>${study.subtitle}</p>
+                        <a href="study.html?id=${study.id}" class="read-more">View Full Breakdown <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                `).join('');
+            }
+
+            // Re-apply observer to new elements
+            document.querySelectorAll('.blog-card, .case-card').forEach(el => observer.observe(el));
+        } catch (err) {
+            console.warn('Failed to load dynamic content:', err);
+        }
+    }
     // Chatbot Toggle
     const trigger = document.getElementById('chatbot-trigger');
     const widget = document.getElementById('chatbot-widget');
@@ -85,7 +127,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, observerOptions);
 
-    document.querySelectorAll('.service-card, .tech-group, .blog-card, .contact-container').forEach(el => {
+    document.querySelectorAll('.service-card, .tech-group, .blog-card, .case-card, .contact-container').forEach(el => {
         observer.observe(el);
     });
 
@@ -147,4 +189,34 @@ document.addEventListener('DOMContentLoaded', () => {
     if (newsletterForm) {
         newsletterForm.addEventListener('submit', (e) => handleFormSubmit(e, 'newsletter', 'Thanks for subscribing to our newsletter!'));
     }
+
+    // ROI Calculator Logic
+    const volInput = document.getElementById('doc-volume');
+    const costInput = document.getElementById('unit-cost');
+    const volVal = document.getElementById('vol-val');
+    const costVal = document.getElementById('cost-val');
+    const savingsTotal = document.getElementById('savings-total');
+
+    if (volInput && costInput) {
+        const calculateROI = () => {
+            const vol = parseInt(volInput.value);
+            const cost = parseFloat(costInput.value);
+            
+            volVal.textContent = vol.toLocaleString();
+            costVal.textContent = cost.toFixed(2);
+            
+            // Assume 80% cost reduction with AI
+            const manualAnnual = vol * cost * 12;
+            const aiAnnual = manualAnnual * 0.2;
+            const savings = manualAnnual - aiAnnual;
+            
+            savingsTotal.textContent = `$${Math.round(savings).toLocaleString()}`;
+        };
+
+        volInput.addEventListener('input', calculateROI);
+        costInput.addEventListener('input', calculateROI);
+        calculateROI(); // Initial calc
+    }
+
+    renderDynamicContent();
 });

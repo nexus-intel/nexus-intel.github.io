@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Study | Nexus Intelligence</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="loader.js" defer></script>
+</head>
+<body class="sub-page">
+    <header></header>
+    <main class="content-container">
+        <div id="md-content" class="post-content study-content">Loading study...</div>
+    </main>
+    <footer></footer>
+
+    <script>
+        async function renderMarkdown() {
+            const params = new URLSearchParams(window.location.search);
+            const studyId = params.get('id');
+            if (!studyId) {
+                window.location.href = '/';
+                return;
+            }
+
+            try {
+                const response = await fetch(`cases/${studyId}.md`);
+                if (!response.ok) throw new Error('Study not found');
+                const mdText = await response.text();
+                
+                const title = studyId.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+                document.title = `${title} | Case Study | Nexus Intelligence`;
+
+                document.getElementById('md-content').innerHTML = marked.parse(mdText);
+            } catch (err) {
+                document.getElementById('md-content').innerHTML = `<h1>404</h1><p>Case study not found: ${studyId}</p><a href="/">Back to Home</a>`;
+            }
+        }
+        document.addEventListener('DOMContentLoaded', renderMarkdown);
+    </script>
+</body>
+</html>

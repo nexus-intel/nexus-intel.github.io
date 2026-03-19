@@ -1,8 +1,17 @@
 # Deploying your Nexus AI Backend
 
-Since GitHub Pages only hosts static content (HTML/CSS/JS), your Python backend needs a separate home. Here are the best free-tier options:
+If you don't want to use a credit card, **Hugging Face Spaces** is your best bet.
 
-## Option 1: Render (Recommended)
+## Option 1: Hugging Face Spaces (No Credit Card Required)
+1. Sign up at [huggingface.co](https://huggingface.co).
+2. Click **New Space**.
+3. Name it and select **Docker** as the SDK.
+4. Choose the **Blank** template.
+5. In the **Settings** tab, add your `GEMINI_API_KEY` to the **Variables and Secrets** section.
+6. Upload your files (or connect your GitHub repo) into the Space.
+7. Your app will run automatically!
+
+## Option 2: Render (Requires Card for Verification)
 1. Sign up at [render.com](https://render.com).
 2. Click **New + > Web Service**.
 3. Connect your GitHub repository.

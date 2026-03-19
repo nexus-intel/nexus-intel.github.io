@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog | Nexus Intelligence</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="loader.js" defer></script>
+</head>
+<body class="sub-page">
+    <header></header>
+    <main class="content-container">
+        <div id="md-content" class="post-content">Loading content...</div>
+    </main>
+    <footer></footer>
+
+    <script>
+        async function renderMarkdown() {
+            const params = new URLSearchParams(window.location.search);
+            const blogId = params.get('blog');
+            if (!blogId) {
+                window.location.href = '/';
+                return;
+            }
+
+            try {
+                const response = await fetch(`blogs/${blogId}.md`);
+                if (!response.ok) throw new Error('Post not found');
+                const mdText = await response.text();
+                
+                // Set page title from filename or first H1
+                const title = blogId.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+                document.title = `${title} | Nexus Intelligence`;
+
+                document.getElementById('md-content').innerHTML = marked.parse(mdText);
+            } catch (err) {
+                document.getElementById('md-content').innerHTML = `<h1>404</h1><p>Post not found: ${blogId}</p><a href="/">Back to Home</a>`;
+            }
+        }
+        document.addEventListener('DOMContentLoaded', renderMarkdown);
+    </script>
+</body>
+</html>
