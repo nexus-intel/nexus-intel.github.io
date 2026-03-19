@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <div class="blog-content">
                             <h3>${blog.title}</h3>
                             <p>${blog.subtitle}</p>
-                            <a href="post.html?blog=${blog.id}" class="read-more">Read Insight <i class="fas fa-arrow-right"></i></a>
+                            <a href="blog/${blog.id}/" class="read-more">Read Insight <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                 `).join('');
@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             <h3>${study.title}</h3>
                         </div>
                         <p>${study.subtitle}</p>
-                        <a href="study.html?id=${study.id}" class="read-more">View Full Breakdown <i class="fas fa-arrow-right"></i></a>
+                        <a href="case/${study.id}/" class="read-more">View Full Breakdown <i class="fas fa-arrow-right"></i></a>
                     </div>
                 `).join('');
             }

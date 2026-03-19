@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script src="loader.js" defer></script>
 </head>
 <body class="sub-page">
@@ -58,7 +58,7 @@
                 }
 
                 container.innerHTML = data.blogs.map((blog, i) => `
-                    <a href="post.html?blog=${blog.id}" class="blog-index-card" style="animation-delay: ${i * 0.1}s">
+                    <a href="blog/${blog.id}/" class="blog-index-card" style="animation-delay: ${i * 0.1}s">
                         <div class="card-gradient" style="background: linear-gradient(135deg, hsl(${260 + i * 30}, 70%, 50%), hsl(${220 + i * 30}, 70%, 40%));"></div>
                         <div class="card-body">
                             <span class="card-date">${blog.date}</span>

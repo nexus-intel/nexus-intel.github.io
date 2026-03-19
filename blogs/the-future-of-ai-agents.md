@@ -89,5 +89,11 @@ The "Future of AI" is no longer about the LLM itself, but the **scaffolding** ar
 
 Your organization must move beyond the "Prompt Box." It is time to build autonomous systems that observe, reason, and act. The transition from AI-assisted workflows to AI-led operations is the baseline for the next generation of enterprise efficiency.
 
-**Is your infrastructure ready for autonomy?** 
-[Contact our Engineering Team to Audit your AI Strategy.]
+**Is your infrastructure ready for autonomy?**
+[Contact our Engineering Team to Audit your AI Strategy.](https://nexus-intel.github.io/index.html#contact)
+
+---
+
+### Related Insights
+- [DeepSeek-V3 vs. Llama 4: The 2026 Benchmark](post.html?blog=deepseek-v3-vs-llama-4-the-2026-benchmark) — A head-to-head comparison of the two models powering the next wave of agentic AI.
+- [Autonomous Supply Chain Engine — Case Study](study.html?id=autonomous-logistics) — How agentic AI reduced logistics costs by 28%.
