@@ -7,23 +7,45 @@
         <priority>1.0</priority>
     </url>
     <url>
-        <loc>https://nexus-intel.github.io/post.html?blog=agentic-ai-2026</loc>
+        <loc>https://nexus-intel.github.io/blog.html</loc>
         <lastmod>2026-03-19</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://nexus-intel.github.io/about.html</loc>
+        <lastmod>2026-03-19</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://nexus-intel.github.io/privacy.html</loc>
+        <lastmod>2026-03-19</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.3</priority>
+    </url>
+    <url>
+        <loc>https://nexus-intel.github.io/post.html?blog=deepseek-v3-vs-llama-4-the-2026-benchmark</loc>
+        <lastmod>2026-03-19</lastmod>
+        <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://nexus-intel.github.io/post.html?blog=scaling-ocr-idp</loc>
+        <loc>https://nexus-intel.github.io/post.html?blog=the-future-of-ai-agents</loc>
         <lastmod>2026-03-19</lastmod>
+        <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://nexus-intel.github.io/study.html?id=autonomous-logistics</loc>
         <lastmod>2026-03-19</lastmod>
+        <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://nexus-intel.github.io/study.html?id=fintech-fraud-detection</loc>
         <lastmod>2026-03-19</lastmod>
+        <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
 </urlset>

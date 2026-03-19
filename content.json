@@ -4,12 +4,14 @@
             "id": "deepseek-v3-vs-llama-4-the-2026-benchmark",
             "title": "DeepSeek-V3 vs. Llama 4: The 2026 Benchmark",
             "subtitle": "\"In 2026, the competitive advantage is no longer found in access to raw intelligence, but in the efficiency of its execution. Choosing between DeepSeek-V3 and Llama 4 is a strategic decision that dictates your enterprise\u2019s cost-per-automated-task for the next 24 months.\"",
+            "description": "As we move through 2026, the AI landscape has shifted from \"Generative Chat\" to \"Agentic Execution.\" Enterprises are no longer satisfied with models that merely",
             "date": "2026-03-19"
         },
         {
             "id": "the-future-of-ai-agents",
             "title": "The Future of AI Agents: From Chatbots to Autonomous Coworkers",
             "subtitle": "\"The shift from generative completion to agentic autonomy represents the single greatest reduction in the unit cost of intelligence in corporate history. In 2026, ROI is no longer measured by how fast an AI answers, but by how many complex tasks it completes without human intervention.\"",
+            "description": "By 2026, the industry has hit a wall with traditional LLM implementations. The \"Chatbot Era\"\u2014characterized by simple RAG (Retrieval-Augmented Generation) and li",
             "date": "2026-03-19"
         }
     ],
@@ -18,12 +20,14 @@
             "id": "autonomous-logistics",
             "title": "Autonomous Supply Chain Engine",
             "subtitle": "How we deployed a LangGraph-powered agentic system that reduced transportation costs by 28%.",
+            "description": "A global logistics firm was struggling with manual dispatch decisions that couldn't account for real-time traffic, fuel fluctuations, and driver availability si",
             "date": "2026-03-19"
         },
         {
             "id": "fintech-fraud-detection",
             "title": "Real-Time Fraud Detection Solution",
             "subtitle": "Reducing Authorised Push Payment (APP) fraud by 92% using high-performance predictive ML.",
+            "description": "A London-based fintech was seeing a surge in sophisticated social engineering attacks where customers were being tricked into authorizing fraudulent payments.",
             "date": "2026-03-19"
         }
     ]

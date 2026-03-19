@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Insights & Blog | Nexus Intelligence</title>
+    <meta name="description" content="Expert articles on AI automation, agentic workflows, LLM benchmarks, OCR, and enterprise intelligence strategies.">
+    <link rel="canonical" href="https://nexus-intel.github.io/blog.html">
+    <link rel="stylesheet" href="style.css?v=2.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script src="loader.js" defer></script>
+</head>
+<body class="sub-page">
+    <nav>
+        <div class="logo">NEXUS<span>INTELLIGENCE</span></div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="blog.html" class="active">Blog</a>
+            <a href="about.html">About</a>
+        </div>
+    </nav>
+
+    <main class="sub-page-main">
+        <section class="blog-index-hero">
+            <h1>AI <span>Insights</span></h1>
+            <p>Deep-dive analyses on the technologies shaping enterprise intelligence in 2026 and beyond.</p>
+        </section>
+
+        <section class="blog-index-grid" id="blog-list">
+            <!-- Dynamically loaded -->
+        </section>
+
+        <section class="blog-cta-section">
+            <div class="blog-cta-card">
+                <h2>Want insights delivered to your inbox?</h2>
+                <p>Join our newsletter for weekly AI strategy briefings.</p>
+                <form id="blog-newsletter" class="inline-form">
+                    <input type="email" placeholder="you@company.com" required>
+                    <button type="submit" class="cta-button">Subscribe</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        async function loadBlogs() {
+            try {
+                const res = await fetch('content.json');
+                const data = await res.json();
+                const container = document.getElementById('blog-list');
+                
+                if (data.blogs.length === 0) {
+                    container.innerHTML = '<p style="text-align:center;color:#94a3b8;">No posts yet. Check back soon!</p>';
+                    return;
+                }
+
+                container.innerHTML = data.blogs.map((blog, i) => `
+                    <a href="post.html?blog=${blog.id}" class="blog-index-card" style="animation-delay: ${i * 0.1}s">
+                        <div class="card-gradient" style="background: linear-gradient(135deg, hsl(${260 + i * 30}, 70%, 50%), hsl(${220 + i * 30}, 70%, 40%));"></div>
+                        <div class="card-body">
+                            <span class="card-date">${blog.date}</span>
+                            <h3>${blog.title}</h3>
+                            <p>${blog.subtitle ? blog.subtitle.substring(0, 120) + '...' : ''}</p>
+                            <span class="card-read-more">Read Insight →</span>
+                        </div>
+                    </a>
+                `).join('');
+            } catch (err) {
+                console.warn('Failed to load blogs:', err);
+            }
+        }
+        
+        document.addEventListener('DOMContentLoaded', loadBlogs);
+        
+        // Newsletter
+        const form = document.getElementById('blog-newsletter');
+        if (form) {
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const btn = form.querySelector('button');
+                btn.textContent = 'Subscribing...';
+                try {
+                    await fetch('https://nexus-intelgithubio-production.up.railway.app/newsletter', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ email: form.querySelector('input').value })
+                    });
+                    btn.textContent = '✅ Subscribed!';
+                    form.reset();
+                } catch {
+                    btn.textContent = '✅ Subscribed!';
+                }
+                setTimeout(() => btn.textContent = 'Subscribe', 3000);
+            });
+        }
+    </script>
+</body>
+</html>
