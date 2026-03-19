@@ -1,36 +1,47 @@
 import os
 import re
 import json
+import shutil
 from datetime import datetime
 
-# Definitive marker-based injection
-def inject_content(filename, content_dict):
-    if not os.path.exists(filename):
-        return
-    
-    with open(filename, 'r') as f:
-        html = f.read()
+# Configuration
+BLOGS_MD_DIR = 'blogs'
+CASES_MD_DIR = 'cases'
+BLOGS_HTML_DIR = 'blog'
+CASES_HTML_DIR = 'case'
+POST_TEMPLATE = 'post.html'
+STUDY_TEMPLATE = 'study.html'
+CONTENT_JSON = 'content.json'
+SITEMAP_XML = 'sitemap.xml'
+BASE_URL = "https://nexus-intel.github.io" # No trailing slash for defensive joining
 
-    # 1. Header/Footer (Simplified)
+def get_shared_components(root_path=""):
     try:
         with open('header.html', 'r') as f: header = f.read()
         with open('footer.html', 'r') as f: footer = f.read()
-        html = re.sub(r'<header id="header-container">.*?</header>', f'<header id="header-container">{header}</header>', html, flags=re.DOTALL)
-        html = re.sub(r'<footer id="footer-container">.*?</footer>', f'<footer id="footer-container">{footer}</footer>', html, flags=re.DOTALL)
-    except: pass
+        if root_path:
+            header = header.replace('href="', f'href="{root_path}')
+            header = header.replace('src="', f'src="{root_path}')
+            footer = footer.replace('href="', f'href="{root_path}')
+            footer = footer.replace('src="', f'src="{root_path}')
+        return header, footer
+    except: return "", ""
+
+def inject_content(html, header, footer, content_dict=None, filename=""):
+    # 1. Header/Footer
+    html = re.sub(r'<header id="header-container">.*?</header>', f'<header id="header-container">{header}</header>', html, flags=re.DOTALL)
+    html = re.sub(r'<footer id="footer-container">.*?</footer>', f'<footer id="footer-container">{footer}</footer>', html, flags=re.DOTALL)
+
+    if not content_dict: return html
 
     # 2. Blogs
     if 'blogs' in content_dict:
         blog_html = ""
-        # index.html gets 3, blog.html gets all
         limit = 3 if filename == 'index.html' else 999
         for i, b in enumerate(content_dict['blogs'][:limit]):
             img_url = b.get('image') or ""
-            # Premium Fallback Gradients (Multi-stop, varied hues)
-            hue1 = 265 + i * 15
-            hue2 = 225 + i * 15
+            hue1, hue2 = 265 + i * 15, 225 + i * 15
             fallback_bg = f"linear-gradient(135deg, hsl({hue1}, 75%, 45%), hsl({hue2}, 75%, 35%))"
-            
             card = f"""
             <div class="blog-card animate-in" style="animation-delay: {i * 0.1}s">
                 <div class="blog-img" style="background: {f"url('{img_url}') center/cover" if img_url else fallback_bg};">
@@ -44,11 +55,9 @@ def inject_content(filename, content_dict):
                 </div>
             </div>"""
             blog_html += card
-        
-        # DEFINITIVE REPLACEMENT: Replaces everything between markers
         html = re.sub(r'<!-- BLOG_START -->.*?<!-- BLOG_END -->', f'<!-- BLOG_START -->{blog_html}<!-- BLOG_END -->', html, flags=re.DOTALL)
 
-    # 3. Cases (only for index.html)
+    # 3. Cases
     if 'cases' in content_dict and filename == 'index.html':
         case_html = ""
         for i, c in enumerate(content_dict['cases']):
@@ -62,15 +71,71 @@ def inject_content(filename, content_dict):
                 <a href="case/{c['id']}/" class="read-more">View Full Breakdown <i class="fas fa-arrow-right"></i></a>
             </div>"""
         html = re.sub(r'<!-- CASES_START -->.*?<!-- CASES_END -->', f'<!-- CASES_START -->{case_html}<!-- CASES_END -->', html, flags=re.DOTALL)
+    return html
 
-    with open(filename, 'w') as f:
-        f.write(html)
-    print(f"✅ Polished {filename}")
+def extract_metadata(filepath):
+    with open(filepath, 'r') as f: content = f.read()
+    title = re.search(r'^# (.+)$', content, re.MULTILINE)
+    subtitle = re.search(r'^> (.+)$', content, re.MULTILINE)
+    paras = re.findall(r'^(?!#|>|\-|\*|```|\|)(.{50,})', content, re.MULTILINE)
+    post_id = os.path.basename(filepath).replace('.md', '')
+    img = f"assets/blog/{post_id}.png"
+    return {
+        "id": post_id,
+        "title": title.group(1) if title else post_id.replace('-', ' ').title(),
+        "subtitle": subtitle.group(1) if subtitle else "Premium AI Insight",
+        "description": paras[0][:160] if paras else "Read more at Nexus Intelligence.",
+        "image": img if os.path.exists(img) else None
+    }
 
-# Load data and run
+def generate_static_page(item, template_path, output_dir):
+    if not os.path.exists(template_path): return
+    with open(template_path, 'r') as f: html = f.read()
+    
+    # DEFENSIVE URL JOIN: strip trailing/leading slashes and join with single /
+    clean_base = BASE_URL.rstrip('/')
+    clean_path = f"{output_dir}/{item['id']}"
+    canonical_url = f"{clean_base}/{clean_path}/"
+    
+    html = re.sub(r'<link rel="canonical" href="[^"]*">', f'<link rel="canonical" href="{canonical_url}">', html)
+    if '<link rel="canonical"' not in html:
+        html = html.replace('</head>', f'    <link rel="canonical" href="{canonical_url}">\n</head>')
+    
+    target_dir = os.path.join(output_dir, item['id'])
+    os.makedirs(target_dir, exist_ok=True)
+    header, footer = get_shared_components(root_path="../../")
+    html = inject_content(html, header, footer)
+    with open(os.path.join(target_dir, 'index.html'), 'w') as f: f.write(html)
+
+def generate_sitemap(data):
+    today = datetime.now().strftime('%Y-%m-%d')
+    urls = [BASE_URL + "/", BASE_URL + "/blog.html", BASE_URL + "/about.html", BASE_URL + "/privacy.html"]
+    for b in data['blogs']: urls.append(f"{BASE_URL}/blog/{b['id']}/")
+    for c in data['cases']: urls.append(f"{BASE_URL}/case/{c['id']}/")
+    
+    xml = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+    for u in urls:
+        xml += f'    <url><loc>{u}</loc><lastmod>{today}</lastmod><priority>0.8</priority></url>\n'
+    xml += '</urlset>'
+    with open(SITEMAP_XML, 'w') as f: f.write(xml)
+
 if __name__ == "__main__":
-    if os.path.exists('content.json'):
-        with open('content.json', 'r') as f:
-            data = json.load(f)
-        inject_content('index.html', data)
-        inject_content('blog.html', data)
+    data = {"blogs": [], "cases": []}
+    for d, k in [(BLOGS_MD_DIR, "blogs"), (CASES_MD_DIR, "cases")]:
+        if os.path.exists(d):
+            for f in sorted(os.listdir(d)):
+                if f.endswith('.md'): data[k].append(extract_metadata(os.path.join(d, f)))
+    
+    header, footer = get_shared_components()
+    for filename in ['index.html', 'blog.html']:
+        if os.path.exists(filename):
+            with open(filename, 'r') as f: content = f.read()
+            new_html = inject_content(content, header, footer, data, filename)
+            with open(filename, 'w') as f: f.write(new_html)
+    
+    for b in data['blogs']: generate_static_page(b, POST_TEMPLATE, BLOGS_HTML_DIR)
+    for c in data['cases']: generate_static_page(c, STUDY_TEMPLATE, CASES_HTML_DIR)
+    
+    with open(CONTENT_JSON, 'w') as f: json.dump(data, f, indent=4)
+    generate_sitemap(data)
+    print("✨ Full Technical Refresh Complete (Defensive URL Join enabled)")

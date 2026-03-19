@@ -5,7 +5,6 @@
             "title": "AI for Document Processing in Healthcare: HIPAA-Compliant OCR Solutions",
             "subtitle": "Moving beyond paper charts. Learn how Agentic IDP is revolutionizing patient data and clinical trials in 2026.",
             "description": "Despite decades of talk about \"Electronic Health Records\" (EHR), the healthcare industry is still drowning in paper. Referrals, lab results, insurance authoriza",
-            "date": "2026-03-19",
             "image": null
         },
         {
@@ -13,7 +12,6 @@
             "title": "AI Fraud Detection for Fintech: How ML Catches What Rules Miss",
             "subtitle": "The shift from \"Reactive Rules\" to \"Predictive Intelligence.\" Learn how high-growth fintechs are reducing fraud losses by 90% in 2026.",
             "description": "For years, banks and fintechs relied on \"If-Then\" rules: *If a transaction is over $10,000 and comes from an unknown IP, then block it.* This worked in 2018, bu",
-            "date": "2026-03-17",
             "image": null
         },
         {
@@ -21,7 +19,6 @@
             "title": "AI in Logistics 2026: Automating Supply Chain with Agentic Workflows",
             "subtitle": "Why \"Smart Routing\" is no longer enough. Learn how autonomous agents are managing end-to-end global supply chains in 2026.",
             "description": "The global logistics industry spent billions on \"Digital Transformation\" between 2020 and 2024, yet most companies still feel like they are \"flying blind.\" Why?",
-            "date": "2026-03-16",
             "image": null
         },
         {
@@ -29,7 +26,6 @@
             "title": "Best OCR Software in 2026: Google Document AI vs Amazon Textract vs Custom",
             "subtitle": "Why \"Standard OCR\" is dying, and what \"Intelligent Document Processing\" looks like today.",
             "description": "For decades, OCR (Optical Character Recognition) was a simple task: turn an image of a letter into a string of text. But in 2026, businesses don't just want the",
-            "date": "2026-03-14",
             "image": null
         },
         {
@@ -37,7 +33,6 @@
             "title": "DeepSeek-V3 vs. Llama 4: The 2026 Benchmark",
             "subtitle": "\"In 2026, the competitive advantage is no longer found in access to raw intelligence, but in the efficiency of its execution. Choosing between DeepSeek-V3 and Llama 4 is a strategic decision that dictates your enterprise\u2019s cost-per-automated-task for the next 24 months.\"",
             "description": "As we move through 2026, the AI landscape has shifted from \"Generative Chat\" to \"Agentic Execution.\" Enterprises are no longer satisfied with models that merely",
-            "date": "2026-03-13",
             "image": null
         },
         {
@@ -45,15 +40,13 @@
             "title": "GPT-5 vs Gemini 2.5 Pro vs Claude 4: Which LLM Should Your Business Use in 2026?",
             "subtitle": "The definitive guide to selecting the right backbone for your enterprise AI strategy in a multi-model world.",
             "description": "The \"Model Wars\" of 2024 and 2025 have settled into a specialized equilibrium. We are no longer asking *if* LLMs can handle business tasks, but *which* specific",
-            "date": "2026-03-11",
-            "image": "assets/blog/llm-comparison.png"
+            "image": null
         },
         {
             "id": "how-to-automate-invoice-processing-with-ai-ocr-plus-llms",
             "title": "How to Automate Invoice Processing with AI (OCR + LLMs)",
             "subtitle": "Stop paying for manual data entry. Learn how to architect a modern Intelligent Document Processing (IDP) pipeline that reaches 99%+ accuracy.",
             "description": "In 2026, if your team is still manually entering data from invoices into your ERP, you are losing money every single minute. Traditional OCR (Optical Character ",
-            "date": "2026-03-10",
             "image": null
         },
         {
@@ -61,15 +54,13 @@
             "title": "How to Build an AI Agent with LangGraph: Step-by-Step Python Tutorial",
             "subtitle": "Move beyond simple prompts. Learn how to build a stateful, cyclic AI agent that can reason, verify, and correct its own work.",
             "description": "In 2026, the industry has shifted from \"Chains\" to \"Graphs.\" While standard LangChain is excellent for linear tasks, real-world business logic is rarely linear.",
-            "date": "2026-03-08",
-            "image": "assets/blog/langgraph-agents.png"
+            "image": null
         },
         {
             "id": "how-to-calculate-roi-for-ai-automation-projects",
             "title": "How to Calculate ROI for AI Automation Projects (With Formula)",
             "subtitle": "Don\u2019t guess. Measure. Learn the exact framework we use to justify AI spend for Fortune 500 clients.",
             "description": "By 2026, the era of \"AI experimentation for the sake of it\" is over. CEO and CFOs are no longer interested in demos\u2014they want to see the impact on the bottom li",
-            "date": "2026-03-07",
             "image": null
         },
         {
@@ -77,7 +68,6 @@
             "title": "How to Replace RPA with Agentic AI: The 2026 Migration Playbook",
             "subtitle": "Why your \"Bots\" are breaking, and how \"Agents\" will fix them. The 5-step guide to migrating from UiPath to LangGraph.",
             "description": "For the last decade, Robotic Process Automation (RPA) was the champion of efficiency. We built \"Bots\" in UiPath or Blue Prism to clicks buttons, copy-paste data",
-            "date": "2026-03-05",
             "image": null
         },
         {
@@ -85,7 +75,6 @@
             "title": "LangChain vs LangGraph vs CrewAI: Which Framework for AI Agents?",
             "subtitle": "Navigating the complex world of multi-agent orchestration in 2026.",
             "description": "In 2024, if you wanted to build an AI application, you used **LangChain**. It was the revolutionary \"chain of thought\" framework that let developers link prompt",
-            "date": "2026-03-04",
             "image": null
         },
         {
@@ -93,7 +82,6 @@
             "title": "Multi-Agent AI Systems: Architecture Patterns & Implementation",
             "subtitle": "Moving from \"Lone Wolf\" bots to \"Collaborative Teams.\" Learn the 3 proven patterns for agent orchestration in 2026.",
             "description": "In 2026, we have moved beyond the \"Single Prompt\" era. We have realized that asking one LLM to handle research, reasoning, coding, and quality control all at on",
-            "date": "2026-03-02",
             "image": null
         },
         {
@@ -101,7 +89,6 @@
             "title": "No-Code AI Automation: Building Intelligent Workflows Without Developers",
             "subtitle": "The empowerment of the \"Business Architect.\" Learn how tools like Make.com and Zapier Central are democratizing AI in 2026.",
             "description": "In 2024, if you wanted to build an AI-powered workflow, you needed a Python developer, a data scientist, and a DevOps engineer. This meant that small businesses",
-            "date": "2026-03-01",
             "image": null
         },
         {
@@ -109,7 +96,6 @@
             "title": "Open-Source vs Proprietary LLMs: Cost, Security, and Performance",
             "subtitle": "Is it time to ditch the API and host your own intelligence?",
             "description": "In the early days of AI, there was no contest: proprietary models like GPT-3 and GPT-4 were years ahead of the open-source community. But 2026 has brought a rad",
-            "date": "2026-02-27",
             "image": null
         },
         {
@@ -117,7 +103,6 @@
             "title": "RAG in 2026: The Complete Guide to Retrieval-Augmented Generation",
             "subtitle": "Why legacy RAG is failing, and how \"Agentic RAG\" with Knowledge Graphs is taking over.",
             "description": "In 2023, **Retrieval-Augmented Generation (RAG)** was simple: you turned a document into vectors, stored them in a database, and searched for the top 3 results ",
-            "date": "2026-02-26",
             "image": null
         },
         {
@@ -125,7 +110,6 @@
             "title": "The Future of AI Agents: From Chatbots to Autonomous Coworkers",
             "subtitle": "\"The shift from generative completion to agentic autonomy represents the single greatest reduction in the unit cost of intelligence in corporate history. In 2026, ROI is no longer measured by how fast an AI answers, but by how many complex tasks it completes without human intervention.\"",
             "description": "By 2026, the industry has hit a wall with traditional LLM implementations. The \"Chatbot Era\"\u2014characterized by simple RAG (Retrieval-Augmented Generation) and li",
-            "date": "2026-02-24",
             "image": null
         },
         {
@@ -133,8 +117,7 @@
             "title": "Top 10 AI Automation Tools for Business in 2026",
             "subtitle": "A curated list of the most impactful tools that are moving the needle for enterprises today.",
             "description": "In 2026, \"AI Automation\" is no longer a buzzword\u2014it is a survival requirement. The market is saturated with GPT-wrappers, but only a handful of tools provide th",
-            "date": "2026-02-23",
-            "image": "assets/blog/ai-tools.png"
+            "image": null
         }
     ],
     "cases": [
@@ -143,7 +126,6 @@
             "title": "Autonomous Supply Chain Engine",
             "subtitle": "How we deployed a LangGraph-powered agentic system that reduced transportation costs by 28%.",
             "description": "A global logistics firm with operations across 14 countries was struggling with a critical bottleneck: **manual dispatch decisions**. Their legacy system relied",
-            "date": "2026-03-19",
             "image": null
         },
         {
@@ -151,7 +133,6 @@
             "title": "Service Agents: Autonomous Booking & Ordering",
             "subtitle": "Deploying agentic AI systems that handle complex appointment booking and food ordering, reducing labor costs by 70%.",
             "description": "Hospitality and Healthcare providers in Germany were facing a skilled labor shortage, leading to missed calls and lost revenue in appointment booking and room s",
-            "date": "2026-03-19",
             "image": null
         },
         {
@@ -159,7 +140,6 @@
             "title": "Retail Revolution: Dubai Mall Loyalty Automation",
             "subtitle": "Driving 99%+ accuracy in retail analytics through automated high-volume receipt processing and loyalty point attribution.",
             "description": "One of the world's largest retail destinations required a way to verify physical receipts from thousands of different merchants to instantly credit loyalty poin",
-            "date": "2026-03-19",
             "image": null
         },
         {
@@ -167,7 +147,6 @@
             "title": "Real-Time Fraud Detection Solution",
             "subtitle": "Reducing Authorised Push Payment (APP) fraud by 92% using high-performance predictive ML.",
             "description": "A London-based fintech processing \u00a3500M+ in monthly transactions was facing a surge in **Authorised Push Payment (APP) fraud** \u2014 the fastest-growing type of fin",
-            "date": "2026-03-19",
             "image": null
         },
         {
@@ -175,7 +154,6 @@
             "title": "Healthcare Hub: Automated Claims & Super Bills Processing",
             "subtitle": "Streamlining insurance lifecycles with intelligent extraction of member IDS, CPT codes, and ICD-10 medical billing data.",
             "description": "A European clinical laboratory network was struggling with a 15% rejection rate on insurance claims due to manual data entry errors from \"Super Bills\" and Insur",
-            "date": "2026-03-19",
             "image": null
         },
         {
@@ -183,7 +161,6 @@
             "title": "Identity Suite: Secure Passport & ID Verification",
             "subtitle": "Automating Global Identity Verification (KYC) with intelligent OCR for Passports, Visas, and National IDs across 180+ countries.",
             "description": "An EU-based fintech startup needed a frictionless way to onboard users while complying with strict KYC (Know Your Customer) and AML (Anti-Money Laundering) regu",
-            "date": "2026-03-19",
             "image": null
         }
     ]

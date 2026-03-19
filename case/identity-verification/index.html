@@ -3,16 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Identity Suite: Secure Passport & ID Verification | Case Study | Nexus Intelligence</title>
-    <meta name="description" content="An EU-based fintech startup needed a frictionless way to onboard users while complying with strict KYC (Know Your Customer) and AML (Anti-Money Laundering) regu">
-    <link rel="stylesheet" href="../../style.css?v=2.0">
+    <title>Case Study | Nexus Intelligence</title>
+    <meta name="description" content="Explore how Nexus Intelligence delivers measurable business impact through AI automation, agentic workflows, and intelligent document processing.">
+    <link rel="stylesheet" href="style.css?v=2.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-    <script>var ROOT_PATH = "../../";</script>
-    <script src="../../loader.js" defer></script>
+    <script src="loader.js" defer></script>
 
     <!-- JSON-LD Schema (dynamically populated) -->
     <script type="application/ld+json" id="study-schema">
@@ -30,13 +29,13 @@
 </head>
 <body class="sub-page">
     <header><nav class="glass">
-    <div class="logo"><a href="../../" style="text-decoration: none; color: inherit;">NEXUS<span>INTELLIGENCE</span></a></div>
+    <div class="logo"><a href="/" style="text-decoration: none; color: inherit;">NEXUS<span>INTELLIGENCE</span></a></div>
     <ul class="nav-links">
         <li><a href="index.html#hero">Home</a></li>
         <li><a href="index.html#services">Services</a></li>
-        <li><a href="../../blog.html">Blog</a></li>
+        <li><a href="blog.html">Blog</a></li>
         <li><a href="index.html#cases">Demos</a></li>
-        <li><a href="../../about.html">About</a></li>
+        <li><a href="about.html">About</a></li>
         <li><a href="index.html#contact">Contact</a></li>
     </ul>
     <button class="cta-button" onclick="window.location.href='index.html#contact'">Get in Touch</button>
@@ -100,7 +99,7 @@
             }
 
             try {
-                const response = await fetch(`../../cases/${studyId}.md`);
+                const response = await fetch(`cases/${studyId}.md`);
                 if (!response.ok) throw new Error('Study not found');
                 const mdText = await response.text();
 
@@ -157,7 +156,7 @@
                 const finalMd = h1Match ? mdText.replace(/^# .+\n/, '') : mdText;
                 document.getElementById('md-content').innerHTML = marked.parse(finalMd);
             } catch (err) {
-                document.getElementById('md-content').innerHTML = `<h1>404</h1><p>Case study not found: ${studyId}</p><a href="../../index.html">Back to Home</a>`;
+                document.getElementById('md-content').innerHTML = `<h1>404</h1><p>Case study not found: ${studyId}</p><a href="index.html">Back to Home</a>`;
             }
         }
         document.addEventListener('DOMContentLoaded', renderMarkdown);
@@ -178,8 +177,8 @@
         <div class="footer-links">
             <h4>Company</h4>
             <ul>
-                <li><a href="../../about.html">About Us</a></li>
-                <li><a href="../../blog.html">Blog</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="blog.html">Blog</a></li>
                 <li><a href="privacy.html">Privacy Policy</a></li>
             </ul>
         </div>

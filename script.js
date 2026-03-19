@@ -251,7 +251,7 @@ const closeChat = document.getElementById('close-chat');
 
 if (chatbotTrigger && chatbotWidget) {
     chatbotTrigger.addEventListener('click', () => {
-        chatbotWidget.classList.add('chatbot-open');
+        chatbotWidget.classList.toggle('chatbot-open');
     });
 }
 if (closeChat && chatbotWidget) {
@@ -260,13 +260,30 @@ if (closeChat && chatbotWidget) {
     });
 }
 
+// Chatbot Message Helper
+function appendMessage(role, text) {
+    const chatMessages = document.getElementById('chat-messages');
+    if (!chatMessages) return;
+    const msgDiv = document.createElement('div');
+    msgDiv.className = `message ${role === 'bot' ? 'bot-message' : 'user-message'}`;
+    
+    // RENDER MARKDOWN if it's the bot
+    if (role === 'bot' && typeof marked !== 'undefined') {
+        msgDiv.innerHTML = marked.parse(text);
+    } else {
+        msgDiv.innerText = text;
+    }
+    
+    chatMessages.appendChild(msgDiv);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+
 // Form Submission (Lead Gen)
 const leadForm = document.getElementById('leadForm');
 if (leadForm) {
     leadForm.addEventListener('submit', (e) => {
         e.preventDefault();
         const btn = leadForm.querySelector('button');
-        const originalText = btn.innerText;
         btn.innerText = 'Analyzing Workflow...';
         setTimeout(() => {
             btn.innerText = 'Analysis Sent. Check Email.';
