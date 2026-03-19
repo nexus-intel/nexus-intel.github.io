@@ -243,3 +243,35 @@ document.addEventListener('DOMContentLoaded', () => {
 
     renderDynamicContent();
 });
+
+// Chatbot Toggle Logic
+const chatbotWidget = document.getElementById('chatbot-widget');
+const chatbotTrigger = document.getElementById('chatbot-trigger');
+const closeChat = document.getElementById('close-chat');
+
+if (chatbotTrigger && chatbotWidget) {
+    chatbotTrigger.addEventListener('click', () => {
+        chatbotWidget.classList.add('chatbot-open');
+    });
+}
+if (closeChat && chatbotWidget) {
+    closeChat.addEventListener('click', () => {
+        chatbotWidget.classList.remove('chatbot-open');
+    });
+}
+
+// Form Submission (Lead Gen)
+const leadForm = document.getElementById('leadForm');
+if (leadForm) {
+    leadForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const btn = leadForm.querySelector('button');
+        const originalText = btn.innerText;
+        btn.innerText = 'Analyzing Workflow...';
+        setTimeout(() => {
+            btn.innerText = 'Analysis Sent. Check Email.';
+            btn.style.background = '#10b981';
+            leadForm.reset();
+        }, 1500);
+    });
+}

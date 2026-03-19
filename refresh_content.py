@@ -26,10 +26,15 @@ def inject_content(filename, content_dict):
         limit = 3 if filename == 'index.html' else 999
         for i, b in enumerate(content_dict['blogs'][:limit]):
             img_url = b.get('image') or ""
+            # Premium Fallback Gradients (Multi-stop, varied hues)
+            hue1 = 265 + i * 15
+            hue2 = 225 + i * 15
+            fallback_bg = f"linear-gradient(135deg, hsl({hue1}, 75%, 45%), hsl({hue2}, 75%, 35%))"
+            
             card = f"""
             <div class="blog-card animate-in" style="animation-delay: {i * 0.1}s">
-                <div class="blog-img" style="background: {f"url('{img_url}') center/cover" if img_url else f"linear-gradient(135deg, hsl({265 + i * 15}, 70%, 50%), hsl({225 + i * 15}, 70%, 40%))"};">
-                    {"" if img_url else '<div class="img-overlay"></div>'}
+                <div class="blog-img" style="background: {f"url('{img_url}') center/cover" if img_url else fallback_bg};">
+                    {"" if img_url else '<div class="img-overlay" style="background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);"></div>'}
                 </div>
                 <div class="blog-content">
                     <span class="blog-tag">Insight</span>
