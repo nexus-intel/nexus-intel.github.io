@@ -1,0 +1,42 @@
+{
+    "blogs": [
+        {
+            "id": "scaling-ocr-idp",
+            "title": "Scaling OCR with IDP: Transforming Chaos into ROI",
+            "subtitle": "Why modern logistics firms are choosing Intelligent Document Processing (IDP) over legacy OCR solutions.",
+            "date": "2026-03-19"
+        },
+        {
+            "id": "agentic-ai-2026",
+            "title": "Agentic AI: The 2026 Shift from Predictive to Autonomous",
+            "subtitle": "Exploring the evolution of AI agents that don't just predict, but plan and execute complex business workflows autonomously.",
+            "date": "2026-03-19"
+        },
+        {
+            "id": "deepseek-v3-vs-llama-4-the-2026-benchmark",
+            "title": "DeepSeek-V3 vs. Llama 4: The 2026 Benchmark",
+            "subtitle": "\"In 2026, the competitive advantage is no longer found in access to raw intelligence, but in the efficiency of its execution. Choosing between DeepSeek-V3 and Llama 4 is a strategic decision that dictates your enterprise\u2019s cost-per-automated-task for the next 24 months.\"",
+            "date": "2026-03-19"
+        },
+        {
+            "id": "the-future-of-ai-agents",
+            "title": "The Future of AI Agents: From Chatbots to Autonomous Coworkers",
+            "subtitle": "\"The shift from generative completion to agentic autonomy represents the single greatest reduction in the unit cost of intelligence in corporate history. In 2026, ROI is no longer measured by how fast an AI answers, but by how many complex tasks it completes without human intervention.\"",
+            "date": "2026-03-19"
+        }
+    ],
+    "cases": [
+        {
+            "id": "autonomous-logistics",
+            "title": "Autonomous Supply Chain Engine",
+            "subtitle": "How we deployed a LangGraph-powered agentic system that reduced transportation costs by 28%.",
+            "date": "2026-03-19"
+        },
+        {
+            "id": "fintech-fraud-detection",
+            "title": "Real-Time Fraud Detection Solution",
+            "subtitle": "Reducing Authorised Push Payment (APP) fraud by 92% using high-performance predictive ML.",
+            "date": "2026-03-19"
+        }
+    ]
+}
