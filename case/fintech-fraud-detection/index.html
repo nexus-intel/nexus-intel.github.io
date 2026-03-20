@@ -107,21 +107,77 @@ class FraudGraphModel(torch.nn.Module):
 <p>This layer catches fraud that pure numerical analysis misses — because the social engineering happens in natural language.</p>
 <h3>Ensemble Decision Engine</h3>
 <p>All three layers feed into a gradient-boosted ensemble model (XGBoost) that produces a final fraud probability score between 0 and 1. The system operates in three bands:</p>
-<p>| Score | Action | Volume |
-|:---|:---|:---|
-| 0.0 – 0.3 | <strong>Auto-approve</strong> | ~88% of transactions |
-| 0.3 – 0.7 | <strong>Soft challenge</strong> (additional verification step) | ~10% |
-| 0.7 – 1.0 | <strong>Block + human review</strong> | ~2% |</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Score</th>
+<th style="text-align:left">Action</th>
+<th style="text-align:left">Volume</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">0.0 – 0.3</td>
+<td style="text-align:left"><strong>Auto-approve</strong></td>
+<td style="text-align:left">~88% of transactions</td>
+</tr>
+<tr>
+<td style="text-align:left">0.3 – 0.7</td>
+<td style="text-align:left"><strong>Soft challenge</strong> (additional verification step)</td>
+<td style="text-align:left">~10%</td>
+</tr>
+<tr>
+<td style="text-align:left">0.7 – 1.0</td>
+<td style="text-align:left"><strong>Block + human review</strong></td>
+<td style="text-align:left">~2%</td>
+</tr>
+</tbody>
+</table>
 <hr />
 <h2>Financial Impact</h2>
 <p>After 120 days of production deployment:</p>
-<p>| Metric | Before | After | Change |
-|:---|:---|:---|:---|
-| Successful fraud attempts (monthly) | 340 | 27 | <strong>-92%</strong> |
-| False positive rate | 12% | 0.08% | <strong>-99.3%</strong> |
-| Detection latency | 8,000ms | 47ms | <strong>-99.4%</strong> |
-| Customer friction complaints | 2,100/month | 180/month | <strong>-91%</strong> |
-| Annual fraud reimbursement costs | £2.8M | £0.4M | <strong>-£2.4M saved</strong> |</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Metric</th>
+<th style="text-align:left">Before</th>
+<th style="text-align:left">After</th>
+<th style="text-align:left">Change</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Successful fraud attempts (monthly)</td>
+<td style="text-align:left">340</td>
+<td style="text-align:left">27</td>
+<td style="text-align:left"><strong>-92%</strong></td>
+</tr>
+<tr>
+<td style="text-align:left">False positive rate</td>
+<td style="text-align:left">12%</td>
+<td style="text-align:left">0.08%</td>
+<td style="text-align:left"><strong>-99.3%</strong></td>
+</tr>
+<tr>
+<td style="text-align:left">Detection latency</td>
+<td style="text-align:left">8,000ms</td>
+<td style="text-align:left">47ms</td>
+<td style="text-align:left"><strong>-99.4%</strong></td>
+</tr>
+<tr>
+<td style="text-align:left">Customer friction complaints</td>
+<td style="text-align:left">2,100/month</td>
+<td style="text-align:left">180/month</td>
+<td style="text-align:left"><strong>-91%</strong></td>
+</tr>
+<tr>
+<td style="text-align:left">Annual fraud reimbursement costs</td>
+<td style="text-align:left">£2.8M</td>
+<td style="text-align:left">£0.4M</td>
+<td style="text-align:left"><strong>-£2.4M saved</strong></td>
+</tr>
+</tbody>
+</table>
 <blockquote>
 <p>&quot;Nexus Intelligence's system didn't just catch more fraud — it made the experience better for our legitimate customers. Our support tickets dropped by 60% in the first month.&quot; — CTO, [Client]</p>
 </blockquote>

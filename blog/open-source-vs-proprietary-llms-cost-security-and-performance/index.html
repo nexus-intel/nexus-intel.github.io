@@ -72,11 +72,32 @@
 <h2>3. The Comparison Metrics</h2>
 <h3>Cost Analysis (Per 1 Million Tokens)</h3>
 <p>In a high-volume production environment (10M+ tokens/day), open-source wins on cost, provided you have the scale to saturate your GPUs.</p>
-<p>| Model Class | API Cost | Open Source (Inferentia/H100) |
-|:---|:---|:---|
-| <strong>Small (8B - 14B)</strong> | $0.20 | <strong>$0.02</strong> |
-| <strong>Medium (70B - 80B)</strong> | $2.00 | <strong>$0.40</strong> |
-| <strong>Large (400B+)</strong> | $10.00 | <strong>$4.50</strong> |</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Model Class</th>
+<th style="text-align:left">API Cost</th>
+<th style="text-align:left">Open Source (Inferentia/H100)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Small (8B - 14B)</strong></td>
+<td style="text-align:left">$0.20</td>
+<td style="text-align:left"><strong>$0.02</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Medium (70B - 80B)</strong></td>
+<td style="text-align:left">$2.00</td>
+<td style="text-align:left"><strong>$0.40</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Large (400B+)</strong></td>
+<td style="text-align:left">$10.00</td>
+<td style="text-align:left"><strong>$4.50</strong></td>
+</tr>
+</tbody>
+</table>
 <p><em>Note: OS costs include server electricity, cooling, and maintenance.</em></p>
 <h3>Security &amp; Compliance</h3>
 <p>For Healthcare (HIPAA), Finance (GDPR/EU AI Act), and Defense, proprietary models are often non-starters. Open-source allows for <strong>Local Inference</strong>, meaning you can run your AI in a &quot;Faraday Cage&quot; environment with zero internet access.</p>

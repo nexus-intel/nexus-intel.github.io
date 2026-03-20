@@ -104,11 +104,32 @@ def process_invoice(ocr_text):
 <p>When an invoice spans multiple pages, traditional OCR often breaks the table. Our solution at Nexus Intelligence uses <strong>Vision Transformers</strong> to &quot;see&quot; the table lines and reconstruct the grid before the LLM even sees the text.</p>
 <hr />
 <h2>ROI Analysis: Is it worth it?</h2>
-<p>| Metric | Manual Process | AI-Automated Process |
-|:---|:---|:---|
-| <strong>Cost per Invoice</strong> | $2.50 - $4.00 | <strong>$0.05 - $0.15</strong> |
-| <strong>Processing Time</strong> | 4-6 minutes | <strong>&lt; 30 seconds</strong> |
-| <strong>Error Rate</strong> | 2-5% (Human fatigue) | <strong>&lt; 0.1%</strong> (With Validation Gate) |</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Metric</th>
+<th style="text-align:left">Manual Process</th>
+<th style="text-align:left">AI-Automated Process</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Cost per Invoice</strong></td>
+<td style="text-align:left">$2.50 - $4.00</td>
+<td style="text-align:left"><strong>$0.05 - $0.15</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Processing Time</strong></td>
+<td style="text-align:left">4-6 minutes</td>
+<td style="text-align:left"><strong>&lt; 30 seconds</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Error Rate</strong></td>
+<td style="text-align:left">2-5% (Human fatigue)</td>
+<td style="text-align:left"><strong>&lt; 0.1%</strong> (With Validation Gate)</td>
+</tr>
+</tbody>
+</table>
 <hr />
 <h2>Conclusion: Start Small, Scale Fast</h2>
 <p>Don't try to automate 1,000 different layouts on Day 1. Start with your top 5 vendors who send the highest volume of invoices. Once you’ve perfected the <strong>Validation Gate</strong> for them, scaling to the rest becomes a matter of configuration, not coding.</p>

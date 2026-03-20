@@ -101,13 +101,42 @@ result = agent.invoke({&quot;messages&quot;: [(&quot;user&quot;, &quot;Who is th
 <p>If your system isn't hitting 95%+ on these metrics, it isn't ready for customer support.</p>
 <hr />
 <h2>Summary Table: Legacy vs. Modern RAG</h2>
-<p>| Feature | Legacy RAG (2023) | Modern Agentic RAG (2026) |
-|:---|:---|:---|
-| <strong>Storage</strong> | Vector DB only | <strong>Vector DB + Knowledge Graph</strong> |
-| <strong>Search</strong> | Semantic Similarity | <strong>Hybrid (Semantic + Keyword + Graph)</strong> |
-| <strong>Retrieval</strong> | Single-shot | <strong>Multi-step Agentic Discovery</strong> |
-| <strong>Outputs</strong> | Quotes / Summaries | <strong>Reasoned Actions &amp; Decisions</strong> |
-| <strong>Accuracy</strong> | 70-80% | <strong>98%+</strong> |</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Feature</th>
+<th style="text-align:left">Legacy RAG (2023)</th>
+<th style="text-align:left">Modern Agentic RAG (2026)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Storage</strong></td>
+<td style="text-align:left">Vector DB only</td>
+<td style="text-align:left"><strong>Vector DB + Knowledge Graph</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Search</strong></td>
+<td style="text-align:left">Semantic Similarity</td>
+<td style="text-align:left"><strong>Hybrid (Semantic + Keyword + Graph)</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Retrieval</strong></td>
+<td style="text-align:left">Single-shot</td>
+<td style="text-align:left"><strong>Multi-step Agentic Discovery</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Outputs</strong></td>
+<td style="text-align:left">Quotes / Summaries</td>
+<td style="text-align:left"><strong>Reasoned Actions &amp; Decisions</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Accuracy</strong></td>
+<td style="text-align:left">70-80%</td>
+<td style="text-align:left"><strong>98%+</strong></td>
+</tr>
+</tbody>
+</table>
 <hr />
 <h2>Conclusion: Data is Still King</h2>
 <p>No matter how smart your agent is, it’s only as good as the data you feed it. In 2026, &quot;Data Cleaning&quot; for RAG (handling duplicates, removing old versions) is more important than the choice of LLM.</p>
