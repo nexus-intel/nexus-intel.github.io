@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intelligent Document Redaction: Layout-Aware PII Masking | Case Study | Nexus Intelligence</title>
+    <meta name="description" content="Explore how Nexus Intelligence delivers measurable business impact through AI automation, agentic workflows, and intelligent document processing.">
+    <link rel="stylesheet" href="../../style.css?v=2.2">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <!-- loader.js removed for SSG performance -->
+
+    <!-- JSON-LD Schema (dynamically populated) -->
+    <script type="application/ld+json" id="study-schema">{"@context": "https://schema.org", "@type": "Article", "headline": "Intelligent Document Redaction: Layout-Aware PII Masking", "description": "Manual redaction is slow, expensive, and prone to \"near-miss\" errors. In legal, healthcare, and government sectors, missing a single Social Security Number or P", "author": {"@type": "Organization", "name": "Nexus Intelligence"}, "publisher": {"@type": "Organization", "name": "Nexus Intelligence"}, "datePublished": "2026-03-22"}</script>
+</head>
+<body class="sub-page">
+    <header id="header-container"><nav class="glass">
+    <div class="logo"><a href="/" style="text-decoration: none; color: inherit;">NEXUS<span>INTELLIGENCE</span></a></div>
+    <ul class="nav-links">
+        <li><a href="../../index.html#hero">Home</a></li>
+        <li><a href="../../index.html#services">Services</a></li>
+        <li><a href="../../blog.html">Blog</a></li>
+        <li><a href="../../index.html#cases">Demos</a></li>
+        <li><a href="../../about.html">About</a></li>
+        <li><a href="../../index.html#contact">Contact</a></li>
+    </ul>
+    <button class="cta-button" onclick="window.location.href='index.html#contact'">Get in Touch</button>
+</nav>
+</header>
+
+    <main class="sub-page-main">
+        <section class="post-hero">
+            <div class="hero-bg"></div>
+            <div class="hero-content">
+                <a href="index.html#cases" class="back-link"><i class="fas fa-chevron-left"></i> All Case Studies</a>
+                <h1 id="post-title">Intelligent Document Redaction: Layout-Aware PII Masking</h1>
+                <div class="post-meta">
+                    <span id="post-date">March 19, 2026</span>
+                    <span class="meta-separator">•</span>
+                    <span class="post-tag">Case Study</span>
+                    <span class="meta-separator">•</span>
+                    <span id="read-time">1 min read</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="post-container">
+            <div id="md-content" class="post-content glass-card">
+                <blockquote>
+<p>Protecting sensitive data at scale with autonomous agents that &quot;understand&quot; document structure before masking.</p>
+</blockquote>
+<h2>The Challenge</h2>
+<p>Manual redaction is slow, expensive, and prone to &quot;near-miss&quot; errors. In legal, healthcare, and government sectors, missing a single Social Security Number or Patient ID can lead to massive compliance fines and reputational damage. Traditional &quot;search and replace&quot; fails for scanned PDFs where text isn't indexed or where context is required to identify sensitive fields.</p>
+<h2>The Solution: Nexus Redaction Agent</h2>
+<p>We developed an AI-driven redaction pipeline that uses <strong>Layout-Based Models</strong> to identify sensitive regions within a document, regardless of format.</p>
+<div class="data-flow-viz">
+    <div class="flow-node">
+        <i class="fas fa-file-pdf"></i>
+        <span>Sensitive PDF</span>
+    </div>
+    <div class="process-core">
+        <i class="fas fa-user-shield"></i>
+    </div>
+    <div class="destination-grid">
+        <div class="flow-node mini">
+            <i class="fas fa-file-shield"></i>
+            <span>Redacted PDF</span>
+        </div>
+        <div class="flow-node mini">
+            <i class="fas fa-server"></i>
+            <span>Secure Vault</span>
+        </div>
+    </div>
+</div>
+<h3>Key Capabilities</h3>
+<ul>
+<li><strong>Layout Awareness</strong>: Identifies PII based on visual context (positioning, headers, tables) even when text is distorted.</li>
+<li><strong>Multi-Modal Validation</strong>: Uses the <strong>Google Gemini API</strong> to cross-verify that all &quot;blacked out&quot; regions match the required privacy policy.</li>
+<li><strong>Bulk Processing</strong>: Handles 10,000+ page archives in minutes, not days.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Metric</th>
+<th style="text-align:left">Manual Redaction</th>
+<th style="text-align:left">Nexus AI Redaction</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Processing Speed</td>
+<td style="text-align:left">5 - 10 Mins / Page</td>
+<td style="text-align:left">&lt; 2 Seconds / Page</td>
+</tr>
+<tr>
+<td style="text-align:left">Reliability</td>
+<td style="text-align:left">94% (Human Fatigue)</td>
+<td style="text-align:left">99.99% (Deterministic)</td>
+</tr>
+<tr>
+<td style="text-align:left">Cost per Document</td>
+<td style="text-align:left">$5.00 - $12.00</td>
+<td style="text-align:left">&lt; $0.05</td>
+</tr>
+<tr>
+<td style="text-align:left">Scalability</td>
+<td style="text-align:left">Limited by Headcount</td>
+<td style="text-align:left">Infinite</td>
+</tr>
+</tbody>
+</table>
+<h2>How It Works</h2>
+<ol>
+<li><strong>Vision-OCR Phase</strong>: The document is converted into a high-fidelity spatial map.</li>
+<li><strong>Layout Parsing</strong>: Our models identify &quot;Sensitive Zones&quot; (Names, Addresses, ID Numbers).</li>
+<li><strong>Agentic Review</strong>: A secondary agent powered by the <strong>Google Gemini API</strong> audits the identified zones for zero-day edge cases.</li>
+<li><strong>Hard Masking</strong>: Redaction is &quot;burned&quot; into the PDF pixels, ensuring it cannot be &quot;un-masked&quot; by simple text selection.</li>
+</ol>
+<h2>Business Impact</h2>
+<p>A major legal service provider <strong>automated 85% of their discovery redaction workflow</strong>, reducing their turnaround time from 2 weeks to <strong>3 hours</strong> while ensuring 100% compliance with local data protection laws.</p>
+
+            </div>
+
+            <!-- Social Share + CTA -->
+            <div class="post-footer">
+                <div class="share-row">
+                    <span>Share this case study:</span>
+                    <a id="share-twitter" href="https://twitter.com/intent/tweet?text=Intelligent%20Document%20Redaction%3A%20Layout-Aware%20PII%20Masking&url=https%3A//nexus-intel.github.io/case/ai-redaction-engine/" target="_blank" class="share-btn">𝕏 Twitter</a>
+                    <a id="share-linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A//nexus-intel.github.io/case/ai-redaction-engine/" target="_blank" class="share-btn">in LinkedIn</a>
+                    <button id="share-copy" class="share-btn">📋 Copy Link</button>
+                </div>
+                <div class="post-cta">
+                    <h3>Want similar results for your business?</h3>
+                    <p>Our team delivers measurable ROI through production-grade AI systems.</p>
+                    <a href="index.html#contact" class="cta-button">Book a Discovery Call</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Content is baked statically via refresh_content.py -->
+    <footer id="footer-container">    <div class="footer-content">
+        <div class="footer-brand">
+            <div class="logo">NEXUS<span>INTELLIGENCE</span></div>
+            <p>Architecting the future of enterprise intelligence.</p>
+        </div>
+        <div class="footer-links">
+            <h4>Solutions</h4>
+            <ul>
+                <li><a href="../../index.html#services">Document Intelligence</a></li>
+                <li><a href="../../index.html#services">Retail Workflow Analytics</a></li>
+                <li><a href="../../index.html#services">Autonomous Agents</a></li>
+            </ul>
+        </div>
+        <div class="footer-links">
+            <h4>Company</h4>
+            <ul>
+                <li><a href="../../about.html">About Us</a></li>
+                <li><a href="../../blog.html">Blog</a></li>
+                <li><a href="../../privacy.html">Privacy Policy</a></li>
+            </ul>
+        </div>
+        <div class="footer-social">
+            <h4>Connect</h4>
+            <div class="social-icons">
+                <a href="https://github.com/nexus-intel" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2026 Nexus Intelligence. All rights reserved.</p>
+    </div>
+</footer>
+    <script src="../../script.js" defer></script>
+</body>
+</html>

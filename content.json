@@ -99,6 +99,13 @@
             "image": null
         },
         {
+            "id": "pydantic-ai-vs-langgraph-when-to-script-and-when-to-orchestrate",
+            "title": "Pydantic AI vs LangGraph: When to Script and When to Orchestrate",
+            "subtitle": "Master the balance between type-safe agentic scripting and stateful graph orchestration for high-performance AI workflows.",
+            "description": "The year is 2026, and the \"Vibe Coding\" movement has matured from a fringe philosophy into the industry standard for elite engineering teams. We no longer spend",
+            "image": null
+        },
+        {
             "id": "rag-in-2026-the-complete-guide-to-retrieval-augmented-generation",
             "title": "RAG in 2026: The Complete Guide to Retrieval-Augmented Generation",
             "subtitle": "Why legacy RAG is failing, and how \"Agentic RAG\" with Knowledge Graphs is taking over.",
@@ -106,10 +113,31 @@
             "image": null
         },
         {
+            "id": "state-machines-for-humans-building-cyclic-agents-with-langgraph",
+            "title": "State Machines for Humans: Building Cyclic Agents with LangGraph",
+            "subtitle": "Master cyclic agentic orchestration by blending Pydantic AI\u2019s schema-first rigor with LangGraph\u2019s computational fluidity.",
+            "description": "In the fast-evolving landscape of 2026, the \"Vibe Coder\" has moved beyond writing simple scripts. We are now orchestrators of latent intent. The shift from line",
+            "image": null
+        },
+        {
+            "id": "the-flash-stack-building-instant-ai-apps-with-gemini-2.5-flash",
+            "title": "The Flash Stack: Building Instant AI Apps with Gemini 2.5 Flash",
+            "subtitle": "Harnessing ultra-low latency AI orchestration with Pydantic AI, LangGraph, and the Gemini 2.5 Flash model for next-generation Vibe Coding.",
+            "description": "The year 2026 marks the end of the \"Reasoning Pause.\" For years, developers tolerated the three-second \"thinking\" spinner as LLMs performed complex internal mon",
+            "image": null
+        },
+        {
             "id": "the-future-of-ai-agents",
             "title": "The Future of AI Agents: From Chatbots to Autonomous Coworkers",
             "subtitle": "\"The shift from generative completion to agentic autonomy represents the single greatest reduction in the unit cost of intelligence in corporate history. In 2026, ROI is no longer measured by how fast an AI answers, but by how many complex tasks it completes without human intervention.\"",
             "description": "By 2026, the industry has hit a wall with traditional LLM implementations. The \"Chatbot Era\"\u2014characterized by simple RAG (Retrieval-Augmented Generation) and li",
+            "image": null
+        },
+        {
+            "id": "the-vibe-coder's-guide-to-pydantic-ai-intent-first-agent-design",
+            "title": "The Vibe Coder's Guide to Pydantic AI: Intent-First Agent Design",
+            "subtitle": "Master the logic-driven orchestration of Pydantic AI and Gemini to build type-safe, vibe-aligned agentic workflows.",
+            "description": "In the landscape of 2026, the definition of a \"senior developer\" has shifted. We no longer spend our days wrestling with syntax or manual memory management; we ",
             "image": null
         },
         {
@@ -126,6 +154,13 @@
             "title": "AI Marketing Outreach: Scaling Hyper-Personalized Sales at 100x Speed",
             "subtitle": "Moving beyond spam-bots to autonomous agents that research, score, and engage leads with human-level nuance.",
             "description": "Traditional \"mass outreach\" is dead. In 2026, buyers reject anything that feels automated. However, manually researching 1,000 prospects per month is impossible",
+            "image": null
+        },
+        {
+            "id": "ai-redaction-engine",
+            "title": "Intelligent Document Redaction: Layout-Aware PII Masking",
+            "subtitle": "Protecting sensitive data at scale with autonomous agents that \"understand\" document structure before masking.",
+            "description": "Manual redaction is slow, expensive, and prone to \"near-miss\" errors. In legal, healthcare, and government sectors, missing a single Social Security Number or P",
             "image": null
         },
         {
