@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         const imgUrl = blog.image ? (blog.image.startsWith('http') ? blog.image : ROOT_PATH + blog.image) : '';
                         return `
                         <div class="blog-card animate-in" style="animation-delay: ${i * 0.1}s">
-                            <div class="blog-img" style="background: ${imgUrl ? `url('${imgUrl}') center/cover` : `linear-gradient(135deg, hsl(${260 + i * 20}, 70%, 50%), hsl({220 + i * 20}, 70%, 40%))`};">
+                            <div class="blog-img" style="background: ${imgUrl ? `url('${imgUrl}') center/cover` : `linear-gradient(135deg, hsl(${260 + i * 20}, 70%, 50%), hsl(${220 + i * 20}, 70%, 40%))`};">
                                 ${!imgUrl ? `<div class="img-overlay"></div>` : ''}
                             </div>
                             <div class="blog-content">
@@ -306,19 +306,24 @@ function appendMessage(role, text) {
 }
 
 // Form Submission (Lead Gen)
+    const leadForm = document.getElementById('leadForm');
     if (leadForm) {
         leadForm.addEventListener('submit', (e) => {
             e.preventDefault();
             const btn = leadForm.querySelector('button');
+            const originalText = btn.innerText;
             btn.innerText = 'Analyzing Workflow...';
             setTimeout(() => {
                 btn.innerText = 'Analysis Sent. Check Email.';
                 btn.style.background = '#10b981';
                 leadForm.reset();
+                setTimeout(() => {
+                    btn.innerText = originalText;
+                    btn.style.background = '';
+                }, 3000);
             }, 1500);
         });
     }
-});
 
 // Pagination Logic: Load More
 function loadMore(containerId) {
