@@ -306,20 +306,19 @@ function appendMessage(role, text) {
 }
 
 // Form Submission (Lead Gen)
-const leadForm = document.getElementById('leadForm');
-if (leadForm) {
-    leadForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const btn = leadForm.querySelector('button');
-        btn.innerText = 'Analyzing Workflow...';
-        setTimeout(() => {
-            btn.innerText = 'Analysis Sent. Check Email.';
-            btn.style.background = '#10b981';
-            leadForm.reset();
-        }, 1500);
-}
-    });
-}
+    if (leadForm) {
+        leadForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const btn = leadForm.querySelector('button');
+            btn.innerText = 'Analyzing Workflow...';
+            setTimeout(() => {
+                btn.innerText = 'Analysis Sent. Check Email.';
+                btn.style.background = '#10b981';
+                leadForm.reset();
+            }, 1500);
+        });
+    }
+});
 
 // Pagination Logic: Load More
 function loadMore(containerId) {

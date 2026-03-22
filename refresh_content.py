@@ -72,7 +72,7 @@ def inject_content(html, header, footer, content_dict=None, filename=""):
         for i, c in enumerate(content_dict['cases']):
             is_hidden = "hidden-card" if i >= limit else ""
             case_html += f"""
-            <div class="case-card {is_hidden}">
+            <div class="case-card animate-in {is_hidden}" style="animation-delay: {i * 0.1}s">
                 <div class="case-content">
                     <div class="case-header">
                         <span class="case-badge">Impact Analysis</span>
