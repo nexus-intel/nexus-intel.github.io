@@ -104,11 +104,15 @@ document.addEventListener('DOMContentLoaded', () => {
             messages.scrollTop = messages.scrollHeight;
 
             try {
-                // Call local backend (if running)
-                const response = await fetch('https://nexus-intelgithubio-production.up.railway.app/chat', {
+                // Call actual FastAPI backend on Railway
+                const response = await fetch('https://nexus-intelgithubio-production.up.railway.app/api/chat', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ message: text })
+                    body: JSON.stringify({ 
+                        patient_id: 'GUEST',
+                        patient_name: 'Visitor',
+                        message: text 
+                    })
                 });
                 
                 const data = await response.json();
@@ -319,7 +323,7 @@ function appendMessage(role, text) {
             const message = document.getElementById('message').value;
 
             try {
-                const response = await fetch('/api/contact', {
+                const response = await fetch('https://nexus-intelgithubio-production.up.railway.app/api/contact', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ name, email, message })
