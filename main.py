@@ -44,7 +44,7 @@ async def contact_endpoint(request: ContactRequest):
     try:
         email = resend.Emails.send({
             "from": "Acme <onboarding@resend.dev>",
-            "to": ["excellence@nexus-intel.com"],
+            "to": [os.environ.get("CONTACT_EMAIL", "admin@yourdomain.com")],
             "subject": f"New Lead: {request.name}",
             "text": f"Name: {request.name}\nEmail: {request.email}\n\nMessage:\n{request.message}"
         })
