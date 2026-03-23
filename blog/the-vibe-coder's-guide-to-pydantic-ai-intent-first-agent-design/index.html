@@ -1,33 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Vibe Coder's Guide to Pydantic AI: Intent-First Agent Design | Nexus Intelligence</title>
-    <meta name="description" content="Expert insights on AI automation, agentic workflows, OCR, and enterprise intelligence from Nexus Intelligence.">
+    <meta name="description"
+        content="Expert insights on AI automation, agentic workflows, OCR, and enterprise intelligence from Nexus Intelligence.">
     <link rel="stylesheet" href="../../style.css?v=2.2">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <!-- loader.js removed for SSG performance -->
     <link rel="icon" type="image/png" href="assets/images/favicon.png">
 </head>
+
 <body class="sub-page">
-    <header id="header-container"><nav class="glass">
-    <div class="logo"><a href="/" style="text-decoration: none; color: inherit;">NEXUS<span>INTELLIGENCE</span></a></div>
-    <ul class="nav-links">
-        <li><a href="../../index.html#hero">Home</a></li>
-        <li><a href="../../index.html#services">Services</a></li>
-        <li><a href="../../blog.html">Blog</a></li>
-        <li><a href="../../index.html#cases">Demos</a></li>
-        <li><a href="../../about.html">About</a></li>
-        <li><a href="../../index.html#contact">Contact</a></li>
-    </ul>
-    <button class="cta-button" onclick="window.location.href='index.html#contact'">Get in Touch</button>
-</nav>
-</header>
+    <header id="header-container">
+        <nav class="glass">
+            <div class="logo"><a href="/"
+                    style="text-decoration: none; color: inherit;">NEXUS<span>INTELLIGENCE</span></a></div>
+            <ul class="nav-links">
+                <li><a href="../../index.html#hero">Home</a></li>
+                <li><a href="../../index.html#services">Services</a></li>
+                <li><a href="../../blog.html">Blog</a></li>
+                <li><a href="../../index.html#cases">Demos</a></li>
+                <li><a href="../../about.html">About</a></li>
+                <li><a href="../../index.html#contact">Contact</a></li>
+            </ul>
+            <button class="cta-button" onclick="window.location.href='index.html#contact'">Get in Touch</button>
+        </nav>
+    </header>
 
     <main class="sub-page-main">
         <section class="post-hero">
@@ -48,15 +55,27 @@
         <section class="post-container">
             <div id="md-content" class="post-content glass-card">
                 <blockquote>
-<p>Master the logic-driven orchestration of Pydantic AI and Gemini to build type-safe, vibe-aligned agentic workflows.</p>
-</blockquote>
-<p>In the landscape of 2026, the definition of a &quot;senior developer&quot; has shifted. We no longer spend our days wrestling with syntax or manual memory management; we operate in the realm of <strong>Vibe Coding</strong>. Vibe Coding isn't about being &quot;vague&quot;—it’s about high-level orchestration where the developer provides the intent, and the AI handles the implementation details.</p>
-<p>However, the &quot;vibe&quot; only works if the underlying logic is bulletproof. This is where <strong>Pydantic AI</strong> enters the stack. It is the structural backbone that allows Vibe Coders to maintain rigorous type safety and data integrity while moving at the speed of thought. By leveraging the Gemini API and LangGraph, we can move from &quot;chatbots&quot; to autonomous agents that actually understand the mission.</p>
-<hr />
-<h2>1. The Schema is the Strategy: Intent-First Modeling</h2>
-<p>In traditional development, you write code to handle data. In Vibe Coding with Pydantic AI, you write <strong>models to define reality</strong>. The logic of your agent starts with the Pydantic model. Because Pydantic AI uses these models for structured output, the model <em>is</em> the prompt.</p>
-<p>When you define a class, you are telling the Gemini-powered brain exactly what the boundaries of its world are.</p>
-<pre><code class="language-python">from pydantic import BaseModel, Field
+                    <p>Master the logic-driven orchestration of Pydantic AI and Gemini to build type-safe, vibe-aligned
+                        agentic workflows.</p>
+                </blockquote>
+                <p>In the landscape of 2026, the definition of a &quot;senior developer&quot; has shifted. We no longer
+                    spend our days wrestling with syntax or manual memory management; we operate in the realm of
+                    <strong>Vibe Coding</strong>. Vibe Coding isn't about being &quot;vague&quot;—it’s about high-level
+                    orchestration where the developer provides the intent, and the AI handles the implementation
+                    details.</p>
+                <p>However, the &quot;vibe&quot; only works if the underlying logic is bulletproof. This is where
+                    <strong>Pydantic AI</strong> enters the stack. It is the structural backbone that allows Vibe Coders
+                    to maintain rigorous type safety and data integrity while moving at the speed of thought. By
+                    leveraging the Gemini API and LangGraph, we can move from &quot;chatbots&quot; to autonomous agents
+                    that actually understand the mission.</p>
+                <hr />
+                <h2>1. The Schema is the Strategy: Intent-First Modeling</h2>
+                <p>In traditional development, you write code to handle data. In Vibe Coding with Pydantic AI, you write
+                    <strong>models to define reality</strong>. The logic of your agent starts with the Pydantic model.
+                    Because Pydantic AI uses these models for structured output, the model <em>is</em> the prompt.</p>
+                <p>When you define a class, you are telling the Gemini-powered brain exactly what the boundaries of its
+                    world are.</p>
+                <pre><code class="language-python">from pydantic import BaseModel, Field
 from pydantic_ai import Agent
 
 class ResearchVibe(BaseModel):
@@ -68,16 +87,22 @@ class ResearchVibe(BaseModel):
 
 # Define the agent with a specific logic model
 agent = Agent(
-    'google-gla:gemini-1.5-pro',
+    'google-gla:gemini-flash-latest',
     result_type=ResearchVibe,
     system_prompt=&quot;You are a logic-driven research assistant. Analyze the vibe of the provided tech stack.&quot;
 )
 </code></pre>
-<p>By defining <code>ResearchVibe</code>, you’ve eliminated the need for complex &quot;You must return JSON&quot; prompting. The logic is baked into the type system. If the LLM tries to return a sentiment that isn't one of the three allowed strings, Pydantic AI's validation loop will catch it and ask the LLM to retry automatically.</p>
-<h2>2. Dependency Injection: Feeding the Vibe</h2>
-<p>A common mistake in agent design is hardcoding state. Vibe Coders prioritize <strong>contextual logic</strong>. Pydantic AI introduces a sophisticated dependency injection system that allows agents to access databases, APIs, or user preferences without global state pollution.</p>
-<p>Using the <code>RunContext</code>, we can pass authenticated clients (like a Gemini-specific search tool) directly into the agent's logic flow.</p>
-<pre><code class="language-python">from dataclasses import dataclass
+                <p>By defining <code>ResearchVibe</code>, you’ve eliminated the need for complex &quot;You must return
+                    JSON&quot; prompting. The logic is baked into the type system. If the LLM tries to return a
+                    sentiment that isn't one of the three allowed strings, Pydantic AI's validation loop will catch it
+                    and ask the LLM to retry automatically.</p>
+                <h2>2. Dependency Injection: Feeding the Vibe</h2>
+                <p>A common mistake in agent design is hardcoding state. Vibe Coders prioritize <strong>contextual
+                        logic</strong>. Pydantic AI introduces a sophisticated dependency injection system that allows
+                    agents to access databases, APIs, or user preferences without global state pollution.</p>
+                <p>Using the <code>RunContext</code>, we can pass authenticated clients (like a Gemini-specific search
+                    tool) directly into the agent's logic flow.</p>
+                <pre><code class="language-python">from dataclasses import dataclass
 from pydantic_ai import RunContext
 
 @dataclass
@@ -98,42 +123,47 @@ result = await agent.run(
 )
 print(result.data.summary)
 </code></pre>
-<p>This pattern allows the agent to interact with the real world (FastAPI endpoints, SQL databases) while keeping the developer's &quot;vibe&quot; focused on the high-level orchestration.</p>
-<h2>3. Orchestration: Pydantic AI Meets LangGraph</h2>
-<p>While Pydantic AI excels at structured interaction, <strong>LangGraph</strong> excels at the &quot;flow&quot; of multi-step logic. In an intent-first architecture, we use Pydantic AI as the &quot;Node Logic&quot; and LangGraph as the &quot;State Machine.&quot;</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">Feature</th>
-<th style="text-align:left">Pydantic AI</th>
-<th style="text-align:left">LangGraph</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"><strong>Primary Goal</strong></td>
-<td style="text-align:left">Structured I/O &amp; Validation</td>
-<td style="text-align:left">Stateful multi-step DAGs</td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>Logic Layer</strong></td>
-<td style="text-align:left">Schema-driven</td>
-<td style="text-align:left">Graph-driven</td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>Error Handling</strong></td>
-<td style="text-align:left">Automatic Re-prompting</td>
-<td style="text-align:left">Manual Node Routing</td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>Best Used For</strong></td>
-<td style="text-align:left">Atomic Agent Actions</td>
-<td style="text-align:left">Complex Workflow Management</td>
-</tr>
-</tbody>
-</table>
-<p>To connect them, we treat a Pydantic AI agent as a node within a LangGraph. The graph handles the &quot;memory&quot; of the conversation, while Pydantic AI handles the &quot;execution&quot; of specific tasks.</p>
-<pre><code class="language-python"># A conceptual snippet of a LangGraph node using Pydantic AI
+                <p>This pattern allows the agent to interact with the real world (FastAPI endpoints, SQL databases)
+                    while keeping the developer's &quot;vibe&quot; focused on the high-level orchestration.</p>
+                <h2>3. Orchestration: Pydantic AI Meets LangGraph</h2>
+                <p>While Pydantic AI excels at structured interaction, <strong>LangGraph</strong> excels at the
+                    &quot;flow&quot; of multi-step logic. In an intent-first architecture, we use Pydantic AI as the
+                    &quot;Node Logic&quot; and LangGraph as the &quot;State Machine.&quot;</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="text-align:left">Feature</th>
+                            <th style="text-align:left">Pydantic AI</th>
+                            <th style="text-align:left">LangGraph</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="text-align:left"><strong>Primary Goal</strong></td>
+                            <td style="text-align:left">Structured I/O &amp; Validation</td>
+                            <td style="text-align:left">Stateful multi-step DAGs</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align:left"><strong>Logic Layer</strong></td>
+                            <td style="text-align:left">Schema-driven</td>
+                            <td style="text-align:left">Graph-driven</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align:left"><strong>Error Handling</strong></td>
+                            <td style="text-align:left">Automatic Re-prompting</td>
+                            <td style="text-align:left">Manual Node Routing</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align:left"><strong>Best Used For</strong></td>
+                            <td style="text-align:left">Atomic Agent Actions</td>
+                            <td style="text-align:left">Complex Workflow Management</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p>To connect them, we treat a Pydantic AI agent as a node within a LangGraph. The graph handles the
+                    &quot;memory&quot; of the conversation, while Pydantic AI handles the &quot;execution&quot; of
+                    specific tasks.</p>
+                <pre><code class="language-python"># A conceptual snippet of a LangGraph node using Pydantic AI
 async def research_node(state: OverallState):
     agent_result = await agent.run(
         f&quot;Research the following: {state['topic']}&quot;,
@@ -142,9 +172,11 @@ async def research_node(state: OverallState):
     # The structured data is now part of the global graph state
     return {&quot;research_data&quot;: agent_result.data}
 </code></pre>
-<h2>4. Productionalizing the Logic with FastAPI</h2>
-<p>A Vibe Coder doesn't just build a script; they build a <strong>service</strong>. Deploying a Pydantic AI agent via FastAPI is the standard for 2026. The integration is seamless because both frameworks share the same DNA: Pydantic models.</p>
-<pre><code class="language-python">from fastapi import FastAPI
+                <h2>4. Productionalizing the Logic with FastAPI</h2>
+                <p>A Vibe Coder doesn't just build a script; they build a <strong>service</strong>. Deploying a Pydantic
+                    AI agent via FastAPI is the standard for 2026. The integration is seamless because both frameworks
+                    share the same DNA: Pydantic models.</p>
+                <pre><code class="language-python">from fastapi import FastAPI
 from pydantic_ai.messages import ModelMessage
 
 app = FastAPI(title=&quot;VibeLogic API&quot;)
@@ -156,30 +188,49 @@ async def run_agent(user_input: str):
     result = await agent.run(user_input, deps=shared_deps)
     return result.data
 </code></pre>
-<p>This creates a &quot;Double-Validation&quot; loop. Your API is protected from bad inputs by FastAPI, and your business logic is protected from LLM hallucinations by Pydantic AI.</p>
-<hr />
-<h2>The Broader AI Ecosystem: Why Logic Wins</h2>
-<p>The market is flooded with &quot;wrapper&quot; frameworks that hide the prompt. Vibe Coding isn't about hiding the prompt; it's about <strong>elevating the prompt into code</strong>.</p>
-<ul>
-<li><strong>Pydantic AI vs. LangChain:</strong> LangChain often feels like a &quot;black box&quot; of abstractions. Pydantic AI feels like standard Python. For a Vibe Coder, transparency is speed.</li>
-<li><strong>Gemini 1.5 Pro Integration:</strong> By using Gemini's massive context window alongside Pydantic AI's structural validation, you can feed entire codebases into your agent and receive perfectly formatted architectural reviews.</li>
-</ul>
-<hr />
-<h2>Practical &quot;Vibe Check&quot;: Implementation Roadmap</h2>
-<p>To start implementing intent-first design today, follow this checklist:</p>
-<ol>
-<li><strong>Define your Schema first:</strong> Never start with the prompt. Start with the <code>BaseModel</code> that represents your desired outcome.</li>
-<li><strong>Isolate Dependencies:</strong> Use <code>RunContext</code> for any external service. This makes your agents unit-testable.</li>
-<li><strong>Stream by Default:</strong> Pydantic AI supports <code>run_stream</code>. Use this in your FastAPI endpoints to provide a snappy, modern UI experience.</li>
-<li><strong>Validate the &quot;Vibe&quot;:</strong> Use the <code>ge</code>, <code>le</code>, and <code>pattern</code> constraints in Pydantic to force the AI to adhere to your brand voice or technical constraints.</li>
-</ol>
-<hr />
-<h2>Conclusion</h2>
-<p>The shift toward Vibe Coding doesn't mean we abandon the principles of robust software engineering. On the contrary, it requires us to be more intentional about our data structures and logic flows. Pydantic AI provides the bridge between the fluid intent of the LLM and the rigid requirements of production software.</p>
-<p>By combining the reasoning power of <strong>Gemini</strong>, the orchestration of <strong>LangGraph</strong>, and the structural integrity of <strong>Pydantic AI</strong>, you aren't just writing code—you're architecting intelligence.</p>
-<h3>Ready to automate your vibe?</h3>
-<p>If your organization is looking to transform messy manual processes into high-speed, type-safe agentic workflows, we can help.</p>
-<p><strong><a href="https://nexusintelligence.ai">Contact Nexus Intelligence today</a></strong> for custom <strong>Document Workflow Automation</strong> solutions that bridge the gap between AI potential and production reality.</p>
+                <p>This creates a &quot;Double-Validation&quot; loop. Your API is protected from bad inputs by FastAPI,
+                    and your business logic is protected from LLM hallucinations by Pydantic AI.</p>
+                <hr />
+                <h2>The Broader AI Ecosystem: Why Logic Wins</h2>
+                <p>The market is flooded with &quot;wrapper&quot; frameworks that hide the prompt. Vibe Coding isn't
+                    about hiding the prompt; it's about <strong>elevating the prompt into code</strong>.</p>
+                <ul>
+                    <li><strong>Pydantic AI vs. LangChain:</strong> LangChain often feels like a &quot;black box&quot;
+                        of abstractions. Pydantic AI feels like standard Python. For a Vibe Coder, transparency is
+                        speed.</li>
+                    <li><strong>Gemini 1.5 Pro Integration:</strong> By using Gemini's massive context window alongside
+                        Pydantic AI's structural validation, you can feed entire codebases into your agent and receive
+                        perfectly formatted architectural reviews.</li>
+                </ul>
+                <hr />
+                <h2>Practical &quot;Vibe Check&quot;: Implementation Roadmap</h2>
+                <p>To start implementing intent-first design today, follow this checklist:</p>
+                <ol>
+                    <li><strong>Define your Schema first:</strong> Never start with the prompt. Start with the
+                        <code>BaseModel</code> that represents your desired outcome.</li>
+                    <li><strong>Isolate Dependencies:</strong> Use <code>RunContext</code> for any external service.
+                        This makes your agents unit-testable.</li>
+                    <li><strong>Stream by Default:</strong> Pydantic AI supports <code>run_stream</code>. Use this in
+                        your FastAPI endpoints to provide a snappy, modern UI experience.</li>
+                    <li><strong>Validate the &quot;Vibe&quot;:</strong> Use the <code>ge</code>, <code>le</code>, and
+                        <code>pattern</code> constraints in Pydantic to force the AI to adhere to your brand voice or
+                        technical constraints.</li>
+                </ol>
+                <hr />
+                <h2>Conclusion</h2>
+                <p>The shift toward Vibe Coding doesn't mean we abandon the principles of robust software engineering.
+                    On the contrary, it requires us to be more intentional about our data structures and logic flows.
+                    Pydantic AI provides the bridge between the fluid intent of the LLM and the rigid requirements of
+                    production software.</p>
+                <p>By combining the reasoning power of <strong>Gemini</strong>, the orchestration of
+                    <strong>LangGraph</strong>, and the structural integrity of <strong>Pydantic AI</strong>, you aren't
+                    just writing code—you're architecting intelligence.</p>
+                <h3>Ready to automate your vibe?</h3>
+                <p>If your organization is looking to transform messy manual processes into high-speed, type-safe
+                    agentic workflows, we can help.</p>
+                <p><strong><a href="https://nexusintelligence.ai">Contact Nexus Intelligence today</a></strong> for
+                    custom <strong>Document Workflow Automation</strong> solutions that bridge the gap between AI
+                    potential and production reality.</p>
 
             </div>
 
@@ -187,8 +238,12 @@ async def run_agent(user_input: str):
             <div class="post-footer">
                 <div class="share-row">
                     <span>Share this insight:</span>
-                    <a id="share-twitter" href="https://twitter.com/intent/tweet?text=The%20Vibe%20Coder%27s%20Guide%20to%20Pydantic%20AI%3A%20Intent-First%20Agent%20Design&url=https%3A//nexus-intel.github.io/blog/the-vibe-coder%27s-guide-to-pydantic-ai-intent-first-agent-design/" target="_blank" class="share-btn">𝕏 Twitter</a>
-                    <a id="share-linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A//nexus-intel.github.io/blog/the-vibe-coder%27s-guide-to-pydantic-ai-intent-first-agent-design/" target="_blank" class="share-btn">in LinkedIn</a>
+                    <a id="share-twitter"
+                        href="https://twitter.com/intent/tweet?text=The%20Vibe%20Coder%27s%20Guide%20to%20Pydantic%20AI%3A%20Intent-First%20Agent%20Design&url=https%3A//nexus-intel.github.io/blog/the-vibe-coder%27s-guide-to-pydantic-ai-intent-first-agent-design/"
+                        target="_blank" class="share-btn">𝕏 Twitter</a>
+                    <a id="share-linkedin"
+                        href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A//nexus-intel.github.io/blog/the-vibe-coder%27s-guide-to-pydantic-ai-intent-first-agent-design/"
+                        target="_blank" class="share-btn">in LinkedIn</a>
                     <button id="share-copy" class="share-btn">📋 Copy Link</button>
                 </div>
                 <div class="post-cta">
@@ -201,41 +256,45 @@ async def run_agent(user_input: str):
     </main>
 
     <!-- JSON-LD Schema (dynamically populated) -->
-    <script type="application/ld+json" id="article-schema">{"@context": "https://schema.org", "@type": "Article", "headline": "The Vibe Coder's Guide to Pydantic AI: Intent-First Agent Design", "description": "In the landscape of 2026, the definition of a \"senior developer\" has shifted. We no longer spend our days wrestling with syntax or manual memory management; we ", "author": {"@type": "Organization", "name": "Nexus Intelligence"}, "publisher": {"@type": "Organization", "name": "Nexus Intelligence"}, "datePublished": "2026-03-23"}</script>
+    <script type="application/ld+json"
+        id="article-schema">{"@context": "https://schema.org", "@type": "Article", "headline": "The Vibe Coder's Guide to Pydantic AI: Intent-First Agent Design", "description": "In the landscape of 2026, the definition of a \"senior developer\" has shifted. We no longer spend our days wrestling with syntax or manual memory management; we ", "author": {"@type": "Organization", "name": "Nexus Intelligence"}, "publisher": {"@type": "Organization", "name": "Nexus Intelligence"}, "datePublished": "2026-03-23"}</script>
     <!-- Content is baked statically via refresh_content.py -->
 
-    <footer id="footer-container">    <div class="footer-content">
-        <div class="footer-brand">
-            <div class="logo">NEXUS<span>INTELLIGENCE</span></div>
-            <p>Architecting the future of enterprise intelligence.</p>
-        </div>
-        <div class="footer-links">
-            <h4>Solutions</h4>
-            <ul>
-                <li><a href="../../index.html#services">Document Intelligence</a></li>
-                <li><a href="../../index.html#services">Retail Workflow Analytics</a></li>
-                <li><a href="../../index.html#services">Autonomous Agents</a></li>
-            </ul>
-        </div>
-        <div class="footer-links">
-            <h4>Company</h4>
-            <ul>
-                <li><a href="../../about.html">About Us</a></li>
-                <li><a href="../../blog.html">Blog</a></li>
-                <li><a href="../../privacy.html">Privacy Policy</a></li>
-            </ul>
-        </div>
-        <div class="footer-social">
-            <h4>Connect</h4>
-            <div class="social-icons">
-                <a href="https://github.com/nexus-intel" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
+    <footer id="footer-container">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="logo">NEXUS<span>INTELLIGENCE</span></div>
+                <p>Architecting the future of enterprise intelligence.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Solutions</h4>
+                <ul>
+                    <li><a href="../../index.html#services">Document Intelligence</a></li>
+                    <li><a href="../../index.html#services">Retail Workflow Analytics</a></li>
+                    <li><a href="../../index.html#services">Autonomous Agents</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="../../about.html">About Us</a></li>
+                    <li><a href="../../blog.html">Blog</a></li>
+                    <li><a href="../../privacy.html">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div class="footer-social">
+                <h4>Connect</h4>
+                <div class="social-icons">
+                    <a href="https://github.com/nexus-intel" target="_blank" rel="noopener"><i
+                            class="fab fa-github"></i></a>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="footer-bottom">
-        <p>&copy; 2026 Nexus Intelligence. All rights reserved.</p>
-    </div>
-</footer>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Nexus Intelligence. All rights reserved.</p>
+        </div>
+    </footer>
     <script src="../../script.js" defer></script>
 </body>
+
 </html>

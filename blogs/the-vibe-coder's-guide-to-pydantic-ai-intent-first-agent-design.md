@@ -27,7 +27,7 @@ class ResearchVibe(BaseModel):
 
 # Define the agent with a specific logic model
 agent = Agent(
-    'google-gla:gemini-1.5-pro',
+    'google-gla:gemini-flash-latest',
     result_type=ResearchVibe,
     system_prompt="You are a logic-driven research assistant. Analyze the vibe of the provided tech stack."
 )

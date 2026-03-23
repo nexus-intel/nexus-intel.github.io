@@ -52,7 +52,7 @@ from pydantic_ai import Agent
 from pydantic_ai.models.gemini import GeminiModel
 
 # Initialize the Vibe: Gemini 1.5 Pro for complex reasoning
-model = GeminiModel('gemini-1.5-pro')
+model = GeminiModel('gemini-flash-latest')
 
 # Define the Agency: The agent is bound to our StructuredInvoice model
 document_agent = Agent(

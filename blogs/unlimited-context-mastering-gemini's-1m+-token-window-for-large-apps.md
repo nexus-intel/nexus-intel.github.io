@@ -48,7 +48,7 @@ class RepoAnalysis(BaseModel):
 
 # Initialize the Vibe Agent
 vibe_agent = Agent(
-    'google-gla:gemini-1.5-pro',
+    'google-gla:gemini-flash-latest',
     result_type=RepoAnalysis,
     system_prompt="You are a Vibe Coder. Analyze the entire repository context provided and identify architectural misalignments."
 )

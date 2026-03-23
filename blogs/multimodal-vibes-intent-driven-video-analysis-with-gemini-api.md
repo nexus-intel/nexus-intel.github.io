@@ -42,9 +42,9 @@ class VideoInsight(BaseModel):
     key_moments: List[VisualEvidence]
     sentiment_shift: Optional[str] = Field(description="Where the energy of the video changes")
 
-# Defining the Agent with a Gemini-1.5-Pro backend
+# Defining the Agent with a gemini-flash-latest backend
 vibe_agent = Agent(
-    'google-gla:gemini-1.5-pro',
+    'google-gla:gemini-flash-latest',
     result_type=VideoInsight,
     system_prompt="You are a cinematic analyst. Extract the narrative arc and specific visual evidence."
 )

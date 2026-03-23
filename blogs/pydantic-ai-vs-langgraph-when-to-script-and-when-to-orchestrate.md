@@ -30,7 +30,7 @@ class ResearchResult(BaseModel):
 
 # Initialize Agent with Gemini
 agent = Agent(
-    'google-gla:gemini-1.5-pro',
+    'google-gla:gemini-flash-latest',
     result_type=ResearchResult,
     system_prompt="You are a high-speed intelligence analyst."
 )
