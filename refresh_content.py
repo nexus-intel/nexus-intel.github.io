@@ -45,7 +45,7 @@ def inject_content(html, header, footer, content_dict=None, filename=""):
     if 'blogs' in content_dict:
         blog_html = ""
         # Home page shows 6, Blog page shows 9 initially, rest hidden
-        limit = 6 if filename == 'index.html' else 999 
+        limit = 6 if filename == 'index.html' else 9
         for i, b in enumerate(content_dict['blogs']):
             is_hidden = "hidden-card" if i >= limit else ""
             img_url = b.get('image') or ""

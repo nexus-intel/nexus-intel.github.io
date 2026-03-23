@@ -308,20 +308,38 @@ function appendMessage(role, text) {
 // Form Submission (Lead Gen)
     const leadForm = document.getElementById('leadForm');
     if (leadForm) {
-        leadForm.addEventListener('submit', (e) => {
+        leadForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             const btn = leadForm.querySelector('button');
             const originalText = btn.innerText;
             btn.innerText = 'Analyzing Workflow...';
-            setTimeout(() => {
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+
+            try {
+                const response = await fetch('/api/contact', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ name, email, message })
+                });
+
+                if (!response.ok) throw new Error('API Error');
+                
                 btn.innerText = 'Analysis Sent. Check Email.';
                 btn.style.background = '#10b981';
                 leadForm.reset();
+            } catch (err) {
+                console.warn('Form Error:', err);
+                btn.innerText = 'Error. Please try again.';
+                btn.style.background = '#ef4444';
+            } finally {
                 setTimeout(() => {
                     btn.innerText = originalText;
                     btn.style.background = '';
                 }, 3000);
-            }, 1500);
+            }
         });
     }
 

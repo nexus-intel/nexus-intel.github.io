@@ -1,6 +1,20 @@
 {
     "blogs": [
         {
+            "id": "1-building-a-pydantic-ai-healthcare-chatbot",
+            "title": "Building a Pydantic AI Healthcare Chatbot with Gemini Flash",
+            "subtitle": "Moving from manual patient data intake to a HIPAA-compliant, fully autonomous booking and lab-fetching agent using the latest `gemini-1.5-flash-latest` model.",
+            "description": "The healthcare industry has typically been slow to adopt generative AI globally due to extreme hallucination risks and stringent regulatory guardrails. But in 2",
+            "image": null
+        },
+        {
+            "id": "2-scaling-our-pydantic-ai-healthcare-chatbot-with-fastapi",
+            "title": "Scaling our Pydantic AI Healthcare Chatbot with FastAPI",
+            "subtitle": "Moving from local testing to a production-ready REST API for enterprise medical workflows seamlessly with FastAPI and Uvicorn.",
+            "description": "Welcome back! In our previous tutorial, we walked through building our core agent logic using Pydantic AI and Gemini Flash. But local scripts only take you so f",
+            "image": null
+        },
+        {
             "id": "ai-for-document-processing-in-healthcare-hipaa-compliant-ocr-solutions",
             "title": "AI for Document Processing in Healthcare: HIPAA-Compliant OCR Solutions",
             "subtitle": "Moving beyond paper charts. Learn how Agentic IDP is revolutionizing patient data and clinical trials in 2026.",
@@ -127,6 +141,13 @@
             "image": null
         },
         {
+            "id": "structured-agency-building-document-intelligence-with-pydantic-ai",
+            "title": "Structured Agency: Building Document Intelligence with Pydantic AI",
+            "subtitle": "Revolutionizing OCR through schema-first orchestration, multimodal Gemini integration, and agentic state management.",
+            "description": "The year is 2026, and the \"Vibe Coding\" movement has reached its zenith. We no longer write brittle Regex patterns or battle Tesseract configurations. Instead, ",
+            "image": null
+        },
+        {
             "id": "the-flash-stack-building-instant-ai-apps-with-gemini-2.5-flash",
             "title": "The Flash Stack: Building Instant AI Apps with Gemini 2.5 Flash",
             "subtitle": "Harnessing ultra-low latency AI orchestration with Pydantic AI, LangGraph, and the Gemini 2.5 Flash model for next-generation Vibe Coding.",
@@ -159,6 +180,13 @@
             "title": "Top 10 AI Automation Tools for Business in 2026",
             "subtitle": "A curated list of the most impactful tools that are moving the needle for enterprises today.",
             "description": "In 2026, \"AI Automation\" is no longer a buzzword\u2014it is a survival requirement. The market is saturated with GPT-wrappers, but only a handful of tools provide th",
+            "image": null
+        },
+        {
+            "id": "unlimited-context-mastering-gemini's-1m+-token-window-for-large-apps",
+            "title": "Unlimited Context: Mastering Gemini's 1M+ Token Window for Large Apps",
+            "subtitle": "Orchestrating massive codebases through the lens of intent-first development and the infinite context era.",
+            "description": "In the rapidly evolving landscape of 2026, the term \"developer\" has undergone a radical transformation. We are no longer syntax janitors; we are **Vibe Coders**",
             "image": null
         }
     ],
