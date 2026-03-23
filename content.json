@@ -85,6 +85,13 @@
             "image": null
         },
         {
+            "id": "multimodal-vibes-intent-driven-video-analysis-with-gemini-api",
+            "title": "Multimodal Vibes: Intent-Driven Video Analysis with Gemini API",
+            "subtitle": "Orchestrating high-context video intelligence through declarative intent, agentic reasoning, and the Gemini 1.5 Pro ecosystem.",
+            "description": "In the era of **Vibe Coding**, the distance between a developer\u2019s intent and a production-ready application has collapsed. We are no longer meticulously hand-cr",
+            "image": null
+        },
+        {
             "id": "no-code-ai-automation-building-intelligent-workflows-without-developers",
             "title": "No-Code AI Automation: Building Intelligent Workflows Without Developers",
             "subtitle": "The empowerment of the \"Business Architect.\" Learn how tools like Make.com and Zapier Central are democratizing AI in 2026.",
@@ -124,6 +131,13 @@
             "title": "The Flash Stack: Building Instant AI Apps with Gemini 2.5 Flash",
             "subtitle": "Harnessing ultra-low latency AI orchestration with Pydantic AI, LangGraph, and the Gemini 2.5 Flash model for next-generation Vibe Coding.",
             "description": "The year 2026 marks the end of the \"Reasoning Pause.\" For years, developers tolerated the three-second \"thinking\" spinner as LLMs performed complex internal mon",
+            "image": null
+        },
+        {
+            "id": "the-flash-stack-building-instant-ai-apps-with-google-gemini-api",
+            "title": "The Flash Stack: Building Instant AI Apps with Google Gemini API",
+            "subtitle": "Master the 2026 architecture for hyper-latency-sensitive AI agents using Gemini 2.0 Flash, Pydantic AI, and LangGraph.",
+            "description": "The era of \"coding\" as a manual labor of syntax is dead. In 2026, we have entered the age of **Vibe Coding**. Vibe Coding is the art of high-level orchestration",
             "image": null
         },
         {
