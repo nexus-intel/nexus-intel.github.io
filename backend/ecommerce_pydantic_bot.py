@@ -32,7 +32,7 @@ def check_inventory(ctx: RunContext[CustomerDeps], product_name: str) -> dict:
     logger.info(f"Checking inventory for {product_name}")
     # Mock inventory check
     if "laptop" in product_name.lower():
-        return {"status": "in_stock", "quantity": 12, "price": 1200.00}
+        return {"status": "in_stock", "quantity": 12, "price": 450.00}
     return {"status": "out_of_stock", "quantity": 0, "restock_date": "Next Tuesday"}
 
 @ecommerce_agent.tool
@@ -52,7 +52,7 @@ def book_order(ctx: RunContext[CustomerDeps], items: list[str], shipping_speed: 
         "booking_id": booking_id,
         "items": items,
         "shipping": shipping_speed,
-        "total_cost": len(items) * 45.00,
+        "total_cost": len(items) * 15.00,
         "status": "pending_confirmation"
     }
 
