@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     async function renderDynamicContent() {
         const ROOT_PATH = window.ROOT_PATH || '';
         
-        const blogGrid = document.querySelector('.blog-grid');
+        const blogGrid = document.getElementById('blog-grid');
         const caseGrid = document.querySelector('.cases-grid');
         
         // Only fetch if grids are empty (Server environment)
