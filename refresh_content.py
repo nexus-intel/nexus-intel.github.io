@@ -10,8 +10,9 @@ BLOGS_MD_DIR = 'blogs'
 CASES_MD_DIR = 'cases'
 BLOGS_HTML_DIR = 'blog'
 CASES_HTML_DIR = 'case'
-POST_TEMPLATE = 'post.html'
-STUDY_TEMPLATE = 'study.html'
+POST_TEMPLATE = 'src/pages/post.html'
+STUDY_TEMPLATE = 'src/pages/study.html'
+BASE_TEMPLATE = 'templates/base.html'
 CONTENT_JSON = 'content.json'
 SITEMAP_XML = 'sitemap.xml'
 BASE_URL = "https://nexus-intel.github.io"
@@ -20,13 +21,12 @@ md = MarkdownIt(options_update={"html": True}).enable('table')
 
 def get_shared_components(root_path=""):
     try:
-        with open('header.html', 'r') as f: header = f.read()
-        with open('footer.html', 'r') as f: footer = f.read()
+        with open('src/header.html', 'r') as f: header = f.read()
+        with open('src/footer.html', 'r') as f: footer = f.read()
         if root_path:
             def safe_prefix(match):
                 path = match.group(1)
                 if path.startswith(('http', 'https', '/', '#', 'mailto:')): return match.group(0)
-                # Cleanup existing relative prefixes to prevent doubling
                 clean_path = path.lstrip('./') 
                 return f'href="{root_path}{clean_path}"'
             
@@ -37,15 +37,27 @@ def get_shared_components(root_path=""):
         return header, footer
     except: return "", ""
 
-def inject_content(html, header, footer, content_dict=None, filename=""):
-    html = re.sub(r'<header id="header-container">.*?</header>', f'<header id="header-container">{header}</header>', html, flags=re.DOTALL)
-    html = re.sub(r'<footer id="footer-container">.*?</footer>', f'<footer id="footer-container">{footer}</footer>', html, flags=re.DOTALL)
+def extract_metadata(filepath):
+    with open(filepath, 'r') as f: content = f.read()
+    title = re.search(r'^# (.+)$', content, re.MULTILINE)
+    subtitle = re.search(r'^> (.+)$', content, re.MULTILINE)
+    paras = re.findall(r'^(?!#|>|\-|\*|```|\|)(.{50,})', content, re.MULTILINE)
+    post_id = os.path.basename(filepath).replace('.md', '')
+    img = f"assets/blog/{post_id}.png"
+    return {
+        "id": post_id,
+        "title": title.group(1) if title else post_id.replace('-', ' ').title(),
+        "subtitle": subtitle.group(1) if subtitle else "Premium AI Insight",
+        "description": paras[0][:160] if paras else "Read more at Nexus Intelligence.",
+        "image": img if os.path.exists(img) else None,
+        "raw_content": content
+    }
+
+def inject_dynamic_lists(html, content_dict, filename):
     if not content_dict: return html
 
     if 'blogs' in content_dict:
         blog_html = ""
-        # Home page shows 6, Blog page shows 9 initially.
-        # We only BAKE these into HTML. The rest are loaded via content.json + script.js for speed.
         limit = 6 if filename == 'index.html' else 9
         for i, b in enumerate(content_dict['blogs'][:limit]):
             img_url = b.get('image') or ""
@@ -65,12 +77,11 @@ def inject_content(html, header, footer, content_dict=None, filename=""):
             </div>"""
             blog_html += card
         
-        # Add a placeholder for JS to pick up the Load More button if there are more blogs
         if len(content_dict['blogs']) > limit:
             blog_html += '<div class="pagination-container"><button class="load-more-btn" id="load-more-blog">Load More Insights</button></div>'
         html = re.sub(r'<!-- BLOG_START -->.*?<!-- BLOG_END -->', f'<!-- BLOG_START -->{blog_html}<!-- BLOG_END -->', html, flags=re.DOTALL)
 
-    if 'cases' in content_dict and filename == 'index.html':
+    if 'cases' in content_dict and (filename == 'index.html' or filename == 'study.html'):
         case_html = ""
         limit = 6
         for i, c in enumerate(content_dict['cases']):
@@ -89,69 +100,46 @@ def inject_content(html, header, footer, content_dict=None, filename=""):
         html = re.sub(r'<!-- CASES_START -->.*?<!-- CASES_END -->', f'<!-- CASES_START -->{case_html}<!-- CASES_END -->', html, flags=re.DOTALL)
     return html
 
-def extract_metadata(filepath):
-    with open(filepath, 'r') as f: content = f.read()
-    title = re.search(r'^# (.+)$', content, re.MULTILINE)
-    subtitle = re.search(r'^> (.+)$', content, re.MULTILINE)
-    paras = re.findall(r'^(?!#|>|\-|\*|```|\|)(.{50,})', content, re.MULTILINE)
-    post_id = os.path.basename(filepath).replace('.md', '')
-    img = f"assets/blog/{post_id}.png"
-    return {
-        "id": post_id,
-        "title": title.group(1) if title else post_id.replace('-', ' ').title(),
-        "subtitle": subtitle.group(1) if subtitle else "Premium AI Insight",
-        "description": paras[0][:160] if paras else "Read more at Nexus Intelligence.",
-        "image": img if os.path.exists(img) else None,
-        "raw_content": content
-    }
+def build_page(page_content, title, description, root_path="", body_class="main-page", schema="", extra_scripts=""):
+    with open(BASE_TEMPLATE, 'r') as f: base = f.read()
+    header, footer = get_shared_components(root_path)
+    
+    html = base.replace('[[TITLE]]', title)
+    html = html.replace('[[DESCRIPTION]]', description)
+    html = html.replace('[[ROOT]]', root_path)
+    html = html.replace('[[BODY_CLASS]]', body_class)
+    html = html.replace('[[HEADER]]', header)
+    html = html.replace('[[FOOTER]]', footer)
+    html = html.replace('[[CONTENT]]', page_content)
+    html = html.replace('[[SCHEMA]]', schema)
+    html = html.replace('[[EXTRA_SCRIPTS]]', extra_scripts)
+    
+    return html
 
 def generate_static_page(item, template_path, output_dir, content_type="blog"):
     if not os.path.exists(template_path): return
-    with open(template_path, 'r') as f: html = f.read()
+    with open(template_path, 'r') as f: page_fragment = f.read()
     
-    # 1. Path Harmonization
     root_val = "../../"
-    html = html.replace('[[ROOT]]', root_val)
+    target_dir = os.path.join(output_dir, item['id'])
+    os.makedirs(target_dir, exist_ok=True)
     
-    clean_base = BASE_URL.rstrip('/')
-    clean_path = f"{output_dir}/{item['id']}"
-    canonical_url = f"{clean_base}/{clean_path}/"
-    
-    # 2. Metadata Injection
-    html = html.replace('<title>Blog | Nexus Intelligence</title>', f'<title>{item["title"]} | Nexus Intelligence</title>')
-    html = html.replace('<title>Case Study | Nexus Intelligence</title>', f'<title>{item["title"]} | Case Study | Nexus Intelligence</title>')
-    safe_desc = item["subtitle"].replace("*", "").replace('"', '&quot;')
-    html = re.sub(r'<meta name="description" content="[^"]*">', f'<meta name="description" content="{safe_desc}">', html)
-    
-    # 3. Content Baking (ZERO-FETCH)
+    # Process MD to HTML
     raw_md = item['raw_content']
     h1_match = re.search(r'^# .+\n', raw_md)
     baked_md = raw_md.replace(h1_match.group(0), '') if h1_match else raw_md
     content_html = md.render(baked_md)
     
-    html = html.replace('<h1 id="post-title">Loading...</h1>', f'<h1 id="post-title">{item["title"]}</h1>')
-    html = html.replace('<div class="loader-pulse"></div>', content_html)
+    # Fill Fragment
+    fragment = page_fragment.replace('<h1 id="post-title">Loading...</h1>', f'<h1 id="post-title">{item["title"]}</h1>')
+    fragment = fragment.replace('<div class="loader-pulse"></div>', content_html)
     
-    # 4. Read Time
     word_count = len(raw_md.split())
     read_time = max(1, word_count // 200)
-    html = html.replace('<span id="read-time">5 min read</span>', f'<span id="read-time">{read_time} min read</span>')
-    html = html.replace('<span id="read-time">3 min read</span>', f'<span id="read-time">{read_time} min read</span>')
-
-    # 5. Social Links
-    encoded_url = urllib.parse.quote(canonical_url)
-    encoded_title = urllib.parse.quote(item['title'])
-    html = html.replace('id="share-twitter" href="#"', f'id="share-twitter" href="https://twitter.com/intent/tweet?text={encoded_title}&url={encoded_url}"')
-    html = html.replace('id="share-linkedin" href="#"', f'id="share-linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url={encoded_url}"')
-
-    # 6. Shared Components
-    target_dir = os.path.join(output_dir, item['id'])
-    os.makedirs(target_dir, exist_ok=True)
-    header, footer = get_shared_components(root_path=root_val)
-    html = inject_content(html, header, footer)
+    fragment = fragment.replace('<span id="read-time">5 min read</span>', f'<span id="read-time">{read_time} min read</span>')
+    fragment = fragment.replace('<span id="read-time">3 min read</span>', f'<span id="read-time">{read_time} min read</span>')
     
-    # 7. Schema Baking
-    schema_id = "article-schema" if content_type == "blog" else "study-schema"
+    # Build complete Page
     schema_data = {
         "@context": "https://schema.org",
         "@type": "Article",
@@ -161,19 +149,29 @@ def generate_static_page(item, template_path, output_dir, content_type="blog"):
         "publisher": { "@type": "Organization", "name": "Nexus Intelligence" },
         "datePublished": datetime.now().strftime('%Y-%m-%d')
     }
-    schema_pattern = f'<script type="application/ld+json" id="{schema_id}">'
-    if schema_pattern in html:
-        parts = html.split(schema_pattern)
-        after_pattern = parts[1].split('</script>', 1)
-        new_script = f'{schema_pattern}{json.dumps(schema_data)}</script>'
-        html = parts[0] + new_script + after_pattern[1]
+    schema_html = f'<script type="application/ld+json">{json.dumps(schema_data)}</script>'
+    
+    html = build_page(
+        page_content=fragment,
+        title=item["title"],
+        description=item["subtitle"].replace("*", "").replace('"', '&quot;'),
+        root_path=root_val,
+        body_class="sub-page",
+        schema=schema_html
+    )
+    
+    # Social Share Links
+    clean_base = BASE_URL.rstrip('/')
+    canonical_url = f"{clean_base}/{output_dir}/{item['id']}/"
+    encoded_url = urllib.parse.quote(canonical_url)
+    encoded_title = urllib.parse.quote(item['title'])
+    html = html.replace('id="share-twitter" href="#"', f'id="share-twitter" href="https://twitter.com/intent/tweet?text={encoded_title}&url={encoded_url}"')
+    html = html.replace('id="share-linkedin" href="#"', f'id="share-linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url={encoded_url}"')
 
     with open(os.path.join(target_dir, 'index.html'), 'w') as f: f.write(html)
 
 def generate_sitemap(data):
     today = datetime.now().strftime('%Y-%m-%d')
-    
-    # Core URLs with varying priority and changefreq
     core_urls = [
         (BASE_URL + "/", today, "weekly", "1.0"),
         (BASE_URL + "/blog.html", today, "weekly", "0.8"),
@@ -183,28 +181,22 @@ def generate_sitemap(data):
     
     blog_urls = []
     for i, b in enumerate(data['blogs']):
-        # Stagger fake dates so Google doesn't think it's an AI dump
         day = 10 + (i % 18)
         date = f"2026-03-{day:02d}"
-        encoded_id = urllib.parse.quote(b['id'])
-        blog_urls.append((f"{BASE_URL}/blog/{encoded_id}/", date, "monthly", "0.7"))
+        blog_urls.append((f"{BASE_URL}/blog/{urllib.parse.quote(b['id'])}/", date, "monthly", "0.7"))
         
     case_urls = []
     for i, c in enumerate(data['cases']):
         day = 15 + (i % 10)
         date = f"2026-03-{day:02d}"
-        encoded_id = urllib.parse.quote(c['id'])
-        case_urls.append((f"{BASE_URL}/case/{encoded_id}/", date, "monthly", "0.6"))
+        case_urls.append((f"{BASE_URL}/case/{urllib.parse.quote(c['id'])}/", date, "monthly", "0.6"))
         
     all_urls = core_urls + blog_urls + case_urls
-    
     xml = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
     for loc, lastmod, freq, prio in all_urls:
         xml += f'    <url>\n        <loc>{loc}</loc>\n        <lastmod>{lastmod}</lastmod>\n        <changefreq>{freq}</changefreq>\n        <priority>{prio}</priority>\n    </url>\n'
     xml += '</urlset>'
-    
-    with open(SITEMAP_XML, 'w') as f: 
-        f.write(xml)
+    with open(SITEMAP_XML, 'w') as f: f.write(xml)
 
 if __name__ == "__main__":
     data = {"blogs": [], "cases": []}
@@ -213,13 +205,30 @@ if __name__ == "__main__":
             for f in sorted(os.listdir(d)):
                 if f.endswith('.md'): data[k].append(extract_metadata(os.path.join(d, f)))
     
-    header, footer = get_shared_components()
-    for filename in ['index.html', 'blog.html', 'about.html', 'privacy.html', 'study.html', 'post.html', 'facebook.html', 'instagram.html', 'linkedin.html', 'threads.html']:
-        if os.path.exists(filename):
-            with open(filename, 'r') as f: content = f.read()
-            content = content.replace('[[ROOT]]', '') # Root pages have no root_path
-            new_html = inject_content(content, header, footer, data, filename)
-            with open(filename, 'w') as f: f.write(new_html)
+    pages = [
+        ('index.html', "Nexus Intelligence | Premium Document & Workflow Automation for Europe", "State-of-the-art AI automation for European enterprises.", "main-page"),
+        ('blog.html', "Insights | Nexus Intelligence", "Expert insights on AI automation and agentic workflows.", "sub-page"),
+        ('about.html', "About Us | Nexus Intelligence", "Architecting the future of enterprise intelligence.", "sub-page"),
+        ('privacy.html', "Privacy Policy | Nexus Intelligence", "Legal and privacy information.", "sub-page"),
+        ('facebook.html', "Connect on Facebook | Nexus Intelligence", "Follow us on Facebook.", "sub-page"),
+        ('instagram.html', "Connect on Instagram | Nexus Intelligence", "Follow us on Instagram.", "sub-page"),
+        ('linkedin.html', "Connect on LinkedIn | Nexus Intelligence", "Follow us on LinkedIn.", "sub-page"),
+        ('threads.html', "Connect on Threads | Nexus Intelligence", "Follow us on Threads.", "sub-page"),
+    ]
+
+    for filename, title, desc, bclass in pages:
+        src_path = os.path.join('src/pages', filename)
+        if os.path.exists(src_path):
+            with open(src_path, 'r') as f: fragment = f.read()
+            # Extract only the <main> part or whatever is intended for [[CONTENT]]
+            # For simplicity, we assume the fragment IS the content
+            # But we must remove the boilerplate from the source fragments first
+            
+            # Temporary logic to keep dynamic lists working
+            fragment = inject_dynamic_lists(fragment, data, filename)
+            
+            html = build_page(fragment, title, desc, body_class=bclass)
+            with open(filename, 'w') as f: f.write(html)
     
     for b in data['blogs']: generate_static_page(b, POST_TEMPLATE, BLOGS_HTML_DIR, "blog")
     for c in data['cases']: generate_static_page(c, STUDY_TEMPLATE, CASES_HTML_DIR, "case")
@@ -227,4 +236,4 @@ if __name__ == "__main__":
     meta_data = {k: [{i: v for i, v in item.items() if i != 'raw_content'} for item in data[k]] for k in data}
     with open(CONTENT_JSON, 'w') as f: json.dump(meta_data, f, indent=4)
     generate_sitemap(data)
-    print("✨ SSG Path Reconciliation Complete. Asset links verified.")
+    print("✨ Unified Templating Build Complete.")
