@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://nexus-intel.github.io/sitemap.xml
+Sitemap: https://azura-ai.github.io/sitemap.xml

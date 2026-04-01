@@ -1,4 +1,4 @@
-# Nexus Intelligence | IT Agency Website
+# Azura AI | IT Agency Website
 
 A premium, modern, and responsive IT agency landing page featuring a chatbot widget. Designed for high-end AI, ML, and OCR service providers.
 
@@ -22,4 +22,4 @@ This repository is configured for automatic deployment to GitHub Pages.
 
 ## License
 MIT
-# nexus-intel
+# azura-ai

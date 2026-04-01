@@ -10,8 +10,8 @@ CONTENT_FILE = os.path.join(os.path.dirname(__file__), '..', 'content.json')
 BLOG_DIR = os.path.join(os.path.dirname(__file__), '..', 'blog')
 CASE_DIR = os.path.join(os.path.dirname(__file__), '..', 'case')
 
-GENERIC_BLOG_META = 'Expert insights on AI automation, agentic workflows, OCR, and enterprise intelligence from Nexus Intelligence.'
-GENERIC_CASE_META = 'Explore how Nexus Intelligence delivers measurable business impact through AI automation, agentic workflows, and intelligent document processing.'
+GENERIC_BLOG_META = 'Expert insights on AI automation, agentic workflows, OCR, and enterprise intelligence from Azura AI.'
+GENERIC_CASE_META = 'Explore how Azura AI delivers measurable business impact through AI automation, agentic workflows, and intelligent document processing.'
 
 def load_content():
     with open(CONTENT_FILE, 'r') as f:

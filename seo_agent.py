@@ -47,7 +47,7 @@ def generate_blog_post(title, focus):
     4. Technical Deep Dive: 3-4 Detailed sections with code snippets (Python).
     5. Comparison/Insight: How does this fit into the broader AI agent ecosystem?
     6. Practical "Vibe Check": A summary of how to implement this TODAY.
-    7. Conclusion with a call-to-action to Nexus Intelligence for custom Document Workflow Automation.
+    7. Conclusion with a call-to-action to Azura AI for custom Document Workflow Automation.
     
     Style: Technical, authoritative, yet modern and "vibe-aligned." Use bolding, tables, and lists for readability.
     Ensure strict Markdown. No preamble, just the content.

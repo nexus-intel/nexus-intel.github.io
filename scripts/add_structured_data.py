@@ -10,17 +10,17 @@ CONTENT_FILE = os.path.join(os.path.dirname(__file__), '..', 'content.json')
 BLOG_DIR = os.path.join(os.path.dirname(__file__), '..', 'blog')
 CASE_DIR = os.path.join(os.path.dirname(__file__), '..', 'case')
 ROOT_DIR = os.path.join(os.path.dirname(__file__), '..')
-BASE_URL = 'https://nexus-intel.github.io'
+BASE_URL = 'https://azura-ai.github.io'
 
 def make_org_schema():
     return json.dumps({
         "@context": "https://schema.org",
         "@type": "Organization",
-        "name": "Nexus Intelligence",
+        "name": "Azura AI",
         "url": BASE_URL,
         "logo": f"{BASE_URL}/assets/images/favicon.png",
         "description": "AI automation agency specializing in document intelligence, agentic workflows, and enterprise automation for European businesses.",
-        "sameAs": ["https://github.com/nexus-intel"]
+        "sameAs": ["https://github.com/azura-ai"]
     }, indent=2)
 
 def make_article_schema(title, description, slug, section="blog", date="2026-03-20"):
@@ -31,12 +31,12 @@ def make_article_schema(title, description, slug, section="blog", date="2026-03-
         "description": description[:160],
         "author": {
             "@type": "Organization",
-            "name": "Nexus Intelligence",
+            "name": "Azura AI",
             "url": BASE_URL
         },
         "publisher": {
             "@type": "Organization",
-            "name": "Nexus Intelligence",
+            "name": "Azura AI",
             "logo": {
                 "@type": "ImageObject",
                 "url": f"{BASE_URL}/assets/images/favicon.png"

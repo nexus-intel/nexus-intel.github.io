@@ -145,6 +145,6 @@ We are moving toward a world where the "application" is a transient state genera
 Speed is no longer a luxury; it is the fundamental requirement for trust in AI systems. By minimizing the latency between a user's intent and the agent's action, we create a seamless digital experience that feels truly intelligent.
 
 ### Automate Your Vibe
-Building instant apps is the first step. The next is automating the entire lifecycle of your document and data workflows. At **Nexus Intelligence**, we specialize in custom **Document Workflow Automation** that leverages the Flash Stack to turn massive data silos into real-time operational intelligence.
+Building instant apps is the first step. The next is automating the entire lifecycle of your document and data workflows. At **Azura AI**, we specialize in custom **Document Workflow Automation** that leverages the Flash Stack to turn massive data silos into real-time operational intelligence.
 
-**Ready to accelerate your orchestration?** [Contact Nexus Intelligence today](#) to build custom AI workflows that move at the speed of your business.
+**Ready to accelerate your orchestration?** [Contact Azura AI today](#) to build custom AI workflows that move at the speed of your business.

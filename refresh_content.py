@@ -15,7 +15,7 @@ STUDY_TEMPLATE = 'src/pages/study.html'
 BASE_TEMPLATE = 'templates/base.html'
 CONTENT_JSON = 'content.json'
 SITEMAP_XML = 'sitemap.xml'
-BASE_URL = "https://nexus-intel.github.io"
+BASE_URL = "https://azura-ai.github.io"
 
 md = MarkdownIt(options_update={"html": True}).enable('table')
 
@@ -48,7 +48,7 @@ def extract_metadata(filepath):
         "id": post_id,
         "title": title.group(1) if title else post_id.replace('-', ' ').title(),
         "subtitle": subtitle.group(1) if subtitle else "Premium AI Insight",
-        "description": paras[0][:160] if paras else "Read more at Nexus Intelligence.",
+        "description": paras[0][:160] if paras else "Read more at Azura AI.",
         "image": img if os.path.exists(img) else None,
         "raw_content": content
     }
@@ -100,17 +100,18 @@ def inject_dynamic_lists(html, content_dict, filename):
         html = re.sub(r'<!-- CASES_START -->.*?<!-- CASES_END -->', f'<!-- CASES_START -->{case_html}<!-- CASES_END -->', html, flags=re.DOTALL)
     return html
 
-def build_page(page_content, title, description, root_path="", body_class="main-page", schema="", extra_scripts=""):
+def build_page(page_content, title, description, root_path="", body_class="main-page", schema="", extra_scripts="", canonical_url=""):
     with open(BASE_TEMPLATE, 'r') as f: base = f.read()
     header, footer = get_shared_components(root_path)
     
     html = base.replace('[[TITLE]]', title)
     html = html.replace('[[DESCRIPTION]]', description)
-    html = html.replace('[[ROOT]]', root_path)
     html = html.replace('[[BODY_CLASS]]', body_class)
     html = html.replace('[[HEADER]]', header)
     html = html.replace('[[FOOTER]]', footer)
     html = html.replace('[[CONTENT]]', page_content)
+    html = html.replace('[[ROOT]]', root_path)
+    html = html.replace('[[CANONICAL]]', canonical_url or BASE_URL)
     html = html.replace('[[SCHEMA]]', schema)
     html = html.replace('[[EXTRA_SCRIPTS]]', extra_scripts)
     
@@ -139,14 +140,20 @@ def generate_static_page(item, template_path, output_dir, content_type="blog"):
     fragment = fragment.replace('<span id="read-time">5 min read</span>', f'<span id="read-time">{read_time} min read</span>')
     fragment = fragment.replace('<span id="read-time">3 min read</span>', f'<span id="read-time">{read_time} min read</span>')
     
+    # Social Share Links
+    clean_base = BASE_URL.rstrip('/')
+    canonical_url = f"{clean_base}/{output_dir}/{item['id']}/"
+    encoded_url = urllib.parse.quote(canonical_url)
+    encoded_title = urllib.parse.quote(item['title'])
+    
     # Build complete Page
     schema_data = {
         "@context": "https://schema.org",
         "@type": "Article",
         "headline": item["title"],
         "description": item["description"],
-        "author": { "@type": "Organization", "name": "Nexus Intelligence" },
-        "publisher": { "@type": "Organization", "name": "Nexus Intelligence" },
+        "author": { "@type": "Organization", "name": "Azura AI" },
+        "publisher": { "@type": "Organization", "name": "Azura AI" },
         "datePublished": datetime.now().strftime('%Y-%m-%d')
     }
     schema_html = f'<script type="application/ld+json">{json.dumps(schema_data)}</script>'
@@ -157,14 +164,10 @@ def generate_static_page(item, template_path, output_dir, content_type="blog"):
         description=item["subtitle"].replace("*", "").replace('"', '&quot;'),
         root_path=root_val,
         body_class="sub-page",
-        schema=schema_html
+        schema=schema_html,
+        canonical_url=canonical_url
     )
     
-    # Social Share Links
-    clean_base = BASE_URL.rstrip('/')
-    canonical_url = f"{clean_base}/{output_dir}/{item['id']}/"
-    encoded_url = urllib.parse.quote(canonical_url)
-    encoded_title = urllib.parse.quote(item['title'])
     html = html.replace('id="share-twitter" href="#"', f'id="share-twitter" href="https://twitter.com/intent/tweet?text={encoded_title}&url={encoded_url}"')
     html = html.replace('id="share-linkedin" href="#"', f'id="share-linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url={encoded_url}"')
 
@@ -206,14 +209,14 @@ if __name__ == "__main__":
                 if f.endswith('.md'): data[k].append(extract_metadata(os.path.join(d, f)))
     
     pages = [
-        ('index.html', "Nexus Intelligence | Premium Document & Workflow Automation for Europe", "State-of-the-art AI automation for European enterprises.", "main-page"),
-        ('blog.html', "Insights | Nexus Intelligence", "Expert insights on AI automation and agentic workflows.", "sub-page"),
-        ('about.html', "About Us | Nexus Intelligence", "Architecting the future of enterprise intelligence.", "sub-page"),
-        ('privacy.html', "Privacy Policy | Nexus Intelligence", "Legal and privacy information.", "sub-page"),
-        ('facebook.html', "Connect on Facebook | Nexus Intelligence", "Follow us on Facebook.", "sub-page"),
-        ('instagram.html', "Connect on Instagram | Nexus Intelligence", "Follow us on Instagram.", "sub-page"),
-        ('linkedin.html', "Connect on LinkedIn | Nexus Intelligence", "Follow us on LinkedIn.", "sub-page"),
-        ('threads.html', "Connect on Threads | Nexus Intelligence", "Follow us on Threads.", "sub-page"),
+        ('index.html', "Azura AI | Premium Document & Workflow Automation for Europe", "State-of-the-art AI automation for European enterprises.", "main-page"),
+        ('blog.html', "Insights | Azura AI", "Expert insights on AI automation and agentic workflows.", "sub-page"),
+        ('about.html', "About Us | Azura AI", "Architecting the future of enterprise intelligence.", "sub-page"),
+        ('privacy.html', "Privacy Policy | Azura AI", "Legal and privacy information.", "sub-page"),
+        ('facebook.html', "Connect on Facebook | Azura AI", "Follow us on Facebook.", "sub-page"),
+        ('instagram.html', "Connect on Instagram | Azura AI", "Follow us on Instagram.", "sub-page"),
+        ('linkedin.html', "Connect on LinkedIn | Azura AI", "Follow us on LinkedIn.", "sub-page"),
+        ('threads.html', "Connect on Threads | Azura AI", "Follow us on Threads.", "sub-page"),
     ]
 
     for filename, title, desc, bclass in pages:
@@ -227,7 +230,8 @@ if __name__ == "__main__":
             # Temporary logic to keep dynamic lists working
             fragment = inject_dynamic_lists(fragment, data, filename)
             
-            html = build_page(fragment, title, desc, body_class=bclass)
+            canonical_url = f"{BASE_URL.rstrip('/')}/{filename}" if filename != 'index.html' else BASE_URL
+            html = build_page(fragment, title, desc, body_class=bclass, canonical_url=canonical_url)
             with open(filename, 'w') as f: f.write(html)
     
     for b in data['blogs']: generate_static_page(b, POST_TEMPLATE, BLOGS_HTML_DIR, "blog")

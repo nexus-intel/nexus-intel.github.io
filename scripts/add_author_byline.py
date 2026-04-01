@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Add author byline to blog and case study post-meta sections.
-Injects 'By Nexus Intelligence Team' into the post header for E-E-A-T signals."""
+Injects 'By Azura AI Team' into the post header for E-E-A-T signals."""
 
 import os
 import re
@@ -8,7 +8,7 @@ import re
 BLOG_DIR = os.path.join(os.path.dirname(__file__), '..', 'blog')
 CASE_DIR = os.path.join(os.path.dirname(__file__), '..', 'case')
 
-AUTHOR_HTML = '<span class="meta-separator">•</span>\n                    <span class="post-author"><i class="fas fa-user-pen"></i> Nexus Intelligence Team</span>'
+AUTHOR_HTML = '<span class="meta-separator">•</span>\n                    <span class="post-author"><i class="fas fa-user-pen"></i> Azura AI Team</span>'
 
 def inject_author(html_path):
     with open(html_path, 'r', encoding='utf-8') as f:

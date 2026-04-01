@@ -141,8 +141,8 @@ The transition to cyclic agents is not just a technical upgrade; it's a fundamen
 
 Whether you are automating complex legal document reviews or building a self-correcting code assistant, the combination of **Pydantic AI**, **Gemini**, and **LangGraph** provides the most resilient stack available today.
 
-### Transform Your Workflows with Nexus Intelligence
+### Transform Your Workflows with Azura AI
 
 Managing the complexity of agentic state machines is what we do best. If your organization is ready to move beyond basic prompts and into the world of **Automated Document Workflows** and custom **Cyclic Agent Clusters**, reach out to us.
 
-**[Connect with Nexus Intelligence today](https://nexusintelligence.ai)** to audit your AI architecture and build the future of autonomous operations. Let’s turn your complex vibes into deterministic outcomes.
+**[Connect with Azura AI today](https://nexusintelligence.ai)** to audit your AI architecture and build the future of autonomous operations. Let’s turn your complex vibes into deterministic outcomes.

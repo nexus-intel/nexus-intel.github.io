@@ -100,7 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             try {
                 // Call actual FastAPI backend on Railway
-                const response = await fetch('https://nexus-intelgithubio-production.up.railway.app/chat', {
+                const response = await fetch('https://azura-aigithubio-production.up.railway.app/chat', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ 
@@ -174,7 +174,7 @@ document.addEventListener('DOMContentLoaded', () => {
         btn.disabled = true;
 
         try {
-            const response = await fetch(`https://nexus-intelgithubio-production.up.railway.app/${endpoint}`, {
+            const response = await fetch(`https://azura-aigithubio-production.up.railway.app/${endpoint}`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(formData)
@@ -342,7 +342,7 @@ function appendMessage(role, text) {
             const message = document.getElementById('message').value;
 
             try {
-                const response = await fetch('https://nexus-intelgithubio-production.up.railway.app/contact', {
+                const response = await fetch('https://azura-aigithubio-production.up.railway.app/contact', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ name, email, message })

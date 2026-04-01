@@ -20,7 +20,7 @@ The fundamental problem: rule-based systems can only detect patterns they've bee
 
 ## The Solution
 
-Nexus Intelligence implemented a **multi-layered predictive defense system** that analyzes transactions across three parallel dimensions simultaneously, delivering a fraud confidence score in under 50 milliseconds.
+Azura AI implemented a **multi-layered predictive defense system** that analyzes transactions across three parallel dimensions simultaneously, delivering a fraud confidence score in under 50 milliseconds.
 
 ### Layer 1: Behavioral Biometrics
 
@@ -92,7 +92,7 @@ After 120 days of production deployment:
 | Customer friction complaints | 2,100/month | 180/month | **-91%** |
 | Annual fraud reimbursement costs | £2.8M | £0.4M | **-£2.4M saved** |
 
-> "Nexus Intelligence's system didn't just catch more fraud — it made the experience better for our legitimate customers. Our support tickets dropped by 60% in the first month." — CTO, [Client]
+> "Azura AI's system didn't just catch more fraud — it made the experience better for our legitimate customers. Our support tickets dropped by 60% in the first month." — CTO, [Client]
 
 ---
 

@@ -15,7 +15,7 @@ We deployed a custom **Document Workflow Automation** engine that utilizes state
 - **Latency**: Point credit reduced from 24 hours to < 5 seconds.
 - **ROI**: Increased customer app engagement by 340% within the first quarter.
 
-> "Nexus Intelligence transformed our loyalty program from a bottleneck into our competitive advantage." — *Dubai Retail Group Exec*
+> "Azura AI transformed our loyalty program from a bottleneck into our competitive advantage." — *Dubai Retail Group Exec*
 
 ---
 

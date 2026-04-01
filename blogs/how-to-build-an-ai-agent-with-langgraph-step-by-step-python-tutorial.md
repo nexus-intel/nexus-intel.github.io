@@ -143,11 +143,11 @@ print(final_state["output"])
 
 ## Real-World Scaling
 
-For enterprise applications, you would add a "Web Search" tool to the Researcher and a "Fact Checker" tool to the Critic. This architecture is what powers the **Autonomous Supply Chain Engine** we built at Nexus Intelligence.
+For enterprise applications, you would add a "Web Search" tool to the Researcher and a "Fact Checker" tool to the Critic. This architecture is what powers the **Autonomous Supply Chain Engine** we built at Azura AI.
 
 ### Ready to Build production-grade agents?
 
-Building a POC is easy; building a reliable system is hard. **[Contact Nexus Intelligence](https://nexus-intel.github.io/index.html#contact)** for a deep-dive workshop on building autonomous agentic workflows for your specific business niche.
+Building a POC is easy; building a reliable system is hard. **[Contact Azura AI](https://azura-ai.github.io/index.html#contact)** for a deep-dive workshop on building autonomous agentic workflows for your specific business niche.
 
 ---
 

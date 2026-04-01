@@ -154,6 +154,6 @@ Streaming the vibe is more than a technical hurdle; it’s a commitment to a sup
 In the world of Agentic UX, the UI is no longer a destination; it is a real-time conversation between human intent and machine execution.
 
 ### Elevate Your Workflow
-Is your organization ready to transition from legacy workflows to autonomous agentic systems? **Nexus Intelligence** specializes in custom **Document Workflow Automation** and high-performance AI agent orchestration. 
+Is your organization ready to transition from legacy workflows to autonomous agentic systems? **Azura AI** specializes in custom **Document Workflow Automation** and high-performance AI agent orchestration. 
 
-**[Optimize your Vibe with Nexus Intelligence today.](https://example.com)**
+**[Optimize your Vibe with Azura AI today.](https://example.com)**

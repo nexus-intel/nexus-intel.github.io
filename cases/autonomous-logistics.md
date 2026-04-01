@@ -20,7 +20,7 @@ The operations team was spending 6+ hours daily just re-optimizing routes that s
 
 ## The Solution
 
-Nexus Intelligence designed and deployed an **Autonomous Multi-Agent System (AMAS)** built on Python and LangGraph. Rather than replacing the dispatch team, the system acts as an intelligent co-pilot that pre-calculates optimal routes and flags anomalies before they become costly errors.
+Azura AI designed and deployed an **Autonomous Multi-Agent System (AMAS)** built on Python and LangGraph. Rather than replacing the dispatch team, the system acts as an intelligent co-pilot that pre-calculates optimal routes and flags anomalies before they become costly errors.
 
 ### System Architecture
 

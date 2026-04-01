@@ -71,7 +71,7 @@ def process_invoice(ocr_text):
 Vendors often appear under different names ("Google Inc" vs "Google Ireland Ltd"). We use **Vector Databases** (like Pinecone) to perform semantic matching on vendor names to ensure they map to the correct entity in your accounting system.
 
 ### 2. Complex Table Logic
-When an invoice spans multiple pages, traditional OCR often breaks the table. Our solution at Nexus Intelligence uses **Vision Transformers** to "see" the table lines and reconstruct the grid before the LLM even sees the text.
+When an invoice spans multiple pages, traditional OCR often breaks the table. Our solution at Azura AI uses **Vision Transformers** to "see" the table lines and reconstruct the grid before the LLM even sees the text.
 
 ---
 
@@ -91,7 +91,7 @@ Don't try to automate 1,000 different layouts on Day 1. Start with your top 5 ve
 
 ### Get a Turnkey Solution
 
-Don't want to build it from scratch? The **Nexus Intelligent Document Processor** handles everything from scanner ingestion to ERP synchronization. **[Contact our IDP expert today](https://nexus-intel.github.io/index.html#contact)** for a free audit of your current invoice workflow.
+Don't want to build it from scratch? The **Azura AI Document Processor** handles everything from scanner ingestion to ERP synchronization. **[Contact our IDP expert today](https://azura-ai.github.io/index.html#contact)** for a free audit of your current invoice workflow.
 
 ---
 

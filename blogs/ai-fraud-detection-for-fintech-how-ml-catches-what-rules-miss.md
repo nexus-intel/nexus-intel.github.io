@@ -78,7 +78,7 @@ In fintech, if you lose your customers' money, you lose their trust. In 2026, AI
 
 ### Protect Your Platform
 
-Is your fraud team overwhelmed by false positives? **[Contact Nexus Intelligence](https://nexus-intel.github.io/index.html#contact)** for a Fraud Strategy Audit. We’ll show you how to deploy a high-performance ML defense that catches fraud at the speed of light without slowing down your customers.
+Is your fraud team overwhelmed by false positives? **[Contact Azura AI](https://azura-ai.github.io/index.html#contact)** for a Fraud Strategy Audit. We’ll show you how to deploy a high-performance ML defense that catches fraud at the speed of light without slowing down your customers.
 
 ---
 

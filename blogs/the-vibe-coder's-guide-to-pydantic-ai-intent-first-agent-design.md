@@ -141,4 +141,4 @@ By combining the reasoning power of **Gemini**, the orchestration of **LangGraph
 ### Ready to automate your vibe?
 If your organization is looking to transform messy manual processes into high-speed, type-safe agentic workflows, we can help. 
 
-**[Contact Nexus Intelligence today](https://nexusintelligence.ai)** for custom **Document Workflow Automation** solutions that bridge the gap between AI potential and production reality.
+**[Contact Azura AI today](https://nexusintelligence.ai)** for custom **Document Workflow Automation** solutions that bridge the gap between AI potential and production reality.

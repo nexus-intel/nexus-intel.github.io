@@ -9,7 +9,7 @@ Date: 2026-03-07
 
 By 2026, the era of "AI experimentation for the sake of it" is over. CEO and CFOs are no longer interested in demos—they want to see the impact on the bottom line. If an AI project cannot prove its Return on Investment (ROI) within 6 months, it gets cut.
 
-At Nexus Intelligence, we believe that AI should be treated as a capital investment. This guide provides the **ROI Blueprint** for any automation project, from simple chatbots to complex multi-agent logistics systems.
+At Azura AI, we believe that AI should be treated as a capital investment. This guide provides the **ROI Blueprint** for any automation project, from simple chatbots to complex multi-agent logistics systems.
 
 ---
 
@@ -104,7 +104,7 @@ In 2026, the most successful AI projects are the ones that were "Sold on ROI" be
 
 ### Get Your Free ROI Audit
 
-Not sure if your AI idea will pay off? **[Try our Online ROI Calculator](https://nexus-intel.github.io/index.html#services)** or **[Contact Nexus Intelligence](https://nexus-intel.github.io/index.html#contact)** for a custom financial breakdown. We’ll help you find the "Low Hanging Fruit" that offers the fastest payback for your business.
+Not sure if your AI idea will pay off? **[Try our Online ROI Calculator](https://azura-ai.github.io/index.html#services)** or **[Contact Azura AI](https://azura-ai.github.io/index.html#contact)** for a custom financial breakdown. We’ll help you find the "Low Hanging Fruit" that offers the fastest payback for your business.
 
 ---
 

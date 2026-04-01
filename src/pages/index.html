@@ -213,7 +213,7 @@
     <div class="roi-container container">
         <div class="roi-header">
             <h2 class="section-title">Calculate Your <span>Automation ROI.</span></h2>
-            <p>Estimate the annual savings from transitioning your manual workflows to Nexus Intelligent Agents.</p>
+            <p>Estimate the annual savings from transitioning your manual workflows to Azura AI Agents.</p>
         </div>
         <div class="roi-calculator">
             <div class="calc-inputs">
@@ -306,7 +306,7 @@
         document.getElementById('vol-val').innerText = Number(vol).toLocaleString();
         document.getElementById('cost-val').innerText = Number(cost).toFixed(2);
         
-        // Nexus typically reduces costs by 90%
+        // Azura typically reduces costs by 90%
         const annualSavings = (vol * cost * 12 * 0.9);
         document.getElementById('savings-total').innerText = '$' + Number(annualSavings).toLocaleString(undefined, {maximumFractionDigits: 0});
     }

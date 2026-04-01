@@ -152,6 +152,6 @@ The combination of **FastAPI** for orchestration, **Pydantic AI** for structured
 However, building these systems at scale requires more than just code—it requires a deep understanding of how document flows and agentic logic intersect.
 
 **Ready to automate your high-stakes document workflows?**
-At **Nexus Intelligence**, we specialize in architecting custom, agentic AI solutions that leverage this exact stack. Whether you're looking to automate legal discovery, medical record processing, or complex financial analysis, we build the "Vibe" that powers your business.
+At **Azura AI**, we specialize in architecting custom, agentic AI solutions that leverage this exact stack. Whether you're looking to automate legal discovery, medical record processing, or complex financial analysis, we build the "Vibe" that powers your business.
 
-[**Contact Nexus Intelligence Today**](https://example.com/nexus-intelligence) to start your journey into high-performance AI automation.
+[**Contact Azura AI Today**](https://example.com/azura-ailigence) to start your journey into high-performance AI automation.

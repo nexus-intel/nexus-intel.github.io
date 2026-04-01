@@ -119,7 +119,7 @@ async def subscribe_newsletter(request: NewsletterRequest):
         conn.close()
         send_lead_notification(
             "New Newsletter Subscriber",
-            f"<p>New email added to Nexus Intelligence newsletter: <strong>{request.email}</strong></p>"
+            f"<p>New email added to Azura AI newsletter: <strong>{request.email}</strong></p>"
         )
     except Exception as e:
         logger.error(f"DB Error: {e}")

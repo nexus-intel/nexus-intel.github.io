@@ -103,7 +103,7 @@ The most successful companies in 2026 don't hire "Prompt Engineers"—they hire 
 
 ### Design Your AI Team
 
-Ready to move from a single bot to a high-performance multi-agent workforce? **[Contact Nexus Intelligence](https://nexus-intel.github.io/index.html#contact)**. We specialize in designing custom agentic architectures that deliver human-level (or better) performance for complex business operations.
+Ready to move from a single bot to a high-performance multi-agent workforce? **[Contact Azura AI](https://azura-ai.github.io/index.html#contact)**. We specialize in designing custom agentic architectures that deliver human-level (or better) performance for complex business operations.
 
 ---
 

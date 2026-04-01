@@ -90,7 +90,7 @@ The "Future of AI" is no longer about the LLM itself, but the **scaffolding** ar
 Your organization must move beyond the "Prompt Box." It is time to build autonomous systems that observe, reason, and act. The transition from AI-assisted workflows to AI-led operations is the baseline for the next generation of enterprise efficiency.
 
 **Is your infrastructure ready for autonomy?**
-[Contact our Engineering Team to Audit your AI Strategy.](https://nexus-intel.github.io/index.html#contact)
+[Contact our Engineering Team to Audit your AI Strategy.](https://azura-ai.github.io/index.html#contact)
 
 ---
 Date: 2026-02-24
